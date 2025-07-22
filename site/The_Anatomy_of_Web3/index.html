@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>A article on the anatomy of Web3 - Weminal's Blog</title>
+    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "A article on the anatomy of Web3", url: "#_top", children: [
+          ]},
+          {title: "1. Blockchain network layer", url: "#1-blockchain-network-layer", children: [
+              {title: "Ph\u00e2n t\u1ea7ng ki\u1ebfn tr\u00fac: Layer 0 / Layer 1 / Layer 2", url: "#phan-tang-kien-truc-layer-0-layer-1-layer-2" },
+              {title: "M\u00f4i tr\u01b0\u1eddng ch\u1ea1y smart contract", url: "#moi-truong-chay-smart-contract" },
+              {title: "C\u00e1c vai tr\u00f2 trong to\u00e0n h\u1ec7 sinh th\u00e1i nh\u01b0 T\u00ednh to\u00e1n hay L\u01b0u tr\u1eef", url: "#cac-vai-tro-trong-toan-he-sinh-thai-nhu-tinh-toan-hay-luu-tru" },
+              {title: "Cross-chain bridges", url: "#cross-chain-bridges" },
+          ]},
+          {title: "2. Middleware layer", url: "#2-middleware-layer", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../js/base.js"></script>
+      <script src="../search/main.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../blockchain_dilemma/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../blockchain_dilemma/" class="btn btn-xs btn-link">
+        Blockchain dilemma
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href=".." class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href=".." class="btn btn-xs btn-link">
+        Welcome to Weminal's Home
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="a-article-on-the-anatomy-of-web3">A article on the anatomy of Web3</h1>
+<p>Bài viết này viết toàn cảnh về hệ sinh thái của Web3 Blockchain (my POV). Web3 đến nay đã phát triển tương đối đầy đủ, hệ sinh thái cũng dần định hình rõ ràng. Nếu nhìn ở góc độ kiến trúc tổng thể hiện tại thì ta có thể chia thành các layers là blockchain network layer, middleware layer, application layer, và access layer...</p>
+<p>Trong phần này sẽ nhắc đến khá nhiều cái tên dự án, nhưng vì dung lượng kiến thức mình có hạn nên mình sẽ không đi sâu vào từng cái mà chỉ overall.</p>
+<h1 id="1-blockchain-network-layer">1. Blockchain network layer</h1>
+<p>Ở tầng thấp nhất trong kiến trúc Web3 là lớp mạng lưới blockchain (blockchain network layer) hay còn gọi là lớp nền tảng (foundation layer). Đây chính là “cái móng nhà” của toàn bộ hệ sinh thái Web3, nơi tập hợp các blockchain khác nhau vận hành độc lập hoặc tương tác với nhau.</p>
+<p>Hiện có rất nhiều blockchain nằm trong lớp này, có thể kể đến như: Bitcoin, Ethereum, BNB Chain (BSC), Polygon, Arbitrum, Polkadot, Cosmos, Celestia, Avalanche, Aptos, Sui và còn hàng tá cái tên khác nữa.</p>
+<h2 id="phan-tang-kien-truc-layer-0-layer-1-layer-2">Phân tầng kiến trúc: Layer 0 / Layer 1 / Layer 2</h2>
+<ul>
+<li>Layer 0 (L0): Layer 0 là lớp trừu tượng hơn, thường được gọi là lớp hạ tầng blockchain (infrastructure layer) – nơi cung cấp các dịch vụ cơ bản giúp nhiều blockchain có thể tương tác hoặc chia sẻ tài nguyên. Ví dụ: Cosmos, Polkadot,</li>
+</ul>
+<p><img alt="Layer 0 - coinbase" src="https://images.ctfassets.net/q5ulk4bp65r7/5w8dZBJye0z6uKpPaYD764/ef88b236609d4483917a031945e819e8/Learn_Illustration_What_are_Layer-0_protocols.jpg" />
+<br/></p>
+<ul>
+<li>Layer 1 (L1): Các Layer 1 cũng chính là ví dụ điển hình cho <a href="../blockchain_dilemma/"><code>“tam giác bất khả thi”</code></a> của blockchain khó để một blockchain đồng thời đảm bảo cả 3 yếu tố: mở rộng (scalability), bảo mật (security), và phi tập trung (decentralization).</li>
+</ul>
+<p><br/></p>
+<ul>
+<li>Layer 2 (L2): Layer 2 ra đời để giải bài toán “TPS thấp” của Layer 1, nhất là Ethereum. Layer 2 là các chuỗi phụ (subchain) nằm phía trên Layer 1, có nhiệm vụ xử lý giao dịch nhanh và rẻ hơn, sau đó gửi kết quả về Layer 1 để lưu trữ. Layer 2 giúp Layer 1 trở thành settlement layer (lớp thanh toán), còn mình thì lo phần execution layer (lớp thực thi). Một số Layer 2 nổi bật của Ethereum gồm: Arbitrum, Optimism, zkSync, StarkNet, Polygon. Bitcoin cũng có Layer 2 như: <code>Lightning Network</code>, <code>Stacks</code>, <code>RSK</code>, nhưng hiện tại vẫn chưa phổ biến bằng Ethereum.</li>
+</ul>
+<h2 id="moi-truong-chay-smart-contract">Môi trường chạy smart contract</h2>
+<p>Sự phát triển của Web3 chủ yếu nhờ vào smart contract, và các smart contract cần có môi trường để chạy – gọi là virtual machine (máy ảo). Tương tự như Java cần JVM vậy.</p>
+<p>Sau khi hiểu cấu trúc phân tầng, ta tiếp tục phân loại blockchain theo góc nhìn EVM compatibility  hay nói cách khác, blockchain đó có chạy được smart contract viết bằng Solidity và tương thích với máy ảo Ethereum hay không.</p>
+<p>Về cơ bản, có thể chia thành hai nhóm: <code>EVM chains</code> và <code>Non-EVM chains</code>.</p>
+<p>Hiện nay, EVM chains vẫn là dòng chủ đạo. Những blockchain này thu hút lượng lớn DApp và người dùng Web3, nhờ vào cộng đồng phát triển rộng và hệ sinh thái công cụ phong phú. Một số blockchain tương thích với EVM từ đầu như BSC, Heco, Arbitrum, Optimism, v.v. Một số khác thì phát triển sau này để tương thích, ví dụ như zkSync: phiên bản 1.0 không hỗ trợ EVM, nhưng từ 2.0 trở đi thì đã embrace EVM hoàn toàn. </p>
+<p>Tính đến hiện tại, phần lớn các blockchain lớn đều đã hoặc đang hỗ trợ EVM. Tuy nhiên, vẫn còn một số chuỗi nổi bật nằm ngoài hệ EVM, như Solana, Terra, NEAR, Aptos, và Sui. </p>
+<p>Các blockchain này thường chọn hướng đi khác biệt, cả về kiến trúc lẫn ngôn ngữ lập trình smart contract: nếu EVM chains dùng Solidity, thì các Non-EVM chains thường dùng Rust hoặc Move</p>
+<blockquote>
+<p>Tóm lại 
+* <a href="https://gfiblockchain.com/evm-la-gi-tai-sao-evm-la-trai-tim-cua-ethereum.html"><code>EVM chains</code></a>: Là những blockchain tương thích với Ethereum Virtual Machine, có thể chạy các smart contract được viết bằng Solidity. Ví dụ: Ethereum, BNB Chain, Polygon, Avalanche C-Chain…
+* <a href="https://coin98.net/phan-tich-non-evm-blockchain"><code>Non-EVM chains</code></a>: Không tương thích với EVM, sử dụng máy ảo riêng và thường có ngôn ngữ lập trình riêng, như: Solana (Rust/C/C++), Aptos &amp; Sui (Move), Near protocol/ Cosmos dùng rust, Cardano dùng Haskell/Plutus..</p>
+</blockquote>
+<hr />
+<h2 id="cac-vai-tro-trong-toan-he-sinh-thai-nhu-tinh-toan-hay-luu-tru">Các vai trò trong toàn hệ sinh thái như <code>Tính toán</code> hay <code>Lưu trữ</code></h2>
+<p>Ta cũng có thể chia blockchain theo mục tiêu sử dụng:
+* Compute Chains: Tập trung vào xử lý logic và chạy smart contract.
+* Storage Chains: Tập trung vào lưu trữ dữ liệu phi tập trung – ví dụ: Filecoin, Arweave, Walrus..</p>
+<h2 id="cross-chain-bridges">Cross-chain bridges</h2>
+<p>Mở rộng hơn là các giao thức giao tiếp giữa nhiều blockchain. Khá khó để thống kê ra số lượng bao nhiêu cross-chain được triển khai nhưng ta có những tên dẫn đầu cho phép chuyển tài sản giữa layer 2 và Ethereum một cách mược mà như <code>Polygon</code>, <code>Arbitrum</code> và <code>Optimism</code>.  Xếp sau là <code>Multichain</code> (trước đây là Anyswap) - tuy nhiên, trải qua khoảng thời gian khắc nghiệt của thị trường, cái tên Multichain đã dần phai mờ trong trí nhớ của nhiều người.</p>
+<p>Tạm thời, đó là bức tranh tổng quan về các “thành viên” đang tạo nên lớp mạng lưới của blockchain. Tất nhiên, danh sách này sẽ còn tiếp tục thay đổi sẽ có những cái tên mới gia nhập, và cũng sẽ có những hệ sinh thái từng rầm rộ rồi dần bị lãng quên ở một góc của lịch sử Web3.</p>
+<h1 id="2-middleware-layer">2. Middleware layer</h1>
+<p>Ngay phía trên lớp mạng blockchain, mình gọi đây là "middleware layer" chuyên cung cấp các dịch vụ và chức năng nền tảng cho các ứng dụng </p>
+<p>**security audits, oracles, index query services, API services, data analysis, data storage, basic financial services, digital identities, DAO governance **</p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../blockchain_dilemma/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../blockchain_dilemma/" class="btn btn-xs btn-link">
+        Blockchain dilemma
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href=".." class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href=".." class="btn btn-xs btn-link">
+        Welcome to Weminal's Home
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<!-- <footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer> -->
+
+</body>
+</html>

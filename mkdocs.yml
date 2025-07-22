@@ -1,7 +1,13 @@
 site_name: Weminal's Blog 
-theme: windmill
+
+
+theme:  
+  name: null
+  custom_dir: mkdocs-windmill/mkdocs_windmill/
+
+
 
 extra:
   social:
     - icon: simple/youtube
-    - link: https://www.youtube.com/watch?v=xlABhbnNrfI
+    - link: http://127.0.0.1:8000/#
