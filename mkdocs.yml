@@ -1,0 +1,7 @@
+site_name: Weminal's Blog 
+theme: windmill
+
+extra:
+  social:
+    - icon: simple/youtube
+    - link: https://www.youtube.com/watch?v=xlABhbnNrfI
