@@ -4,10 +4,17 @@ site_name: Harry's Blog
 theme:  
   name: null
   custom_dir: mkdocs-windmill/mkdocs_windmill/
+  #custom_dir: overrides
 
 
 
 extra:
   social:
     - icon: simple/youtube
-    - link: http://127.0.0.1:8000/#
+      link: https://www.youtube.com/@Harry_Blockchain
+
+
+# plugins: 
+#  - search
+#  - blog:
+#     blog_dir: .

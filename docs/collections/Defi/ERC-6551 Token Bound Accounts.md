@@ -37,6 +37,7 @@ interface IERC6551Registry {
 2. Mint unique digital signature NFTS
 
 video: https://www.youtube.com/watch?v=TNuLH47vZ2w
+The article here: https://medium.com/klaytn/revolutionizing-nfts-how-erc6551-token-bound-accounts-drive-nft-innovation-b7c262a2302c
 
 
 

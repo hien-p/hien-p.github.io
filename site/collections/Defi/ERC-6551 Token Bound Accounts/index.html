@@ -11,7 +11,7 @@
     
     <link rel="shortcut icon" href="../../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>Blockchain dilemma - Harry's Blog</title>
+    <title>ERC-6551 Token Bound Accounts - Harry's Blog</title>
     <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../../css/base.css" rel="stylesheet">
@@ -32,6 +32,10 @@
       var is_top_frame = false;
         
         var pageToc = [
+          {title: "ERC-6551 Token Bound Accounts", url: "#_top", children: [
+          ]},
+          {title: "Case studies", url: "#case-studies", children: [
+          ]},
         ];
 
     </script>
@@ -61,20 +65,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../Module%203/EVM%20and%20NON%20EVM/" class="btn btn-xs btn-default pull-right">
+      <a href="../Uniswap_V1_remove_liquidity/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../Module%203/EVM%20and%20NON%20EVM/" class="btn btn-xs btn-link">
-        Ethereum Virtual Machine (EVM)
+      <a href="../Uniswap_V1_remove_liquidity/" class="btn btn-xs btn-link">
+        What is a liquidity pool?
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../The_Anatomy_of_Web3/" class="btn btn-xs btn-default pull-left">
+      <a href="../../Blockchain%20Interview%20Guide/How%20become%20a%20blockchain%20enginner%3F/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../The_Anatomy_of_Web3/" class="btn btn-xs btn-link">
-        A article on the anatomy of Web3
+        Previous</a><a href="../../Blockchain%20Interview%20Guide/How%20become%20a%20blockchain%20enginner%3F/" class="btn btn-xs btn-link">
+        interview ideas and interview questions in blockchain.
       </a>
     </div>
     
@@ -82,7 +86,39 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    
+    <h1 id="erc-6551-token-bound-accounts">ERC-6551 Token Bound Accounts</h1>
+<p>(aka how NFTs can own assets). Every NFT has it owns wallet </p>
+<p>The ERC-6551 standard specifies how an NFT can "own" other assets. Essentially, the NFT owns a variation of a <em>"smart wallet"</em> that itself is the owner of other assets.</p>
+<p>If you want to bring together your knowledge of proxies, assembly optimization, NFTs, and several other ERCs, ERC-6551 will do that for you!</p>
+<p>The interace </p>
+<pre><code class="language-solidity">interface IERC6551Registry {
+    function createAccount(
+    address implementation,
+    uint256 chainId,
+    address tokenContract,
+    uint256 tokenId,
+    uint256 salt,
+    bytes calldata initData
+    ) external returns (address) ;
+
+
+    function account(
+    address implementation,
+    uint256 chainId,
+    address tokenContract,
+    uint256 tokenId,
+    uint256 salt
+    ) external view returns (address);
+}
+</code></pre>
+<h1 id="case-studies">Case studies</h1>
+<ol>
+<li>AI-powered simulation game using NFT character </li>
+<li>Mint unique digital signature NFTS</li>
+</ol>
+<p>video: https://www.youtube.com/watch?v=TNuLH47vZ2w
+The article here: https://medium.com/klaytn/revolutionizing-nfts-how-erc6551-token-bound-accounts-drive-nft-innovation-b7c262a2302c</p>
+<p><img alt="token " src="https://pbs.twimg.com/media/GweWsZia0AAVqh1?format=jpg&amp;name=medium" /></p>
 
   <br>
     
@@ -95,20 +131,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../Module%203/EVM%20and%20NON%20EVM/" class="btn btn-xs btn-default pull-right">
+      <a href="../Uniswap_V1_remove_liquidity/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../Module%203/EVM%20and%20NON%20EVM/" class="btn btn-xs btn-link">
-        Ethereum Virtual Machine (EVM)
+      <a href="../Uniswap_V1_remove_liquidity/" class="btn btn-xs btn-link">
+        What is a liquidity pool?
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../The_Anatomy_of_Web3/" class="btn btn-xs btn-default pull-left">
+      <a href="../../Blockchain%20Interview%20Guide/How%20become%20a%20blockchain%20enginner%3F/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../The_Anatomy_of_Web3/" class="btn btn-xs btn-link">
-        A article on the anatomy of Web3
+        Previous</a><a href="../../Blockchain%20Interview%20Guide/How%20become%20a%20blockchain%20enginner%3F/" class="btn btn-xs btn-link">
+        interview ideas and interview questions in blockchain.
       </a>
     </div>
     

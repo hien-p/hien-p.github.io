@@ -30,8 +30,8 @@ Thay vì coi căn nhà là một khối thống nhất, mình chia ra thành t�
 Đây chính là core idea của Sui: **Parallel Execution via Object-centric State Management.**
 ---
 # Vậy Sui làm được điều đó như thế nào?
-S
-ui scale theo chiều ngang (horizontal) để đáp ứng nhu cầu cao của mạng. Khi cần, validators có thể thêm compute power để xử lý nhiều giao dịch hơn.
+
+Sui scale theo chiều ngang (horizontal) để đáp ứng nhu cầu cao của mạng. Khi cần, validators có thể thêm compute power để xử lý nhiều giao dịch hơn.
 Ngoài ra thì Gas fee trên Sui vẫn thấp và ổn định dù traffic tăng cao, nhờ vào tokenomics thiết kế hợp lý. Do Validators được incentivized bằng việc xử lý nhiều tx hơn chứ không phải tăng gas fee.
 
 Bên cạnh đó Khả năng scale của Sui không chỉ dừng ở transaction processing. Phần storage cũng rẻ và có thể scale theo chiều ngang(horizontally scalable) . Nên devs có thể tạo ra các tài sản (object) phức tạp, nhiều thuộc tính trên on chain.

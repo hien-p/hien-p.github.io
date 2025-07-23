@@ -11,7 +11,7 @@
     
     <link rel="shortcut icon" href="../../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>Blockchain dilemma - Harry's Blog</title>
+    <title>Rust core concepts analysis: references, borrowing and internal mutability - Harry's Blog</title>
     <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../../css/base.css" rel="stylesheet">
@@ -32,6 +32,12 @@
       var is_top_frame = false;
         
         var pageToc = [
+          {title: "Rust core concepts analysis: references, borrowing and internal mutability", url: "#_top", children: [
+          ]},
+          {title: "Tham chi\u1ebfu (References)", url: "#tham-chieu-references", children: [
+          ]},
+          {title: "\u0026amp;T \u2013 Shared Reference (tham chi\u1ebfu chia s\u1ebb)", url: "#t-shared-reference-tham-chieu-chia-se", children: [
+          ]},
         ];
 
     </script>
@@ -61,20 +67,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../Module%203/EVM%20and%20NON%20EVM/" class="btn btn-xs btn-default pull-right">
+      <a href="../data_types/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../Module%203/EVM%20and%20NON%20EVM/" class="btn btn-xs btn-link">
-        Ethereum Virtual Machine (EVM)
+      <a href="../data_types/" class="btn btn-xs btn-link">
+        Data Types in Rust
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../The_Anatomy_of_Web3/" class="btn btn-xs btn-default pull-left">
+      <a href="../../Blockchain_101_course%20/Module%203/EVM%20and%20NON%20EVM/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../The_Anatomy_of_Web3/" class="btn btn-xs btn-link">
-        A article on the anatomy of Web3
+        Previous</a><a href="../../Blockchain_101_course%20/Module%203/EVM%20and%20NON%20EVM/" class="btn btn-xs btn-link">
+        Ethereum Virtual Machine (EVM)
       </a>
     </div>
     
@@ -82,7 +88,17 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    
+    <h1 id="rust-core-concepts-analysis-references-borrowing-and-internal-mutability">Rust core concepts analysis: references, borrowing and internal mutability</h1>
+<p>The Rust language provides strong guarantees for solving these problems at the compile stage through its ownership and borrowing checking system.</p>
+<blockquote>
+<p>This article focuses on a key part of this system: references. We will analyze in detail the differences between shared references (&amp;T) and mutable references (&amp;mut)</p>
+</blockquote>
+<h1 id="tham-chieu-references">Tham chiếu (References)</h1>
+<p>Rust cho phép bạn <strong>mượn giá trị mà không cần chuyển quyền sở hữu</strong>, thông qua <strong>tham chiếu (reference)</strong>.</p>
+<blockquote>
+<p>Một reference là một con trỏ (<code>pointer</code>) nhưng có kèm theo “hợp đồng” về quyền truy cập.</p>
+</blockquote>
+<h1 id="t-shared-reference-tham-chieu-chia-se">&amp;T – Shared Reference (tham chiếu chia sẻ)</h1>
 
   <br>
     
@@ -95,20 +111,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../Module%203/EVM%20and%20NON%20EVM/" class="btn btn-xs btn-default pull-right">
+      <a href="../data_types/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../Module%203/EVM%20and%20NON%20EVM/" class="btn btn-xs btn-link">
-        Ethereum Virtual Machine (EVM)
+      <a href="../data_types/" class="btn btn-xs btn-link">
+        Data Types in Rust
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../The_Anatomy_of_Web3/" class="btn btn-xs btn-default pull-left">
+      <a href="../../Blockchain_101_course%20/Module%203/EVM%20and%20NON%20EVM/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../The_Anatomy_of_Web3/" class="btn btn-xs btn-link">
-        A article on the anatomy of Web3
+        Previous</a><a href="../../Blockchain_101_course%20/Module%203/EVM%20and%20NON%20EVM/" class="btn btn-xs btn-link">
+        Ethereum Virtual Machine (EVM)
       </a>
     </div>
     

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Ethereum Virtual Machine (EVM) - Harry's Blog</title>
+    <link href="../../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Ethereum Virtual Machine (EVM)", url: "#_top", children: [
+          ]},
+          {title: "Bytecode l\u00e0 g\u00ec ?", url: "#bytecode-la-gi", children: [
+              {title: "EVM Assembly", url: "#evm-assembly" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../../js/base.js"></script>
+      <script src="../../../../search/main.js"></script> 
+
+
+  <link rel="stylesheet" href="../../../../css/extra.css">
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../../Rust%20learning%20/Rust%20Core%20Concept%20Analysis/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../../Rust%20learning%20/Rust%20Core%20Concept%20Analysis/" class="btn btn-xs btn-link">
+        Rust core concepts analysis: references, borrowing and internal mutability
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../blockchain_dilemma/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../blockchain_dilemma/" class="btn btn-xs btn-link">
+        Blockchain dilemma
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="ethereum-virtual-machine-evm">Ethereum Virtual Machine (EVM)</h1>
+<blockquote>
+<p>The EVM is the part of Ethereum that handles the deployment and execution of smart contracts. In reality, a simple value transfer transaction from one EOA to another does not require the EVM, but everything else will involve state updates computed by the EVM. From a higher level perspective, the EVM running on the Ethereum blockchain can be viewed as a global decentralized computer containing millions of executable objects, each with its own permanent data storage.</p>
+</blockquote>
+<p><em>—Andreas Antonopoulos</em><em> and Dr. Gavin Wood, Mastering Ethereum</em></p>
+<h1 id="bytecode-la-gi">Bytecode là gì ?</h1>
+<p>Bytecode basically là “machine code” được generate sau khi compile ngôn ngữ smart contract cấp cao như Solidity. Nó kiểu như vầy (số liệu dài quá nên mình bỏ bớt):</p>
+<p><img alt="" src="https://img.learnblockchain.cn/2020/07/08/15941927182518.jpg" /></p>
+<p>Tại vì nếu bạn không có source code và ABI (Application Binary Interface) của smart contract đó thì việc tương tác với nó trên blockchain sẽ rất risky và dễ sai.</p>
+<p>Đoạn bytecode mà mình show phía trên chính là deployment bytecode của contract HelloWorld.sol là contract mẫu mà tụi mình đã deploy ở ...</p>
+<p>Khác với <strong>runtime bytecode</strong>, deployment bytecode sẽ gồm thêm mấy code hỗ trợ (<strong>auxiliary code</strong>) để giúp quá trình deploy diễn ra thành công. Sau khi contract được deploy thành công, chỉ còn runtime bytecode ở lại nằm tại địa chỉ contract trên blockchain đây chính là phần sẽ được EVM dùng mỗi khi có người gọi hàm của contract đó.</p>
+<h2 id="evm-assembly">EVM Assembly</h2>
+<p>Solidity compiler có thể in ra phiên bản <code>human-readable</code> của EVM Assembly cho contract <code>HelloWorld.sol</code>. </p>
+<p>Khi bạn biên dịch contract, bạn không chỉ ra bytecode mà  còn có thể lấy cả assembly code, tức là ngôn ngữ gần sát máy nhất nhưng vẫn có thể đọc được phần nào nếu bạn đã quen với EVM.</p>
+<p>Ví dụ đoạn dưới là một phần của EVM assembly cho contract <code>HelloWorld</code>:</p>
+<pre><code class="language-rust">mstore(0x40, 0x80)
+callvalue
+dup1
+iszero
+jumpi(tag_1)
+...
+greeting = &quot;Hello, World.&quot;
+0x48656c6c6f2c20576f726c642e...
+</code></pre>
+<p><img alt="" src="https://img.learnblockchain.cn/2020/07/08/15941926928582.jpg" /></p>
+<p>Smart contracts có thể được compiled thành EVM bytecode. Hình dung cho dễ thif Solidity code ngôn ngữ  để viết smart contractgiống như C++ trong lập trình truyền thống. </p>
+<p>Còn <code>EVM bytecode</code> thì như machine code mà CPU hiểu được.</p>
+<p><code>EVM bytecode</code> là một chuỗi các opcode (operation code) và dữ liệu, được EVM xử lý để thực hiện state transition – tức là thay đổi trạng thái toàn cục của Ethereum sau mỗi giao dịch hoặc function call trong smart contract.</p>
+<blockquote>
+<p>Vậy rốt cuộc vai trò của EVM trong việc execute một transaction là gì?</p>
+</blockquote>
+<p>Đầu tiên, nó cho phép chuyển WEI (1 ETH = 10¹⁸ WEI) từ account này sang account khác.</p>
+<p>Và nếu account nhận được giao dịch đó có chứa bytecode liên quan tới EVM, thì EVM sẽ phải chạy cái đoạn <code>bytecode</code> đó  có thể kèm theo <code>transaction.data</code> làm input (input này là dữ liệu từ trường data của transaction).</p>
+<blockquote>
+<p>Vậy account nào cũng có bytecode hết à?”</p>
+</blockquote>
+<p>Câu trả lời là: không.</p>
+<p>Trong Ethereum, chỉ có 2 loại account:</p>
+<ul>
+<li>
+<p>EOA (Externally Owned Account): Là account do một người/ tổ chức kiểm soát thông qua private key. Kiểu như ví Metamask của bạn ấy.</p>
+</li>
+<li>
+<p>CA (Contract Account): Là account được tạo ra bằng cách deploy smart contract. Những account này không có private key, và được control bởi code, thông qua các call từ EOA (transaction).</p>
+</li>
+</ul>
+<p>Nói đơn giản, chỉ có <code>Contract Account</code> mới chứa <code>bytecode</code> để EVM thực thi. Let’s dive deeper… vào kiến trúc bên trong của EVM:</p>
+<p><img alt="image " src="https://img.learnblockchain.cn/attachments/2021/11/oeU12q7B619b5741a42fc.png" /></p>
+<p><em>Diagram from https://ethereum.org/en/developers/docs/evm/</em></p>
+<p>Mỗi EVM instance được khởi chạy là để thực thi một đoạn bytecode cụ thể (vì mục tiêu của transaction là một Contract Account). Do đó, đoạn bytecode này hoạt động như ROM, bộ nhớ chỉ đọc của <code>EVM instance</code>, và tất nhiên là không thể bị thay đổi sau khi đã deploy.</p>
+<p>Tưởng tượng giống như một <a href="https://en.wikipedia.org/wiki/Turing_machine">Turing Machine</a>, EVM cũng có các thành phần cơ bản gồm:</p>
+<ul>
+<li>
+<p>Program Counter (PC): Là một con trỏ chỉ tới opcode tiếp theo trong bytecode mà EVM cần thực thi. PC là số nguyên không âm trong khoảng <code>[0, số lượng byte của bytecode - 1].</code></p>
+</li>
+<li>
+<p>Memory: Là bộ nhớ tạm, có thể mở rộng vô hạn (miễn là bạn chịu trả thêm phí gas cho việc mở rộng). Mỗi slot trong memory là 1 byte (unsigned 8-bit integer).</p>
+</li>
+<li>
+<p>Stack: Stack trong EVM có thể chứa tối đa <code>1024 phần tử</code>, mỗi phần tử là một unsigned integer 256-bit (tức 32 byte). Đây là nơi các giá trị trung gian được xử lý liên tục như push, pop, add, sub, v.v.</p>
+</li>
+<li>
+<p>External Storage: vùng lưu trữ permanent của các account, nơi contract có thể lưu state. EVM bytecode có thể đọc/ghi vào storage của account hiện tại hoặc external account khác</p>
+</li>
+</ul>
+<p>Trong đó, <code>external storage</code> là nơi lưu trữ vĩnh viễn tất cả trạng thái và dữ liệu liên quan đến smart contract.</p>
+<p>Ngược lại, các thành phần còn lại như<code>PC, stack, và memory</code> đều là volatile – tức là chỉ tồn tại trong lúc EVM instance đang chạy và sẽ bị reset mỗi lần instance mới được tạo.</p>
+<hr />
+<p>Tương tự như CPU hiểu các lệnh trong Instruction Set, EVM cũng cần hiểu các <code>opcode</code> (mỗi opcode là 1 byte =&gt; tối đa 256 opcode). Mặc dù không liệt kê toàn bộ ở đây, nhưng ta có thể chia opcode thành các nhóm chính như sau:</p>
+<ul>
+<li>Control Opcodes: điều khiển PC, stack, memory, storage</li>
+<li>Arithmetic &amp; Bitwise: như ADD, MUL, AND, OR, XOR…</li>
+<li>Contextual Info: truy xuất thông tin block, transaction, msg.sender</li>
+<li>Log: tạo log record (LOG0, LOG1,…)</li>
+<li>System-level: tạo contract mới (CREATE), gọi contract khác (CALL, DELEGATECALL), xoá contract (SELFDESTRUCT)</li>
+</ul>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../../Rust%20learning%20/Rust%20Core%20Concept%20Analysis/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../../Rust%20learning%20/Rust%20Core%20Concept%20Analysis/" class="btn btn-xs btn-link">
+        Rust core concepts analysis: references, borrowing and internal mutability
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../blockchain_dilemma/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../blockchain_dilemma/" class="btn btn-xs btn-link">
+        Blockchain dilemma
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<div class="giscus-wrapper">
+  <div class="giscus"></div>
+  <script src="https://giscus.app/client.js"
+          data-repo="hien-p/hari-docs"
+          data-repo-id="R_kgDOPQrn9w"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOPQrn984CtVCd"
+          data-mapping="title"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="1"
+          data-input-position="top"
+          data-theme="light"
+          data-lang="en"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
+
+<!-- <footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer> -->
+
+</body>
+</html>

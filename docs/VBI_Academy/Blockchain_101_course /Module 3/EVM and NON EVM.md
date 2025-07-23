@@ -1,6 +1,54 @@
 # Ethereum Virtual Machine (EVM)
 
-Smart contracts có thể được compiled thành EVM bytecode. Hình dung cho dễ: Solidity code ngôn ngữ  để viết smart contractgiống như C++ trong lập trình truyền thống. 
+
+> The EVM is the part of Ethereum that handles the deployment and execution of smart contracts. In reality, a simple value transfer transaction from one EOA to another does not require the EVM, but everything else will involve state updates computed by the EVM. From a higher level perspective, the EVM running on the Ethereum blockchain can be viewed as a global decentralized computer containing millions of executable objects, each with its own permanent data storage.
+
+*—Andreas Antonopoulos** and Dr. Gavin Wood, Mastering Ethereum*
+
+
+# Bytecode là gì ? 
+
+Bytecode basically là “machine code” được generate sau khi compile ngôn ngữ smart contract cấp cao như Solidity. Nó kiểu như vầy (số liệu dài quá nên mình bỏ bớt):
+
+![](https://img.learnblockchain.cn/2020/07/08/15941927182518.jpg)
+
+
+Tại vì nếu bạn không có source code và ABI (Application Binary Interface) của smart contract đó thì việc tương tác với nó trên blockchain sẽ rất risky và dễ sai.
+
+Đoạn bytecode mà mình show phía trên chính là deployment bytecode của contract HelloWorld.sol là contract mẫu mà tụi mình đã deploy ở ...
+
+Khác với **runtime bytecode**, deployment bytecode sẽ gồm thêm mấy code hỗ trợ (**auxiliary code**) để giúp quá trình deploy diễn ra thành công. Sau khi contract được deploy thành công, chỉ còn runtime bytecode ở lại nằm tại địa chỉ contract trên blockchain đây chính là phần sẽ được EVM dùng mỗi khi có người gọi hàm của contract đó.
+
+
+## EVM Assembly
+
+Solidity compiler có thể in ra phiên bản `human-readable` của EVM Assembly cho contract `HelloWorld.sol`. 
+
+Khi bạn biên dịch contract, bạn không chỉ ra bytecode mà  còn có thể lấy cả assembly code, tức là ngôn ngữ gần sát máy nhất nhưng vẫn có thể đọc được phần nào nếu bạn đã quen với EVM.
+
+
+Ví dụ đoạn dưới là một phần của EVM assembly cho contract `HelloWorld`:
+
+```rust
+mstore(0x40, 0x80)
+callvalue
+dup1
+iszero
+jumpi(tag_1)
+...
+greeting = "Hello, World."
+0x48656c6c6f2c20576f726c642e...
+```
+
+
+![](https://img.learnblockchain.cn/2020/07/08/15941926928582.jpg)
+
+
+
+
+
+
+Smart contracts có thể được compiled thành EVM bytecode. Hình dung cho dễ thif Solidity code ngôn ngữ  để viết smart contractgiống như C++ trong lập trình truyền thống. 
 
 Còn `EVM bytecode` thì như machine code mà CPU hiểu được.
 

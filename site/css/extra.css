@@ -1,0 +1,15 @@
+.giscus-wrapper {
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
+  }
+  
+  .giscus {
+    width: 100%;
+    max-width: 800px;
+  }
+
+
+  body {
+    background-color: pink;
+  }
