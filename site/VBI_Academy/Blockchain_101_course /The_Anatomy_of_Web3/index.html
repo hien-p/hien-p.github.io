@@ -9,26 +9,26 @@
     
     
     
-    <link rel="shortcut icon" href="../img/favicon.ico">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <title>A article on the anatomy of Web3 - Weminal's Blog</title>
-    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
-    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
-    <link href="../css/base.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/highlight.css">
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 
-    <script src="../js/jquery-3.2.1.min.js"></script>
-    <script src="../js/bootstrap-3.3.7.min.js"></script>
-    <script src="../js/highlight.pack.js"></script>
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
     
     <base target="_top">
     <script>
-      var base_url = '..';
+      var base_url = '../../..';
       var is_top_frame = false;
         
         var pageToc = [
@@ -45,8 +45,8 @@
         ];
 
     </script>
-    <script src="../js/base.js"></script>
-      <script src="../search/main.js"></script> 
+    <script src="../../../js/base.js"></script>
+      <script src="../../../search/main.js"></script> 
 </head>
 
 <body>
@@ -78,10 +78,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     </div>
     
     <div class="wm-article-nav">
-      <a href=".." class="btn btn-xs btn-default pull-left">
+      <a href="../../../First%20Movers/Walrus%20dev/Deploy_walrus/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href=".." class="btn btn-xs btn-link">
-        Welcome to Weminal's Home
+        Previous</a><a href="../../../First%20Movers/Walrus%20dev/Deploy_walrus/" class="btn btn-xs btn-link">
+        How to deploy a walrus site?
       </a>
     </div>
     
@@ -129,8 +129,31 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>Mở rộng hơn là các giao thức giao tiếp giữa nhiều blockchain. Khá khó để thống kê ra số lượng bao nhiêu cross-chain được triển khai nhưng ta có những tên dẫn đầu cho phép chuyển tài sản giữa layer 2 và Ethereum một cách mược mà như <code>Polygon</code>, <code>Arbitrum</code> và <code>Optimism</code>.  Xếp sau là <code>Multichain</code> (trước đây là Anyswap) - tuy nhiên, trải qua khoảng thời gian khắc nghiệt của thị trường, cái tên Multichain đã dần phai mờ trong trí nhớ của nhiều người.</p>
 <p>Tạm thời, đó là bức tranh tổng quan về các “thành viên” đang tạo nên lớp mạng lưới của blockchain. Tất nhiên, danh sách này sẽ còn tiếp tục thay đổi sẽ có những cái tên mới gia nhập, và cũng sẽ có những hệ sinh thái từng rầm rộ rồi dần bị lãng quên ở một góc của lịch sử Web3.</p>
 <h1 id="2-middleware-layer">2. Middleware layer</h1>
-<p>Ngay phía trên lớp mạng blockchain, mình gọi đây là "middleware layer" chuyên cung cấp các dịch vụ và chức năng nền tảng cho các ứng dụng </p>
-<p>**security audits, oracles, index query services, API services, data analysis, data storage, basic financial services, digital identities, DAO governance **</p>
+<p>Ngay phía trên lớp mạng blockchain, mình gọi đây là "middleware layer" chuyên cung cấp các dịch vụ và chức năng nền tảng cho các ứng dụng <strong>Security audits, oracles, index query services, API services, data analysis, data storage, basic financial services, digital identities, DAO governance..</strong></p>
+<p>Các thành phần trong lớp middleware này có thể là:</p>
+<ul>
+<li>On-chain protocol (chạy trực tiếp trên blockchain),</li>
+<li>Off-chain platform (chạy ngoài blockchain),</li>
+<li>Hoặc các tổ chức  centralized enterprise.</li>
+</ul>
+<p>Trước tiên là về kiểm toán bảo mật (<code>Security Auditing</code>). Đây là một loại middleware cốt lõi. Vì phần lớn các blockchain và ứng dụng Web3 đều <code>mã nguồn mở</code> (open-source), và nhiều ứng dụng liên quan trực tiếp tới tài chính, nên vấn đề bảo mật trở thành ưu tiên hàng đầu, và kiểm toán bảo mật đương nhiên trở thành một nhu cầu bắt buộc. </p>
+<p>Các công ty nổi tiếng trong lĩnh vực này gồm: <code>CertiK</code>, <code>OpenZeppelin</code>, <code>ConsenSys</code>, <code>Hacken</code>, <code>Quantstamp</code>; ở Trung Quốc có <code>SlowMist</code>, <code>ChainSec</code>, và <code>Paidun</code>. Ngoài ra còn có nhiều công ty/team nhiều hơn thế nữa...</p>
+<p>Bên cạnh đó, không thể không kể tới các Bug Bounty platform như <code>Immunefi</code>, <code>Hacker proof</code>...</p>
+<p>Tiếp theo là <code>Oracle</code>, thành phần đóng vai trò rất quan trọng trong hệ sinh thái Web3. </p>
+<p>Oracle là cầu nối giữa hệ thống blockchain và nguồn dữ liệu bên ngoài, giúp thực hiện việc giao tiếp dữ liệu giữa smart contract và thế giới thực. Vì bản thân mạng lưới blockchain bị giới hạn bởi tính nhất quán trạng thái (<code>state consistency</code>), nên để đảm bảo rằng mỗi node đều cho ra cùng một kết quả khi nhận cùng một input, blockchain được thiết kế như một hệ thống đóng, chỉ có thể lấy dữ liệu nội bộ (on-chain), không thể chủ động lấy dữ liệu từ bên ngoài (off-chain). </p>
+<p>Tuy nhiên, trong nhiều tình huống ứng dụng, dữ liệu bên ngoài là bắt buộc và chúng được cung cấp thông qua <code>oracle</code>. Đây cũng là cách duy nhất để blockchain có thể tương tác với dữ liệu ngoài chuỗi.</p>
+<p>Các loại oracle hiện nay có thể chia thành: oracle cho DeFi, NFT, SocialFi, oracle cross-chain, oracle bảo mật riêng tư, oracle tín dụng, và mạng lưới oracle phi tập trung. Một số dự án oracle tiêu biểu gồm: CreDA, Privy, UMA, Banksea, DOS, NEST, Chainlink, v.v. Trong đó, Chainlink là dự án dẫn đầu mảng oracle, được định vị là một mạng lưới oracle phi tập trung, cung cấp nhiều sản phẩm như: Data Feeds, VRF, Keepers, Proof of Reserve, CCIP,…</p>
+<p>Tiếp theo là  truy vấn dữ liệu (<code>Index Query</code>), một middleware quan trọng giúp giải quyết bài toán truy vấn dữ liệu on-chain phức tạp. Ví dụ, nếu muốn truy vấn tổng khối lượng giao dịch trên Uniswap trong một ngày cụ thể, thì việc truy vấn trực tiếp từ blockchain là rất khó khăn. Do đó, cần có các dịch vụ truy vấn chỉ mục, với những đại diện chính là The Graph và Covalent. The Graph hoạt động bằng cách giám sát dữ liệu on-chain và chuyển hóa chúng thành dữ liệu tùy chỉnh để lưu trữ và truy vấn. Trong khi đó, Covalent đóng gói các dữ liệu phổ biến và thường dùng thành các API thống nhất để người dùng dễ truy vấn.</p>
+<p>Khi nói đến dịch vụ API, ngoài Covalent, còn có nhiều nhà cung cấp API phục vụ các mục đích khác nhau, ví dụ:
+* NFTScan: chuyên cung cấp dữ liệu API về NFT,
+* Infura và Alchemy: cung cấp dịch vụ node cho blockchain.</p>
+<p><em>Data analytics</em> cũng là một thành phần middleware liên quan tới dữ liệu. Bạn có thể từng nghe như <code>Dune Analytics</code>, <code>Flipside Crypto</code>, <code>DeBank</code>, <code>Chainalysis</code>. </p>
+<p>Tiếp theo là middleware cung cấp các dịch vụ tài chính cơ bản. Các giao thức tiêu biểu gồm: Uniswap, Curve, Compound, Aave, v.v.
+    •   Uniswap và Curve là các giao thức giao dịch (DEX),
+    •   Compound và Aave là các giao thức cho vay (lending).</p>
+<p>Về bản chất, đây là các giao thức ở lớp ứng dụng (application layer), nhưng vì ngày càng có nhiều ứng dụng khác dựa vào chúng như một thành phần cơ bản để xây dựng, nên chúng trở thành các giao thức dùng chung, tương tự như các khối Lego – từ đó đảm nhận vai trò của middleware.</p>
+<p>⸻</p>
+<p>Trên thực tế, bất kỳ thành phần có thể tái sử dụng (composable) nào – dù là giao thức on-chain, dịch vụ off-chain do thực thể tập trung cung cấp, hoặc tổ chức DAO – đều có thể được phân loại vào “lớp middleware”, miễn là dịch vụ mà nó cung cấp được đa số ứng dụng khác cần sử dụng.</p>
 
   <br>
     
@@ -153,10 +176,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     </div>
     
     <div class="wm-article-nav">
-      <a href=".." class="btn btn-xs btn-default pull-left">
+      <a href="../../../First%20Movers/Walrus%20dev/Deploy_walrus/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href=".." class="btn btn-xs btn-link">
-        Welcome to Weminal's Home
+        Previous</a><a href="../../../First%20Movers/Walrus%20dev/Deploy_walrus/" class="btn btn-xs btn-link">
+        How to deploy a walrus site?
       </a>
     </div>
     

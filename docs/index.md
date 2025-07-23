@@ -1,4 +1,4 @@
-# Welcome to Weminal's Home
+# Welcome to Harry's Home
 
 Honestly, it is always so hard for me to believe that my dream would come true someday. Challenges do bring growth, which I have experienced quite often recently. Thats the reason why I started this whole blogging thing, cause I want to share the lessons I learned from my journey with you. 
 
