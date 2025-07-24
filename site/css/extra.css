@@ -4,12 +4,11 @@
     padding-top: 2rem;
   }
   
-  .giscus {
-    width: 100%;
+  .giscus-wrapper iframe {
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
     max-width: 800px;
-  }
-
-
-  body {
-    background-color: pink;
+    box-sizing: border-box;
   }
