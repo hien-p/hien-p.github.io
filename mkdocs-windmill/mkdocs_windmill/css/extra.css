@@ -1,0 +1,14 @@
+.giscus-wrapper {
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
+  }
+  
+  .giscus-wrapper iframe {
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
+    max-width: 800px;
+    box-sizing: border-box;
+  }
