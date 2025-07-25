@@ -1,10 +1,14 @@
 site_name: Harry's Blog 
 site_url: https://hien-p.github.io/hari-docs/
+site_favicon: assets/cover.png 
+
 
 theme:  
   name: null
   custom_dir: mkdocs-windmill/mkdocs_windmill/
   #custom_dir: overrides
+
+
 
 
 
