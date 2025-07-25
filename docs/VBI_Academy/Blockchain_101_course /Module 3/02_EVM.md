@@ -15,7 +15,12 @@ Bytecode basically là “machine code” được generate sau khi compile ngô
 
 Tại vì nếu bạn không có source code và ABI (Application Binary Interface) của smart contract đó thì việc tương tác với nó trên blockchain sẽ rất risky và dễ sai.
 
-Đoạn bytecode mà mình show phía trên chính là deployment bytecode của contract HelloWorld.sol là contract mẫu mà tụi mình đã deploy ở ...
+Đoạn bytecode mà mình show phía trên chính là `deployment bytecode` của contract HelloWorld.sol là contract mẫu mà tụi mình đã deploy.
+
+
+
+
+# Deployment và runtime bytecode
 
 Khác với **runtime bytecode**, deployment bytecode sẽ gồm thêm mấy code hỗ trợ (**auxiliary code**) để giúp quá trình deploy diễn ra thành công. Sau khi contract được deploy thành công, chỉ còn runtime bytecode ở lại nằm tại địa chỉ contract trên blockchain đây chính là phần sẽ được EVM dùng mỗi khi có người gọi hàm của contract đó.
 
@@ -42,6 +47,10 @@ greeting = "Hello, World."
 
 
 ![](https://img.learnblockchain.cn/2020/07/08/15941926928582.jpg)
+
+
+
+
 
 
 
@@ -107,3 +116,9 @@ Tương tự như CPU hiểu các lệnh trong Instruction Set, EVM cũng cần 
 
 
 
+
+# Hiệu năng của EVM
+
+Khi chạy trên mainnet, `EVM (Ethereum Virtual Machine)` thường xử lý bytecode chậm hơn kha khá so với các loại máy ảo thông thường. Nhưng cái này không phải bug đâu mà là tính năng 😎. 
+
+Lý do chính là bởi mỗi phép toán (operation) phải được thực thi bởi tất cả các full node trong mạng để đảm bảo tính trustless – tức không cần tin tưởng ai mà vẫn hoạt động được.

@@ -13,5 +13,14 @@ Thank you a lot, and I wish yor with lots of growth and good challenges. We will
 
 > Deciding what to write next???
 
+"Let's stay Connected"
 
+To wrap things up, I truly believe that expanding network can open up amazing opportunities both personally and professionally. If you're interested in connecting, feel free to reach out and introduce yourself. I look forward to the possibility of building new connections and friends.
 
+* Twitter: https://x.com/harry_phan06
+* Email: phanhoangvinhhien@gmail.com
+* Telegram: @har20123
+
+**Last but not least, If you find my blog helpful you all can always support me by sponsoring me!** 
+
+My Sui address(🤣): 0x80d6241496f68b205dee09025b156ee6f6a944d88a5238cdf05d148a05bf399a
