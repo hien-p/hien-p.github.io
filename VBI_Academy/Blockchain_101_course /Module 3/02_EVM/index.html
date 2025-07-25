@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://hien-p.github.io/hari-docs/VBI_Academy/Blockchain_101_course%20/Module%203/02_EVM/">
+    <link rel="shortcut icon" href="../../../../assets/cover.png">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Ethereum Virtual Machine (EVM) - Harry's Blog</title>
+    <link href="../../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <!-- mkdocs_windmill/partials/scripts.html -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S5RMPC6VZL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S5RMPC6VZL');
+</script>
+    
+    <script src="../../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Ethereum Virtual Machine (EVM)", url: "#_top", children: [
+          ]},
+          {title: "N\u1ebfu b\u1ea1n qu\u00e1 l\u01b0\u1eddi \u0111\u1ecdc \ud83e\udd23 th\u00ec gi\u1ea3i th\u00edch ng\u1eafn g\u1ecdn l\u00e0", url: "#neu-ban-qua-luoi-oc-thi-giai-thich-ngan-gon-la", children: [
+          ]},
+          {title: "1. Deep dive more about EVM", url: "#1-deep-dive-more-about-evm", children: [
+              {title: "1.1 VM nh\u01b0 l\u00e0 m\u1ed9t Virtual Machine", url: "#11-vm-nhu-la-mot-virtual-machine" },
+          ]},
+          {title: "Bytecode l\u00e0 g\u00ec ?", url: "#bytecode-la-gi", children: [
+          ]},
+          {title: "Deployment v\u00e0 runtime bytecode", url: "#deployment-va-runtime-bytecode", children: [
+              {title: "EVM Assembly", url: "#evm-assembly" },
+          ]},
+          {title: "Hi\u1ec7u n\u0103ng c\u1ee7a EVM", url: "#hieu-nang-cua-evm", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../../js/base.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <meta property="og:title" content="Harry's Blog - Developer Documentation Technical Writer 🚀">
+    <meta property="og:description" content="Học Blockchain dễ hiểu, dành cho dev Web3">
+    <meta property="og:image" content="https://harriweb3.dev/assets/facebook_cover.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://harriweb3.dev/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Harry's Blog - Developer Documentation Technical Writer 🚀 ">
+    <meta name="twitter:description" content="Học Blockchain dễ hiểu, dành cho dev Web3 mới vào nghề!">
+    <meta name="twitter:image" content="https://harriweb3.dev/assets/facebook_cover.png">
+
+
+  <link rel="stylesheet" href="../../../../css/extra.css">
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../03_non_evm_protocols/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../03_non_evm_protocols/" class="btn btn-xs btn-link">
+        What is NON-EVM ?
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../01_01_blockchain_dilemma/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../01_01_blockchain_dilemma/" class="btn btn-xs btn-link">
+        The blockchain trilemma
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="ethereum-virtual-machine-evm">Ethereum Virtual Machine (EVM)</h1>
+<p><img alt="" src="https://ethereum.org/_next/image/?url=%2Fcontent%2Fdevelopers%2Fdocs%2Fevm%2Fevm.png&amp;w=1920&amp;q=75" /></p>
+<p>Diagram adapted from <a href="https://takenobu-hs.github.io/downloads/ethereum_evm_illustrated.pdf">Ethereum EVM illustrated</a></p>
+<blockquote>
+<p>The EVM is the part of Ethereum that handles the deployment and execution of smart contracts. In reality, a simple value transfer transaction from one EOA to another does not require the EVM, but everything else will involve state updates computed by the EVM. From a higher level perspective, the EVM running on the Ethereum blockchain can be viewed as a global decentralized computer containing millions of executable objects, each with its own permanent data storage.</p>
+</blockquote>
+<p><em>—Andreas Antonopoulos</em><em> and Dr. Gavin Wood, Mastering Ethereum</em></p>
+<hr />
+<p>Tạm dịch: </p>
+<blockquote>
+<p>EVM là phần trong Ethereum chịu trách nhiệm triển khai và thực thi các smart contract. Thực tế, nếu chỉ đơn giản chuyển giá trị (value transfer) từ một ví thông thường (EOA) sang ví khác thì không cần đến EVM. Nhưng bất kỳ hành động nào khác đều sẽ liên quan đến việc cập nhật trạng thái (state) do EVM tính toán.</p>
+<p>Nếu nhìn ở góc độ trừu tượng hơn, EVM chạy trên blockchain Ethereum có thể được xem như một chiếc máy tính phi tập trung toàn cầu, nơi chứa hàng triệu “đối tượng thực thi” (executable objects) mỗi đối tượng có không gian lưu trữ dữ liệu riêng và tồn tại vĩnh viễn.</p>
+</blockquote>
+<hr />
+<h1 id="neu-ban-qua-luoi-oc-thi-giai-thich-ngan-gon-la">Nếu bạn quá lười đọc 🤣 thì giải thích ngắn gọn là</h1>
+<p>Ethereum Virtual Machine (EVM) có thể được hiểu đơn giản là một môi trường độc lập, được thiết kế riêng để xử lý các giao dịch liên quan đến smart contract, và quan trọng hơn cả là <strong>xác định state tổng thể của blockchain Ethereum</strong> sau mỗi block mới được tạo ra.</p>
+<p>Bạn có thể tưởng tượng EVM như một chiếc máy tính chuyên xử lý các giao dịch smart contract, đồng thời định nghĩa các quy tắc thay đổi trạng thái của mạng Ethereum theo từng block.</p>
+<p>Tuy nhiên, khác với máy tính vật lý, EVM là một máy ảo nó không phụ thuộc vào hệ điều hành cụ thể hay vị trí địa lý nào cả. Chính vì vậy, bất kỳ ai ở bất kỳ đâu đều có thể truy cập và vận hành một node Ethereum để chạy EVM.</p>
+<h1 id="1-deep-dive-more-about-evm">1. Deep dive more about EVM</h1>
+<p>Có nhiều cách kháu nhau để mọi người mô tả về EVM. Như là </p>
+<ul>
+<li>EVM như là một Vitural Machine ( máy ảo)</li>
+<li>EVM là State machine </li>
+<li>Hay EVM là Quasi-Turing Complete Machine </li>
+</ul>
+<p>Một số thuật ngữ đây sẽ nghe có vẻ lạ nhưng thực ra mỗi định nghĩa trên đều theo từng góc nhìn khác nhau về EVM. Và tất cả đều đúng theo góc nhìn đó. </p>
+<h2 id="11-vm-nhu-la-mot-virtual-machine">1.1 VM như là một Virtual Machine</h2>
+<p>Để hiểu được phần <a href="https://en.wikipedia.org/wiki/Virtual_machine?ref=decipherclub.com">“Virtual Machine”</a> trong cái tên EVM (Ethereum Virtual Machine), tụi mình cần quay lại một chút vè <strong>physical machines</strong>.</p>
+<p>Đó là  x86, ARM, hay Apple M1 mà máy tính bạn đang chạy. Ở Layer thấp nhất, mấy  này chỉ hiểu được nhị phân tức là dãy số 0 và 1.  Mọi thao tác như cộng, trừ, lưu file, render ảnh… đều được điều khiển bởi chuỗi opcode là lệnh máy tính đọc được – toàn số 0 và 1.</p>
+<p>khái niệm Virtual Machine (VM) – máy ảo. VM về cơ bản cũng hoạt động y chang máy thật là có opcode, có các bước thực thi logic. Một số ví dụ quen thuộc là <strong>JVM (Java Virtual Machine)</strong> hay <strong>LLVM</strong> trong hệ sinh thái của nhiều ngôn ngữ như Rust, C, Swift…</p>
+<p>Nhưng điểm khác biệt quan trọng là: VM không bị gắn với phần cứng cụ thể nào. Bạn có thể chạy một virtual machine trên bất kỳ loại máy nào, hệ điều hành nào miễn là có phần mềm support nó. <strong>Tức là VM mang lại một môi trường thực thi độc lập với nền tảng</strong></p>
+<p>Quay lại với Ethereum thì <strong>EVM chính là virtual machine của riêng Ethereum</strong>. Điều đó có nghĩa là bạn có thể chạy EVM trên bất kỳ hệ điều hành nào (Windows, macOS, Linux…), trên bất kỳ phần cứng nào (PC, laptop, server, thậm chí Raspberry Pi), miễn là bạn cài một <strong>Ethereum node</strong>.</p>
+<p>Đây chính là điểm then chốt khiến Ethereum thực sự phi tập trung (decentralized)vì ai cũng có thể chạy EVM ở bất cứ đâu.</p>
+<hr />
+<blockquote>
+<p>In the pre-EVM era, this would have been a nightmare as a new blockchain with custom logic had to be created every time a new app with specific use case was to be built.</p>
+</blockquote>
+<p>Tạm dịch là: 
+Trước khi có EVM, nếu bạn muốn chạy một app có logic riêng trên blockchain, bạn phải tạo nguyên một blockchain mới từ thiết kế, consensus, state machine… cực kỳ tốn công.</p>
+<hr />
+<p>Nhưng giờ có thể viết bất kỳ ứng dụng nào bằng Solidity → biên dịch thành EVM bytecode → deploy lên Ethereum → chạy ngay trong EVM. Nói cách khác, EVM biến Ethereum thành một “máy tính global, có thể chạy bất kỳ đoạn arbitrary code nào.</p>
+<h1 id="bytecode-la-gi">Bytecode là gì ?</h1>
+<p>Bytecode basically là “machine code” được generate sau khi compile ngôn ngữ smart contract cấp cao như Solidity. Nó kiểu như vầy (số liệu dài quá nên mình bỏ bớt):</p>
+<p><img alt="" src="https://img.learnblockchain.cn/2020/07/08/15941927182518.jpg" /></p>
+<p>Tại vì nếu bạn không có source code và ABI (Application Binary Interface) của smart contract đó thì việc tương tác với nó trên blockchain sẽ rất risky và dễ sai.</p>
+<p>Đoạn bytecode mà mình show phía trên chính là <code>deployment bytecode</code> của contract HelloWorld.sol là contract mẫu mà tụi mình đã deploy.</p>
+<h1 id="deployment-va-runtime-bytecode">Deployment và runtime bytecode</h1>
+<p>Khác với <strong>runtime bytecode</strong>, deployment bytecode sẽ gồm thêm mấy code hỗ trợ (<strong>auxiliary code</strong>) để giúp quá trình deploy diễn ra thành công. Sau khi contract được deploy thành công, chỉ còn runtime bytecode ở lại nằm tại địa chỉ contract trên blockchain đây chính là phần sẽ được EVM dùng mỗi khi có người gọi hàm của contract đó.</p>
+<h2 id="evm-assembly">EVM Assembly</h2>
+<p>Solidity compiler có thể in ra phiên bản <code>human-readable</code> của EVM Assembly cho contract <code>HelloWorld.sol</code>. </p>
+<p>Khi bạn biên dịch contract, bạn không chỉ ra bytecode mà  còn có thể lấy cả assembly code, tức là ngôn ngữ gần sát máy nhất nhưng vẫn có thể đọc được phần nào nếu bạn đã quen với EVM.</p>
+<p>Ví dụ đoạn dưới là một phần của EVM assembly cho contract <code>HelloWorld</code>:</p>
+<pre><code class="language-rust">mstore(0x40, 0x80)
+callvalue
+dup1
+iszero
+jumpi(tag_1)
+...
+greeting = &quot;Hello, World.&quot;
+0x48656c6c6f2c20576f726c642e...
+</code></pre>
+<p><img alt="" src="https://img.learnblockchain.cn/2020/07/08/15941926928582.jpg" /></p>
+<p>Smart contracts có thể được compiled thành EVM bytecode. Hình dung cho dễ thif Solidity code ngôn ngữ  để viết smart contractgiống như C++ trong lập trình truyền thống. </p>
+<p>Còn <code>EVM bytecode</code> thì như machine code mà CPU hiểu được.</p>
+<p><code>EVM bytecode</code> là một chuỗi các opcode (operation code) và dữ liệu, được EVM xử lý để thực hiện state transition – tức là thay đổi trạng thái toàn cục của Ethereum sau mỗi giao dịch hoặc function call trong smart contract.</p>
+<blockquote>
+<p>Vậy rốt cuộc vai trò của EVM trong việc execute một transaction là gì?</p>
+</blockquote>
+<p>Đầu tiên, nó cho phép chuyển WEI (1 ETH = 10¹⁸ WEI) từ account này sang account khác.</p>
+<p>Và nếu account nhận được giao dịch đó có chứa bytecode liên quan tới EVM, thì EVM sẽ phải chạy cái đoạn <code>bytecode</code> đó  có thể kèm theo <code>transaction.data</code> làm input (input này là dữ liệu từ trường data của transaction).</p>
+<blockquote>
+<p>Vậy account nào cũng có bytecode hết à?”</p>
+</blockquote>
+<p>Câu trả lời là: không.</p>
+<p>Trong Ethereum, chỉ có 2 loại account:</p>
+<ul>
+<li>
+<p>EOA (Externally Owned Account): Là account do một người/ tổ chức kiểm soát thông qua private key. Kiểu như ví Metamask của bạn ấy.</p>
+</li>
+<li>
+<p>CA (Contract Account): Là account được tạo ra bằng cách deploy smart contract. Những account này không có private key, và được control bởi code, thông qua các call từ EOA (transaction).</p>
+</li>
+</ul>
+<p>Nói đơn giản, chỉ có <code>Contract Account</code> mới chứa <code>bytecode</code> để EVM thực thi. Let’s dive deeper… vào kiến trúc bên trong của EVM:</p>
+<p><img alt="image " src="https://img.learnblockchain.cn/attachments/2021/11/oeU12q7B619b5741a42fc.png" /></p>
+<p><em>Diagram from https://ethereum.org/en/developers/docs/evm/</em></p>
+<p>Mỗi EVM instance được khởi chạy là để thực thi một đoạn bytecode cụ thể (vì mục tiêu của transaction là một Contract Account). Do đó, đoạn bytecode này hoạt động như ROM, bộ nhớ chỉ đọc của <code>EVM instance</code>, và tất nhiên là không thể bị thay đổi sau khi đã deploy.</p>
+<p>Tưởng tượng giống như một <a href="https://en.wikipedia.org/wiki/Turing_machine">Turing Machine</a>, EVM cũng có các thành phần cơ bản gồm:</p>
+<ul>
+<li>
+<p>Program Counter (PC): Là một con trỏ chỉ tới opcode tiếp theo trong bytecode mà EVM cần thực thi. PC là số nguyên không âm trong khoảng <code>[0, số lượng byte của bytecode - 1].</code></p>
+</li>
+<li>
+<p>Memory: Là bộ nhớ tạm, có thể mở rộng vô hạn (miễn là bạn chịu trả thêm phí gas cho việc mở rộng). Mỗi slot trong memory là 1 byte (unsigned 8-bit integer).</p>
+</li>
+<li>
+<p>Stack: Stack trong EVM có thể chứa tối đa <code>1024 phần tử</code>, mỗi phần tử là một unsigned integer 256-bit (tức 32 byte). Đây là nơi các giá trị trung gian được xử lý liên tục như push, pop, add, sub, v.v.</p>
+</li>
+<li>
+<p>External Storage: vùng lưu trữ permanent của các account, nơi contract có thể lưu state. EVM bytecode có thể đọc/ghi vào storage của account hiện tại hoặc external account khác</p>
+</li>
+</ul>
+<p>Trong đó, <code>external storage</code> là nơi lưu trữ vĩnh viễn tất cả trạng thái và dữ liệu liên quan đến smart contract.</p>
+<p>Ngược lại, các thành phần còn lại như<code>PC, stack, và memory</code> đều là volatile – tức là chỉ tồn tại trong lúc EVM instance đang chạy và sẽ bị reset mỗi lần instance mới được tạo.</p>
+<hr />
+<p>Tương tự như CPU hiểu các lệnh trong Instruction Set, EVM cũng cần hiểu các <code>opcode</code> (mỗi opcode là 1 byte =&gt; tối đa 256 opcode). Mặc dù không liệt kê toàn bộ ở đây, nhưng ta có thể chia opcode thành các nhóm chính như sau:</p>
+<ul>
+<li>Control Opcodes: điều khiển PC, stack, memory, storage</li>
+<li>Arithmetic &amp; Bitwise: như ADD, MUL, AND, OR, XOR…</li>
+<li>Contextual Info: truy xuất thông tin block, transaction, msg.sender</li>
+<li>Log: tạo log record (LOG0, LOG1,…)</li>
+<li>System-level: tạo contract mới (CREATE), gọi contract khác (CALL, DELEGATECALL), xoá contract (SELFDESTRUCT)</li>
+</ul>
+<h1 id="hieu-nang-cua-evm">Hiệu năng của EVM</h1>
+<p>Khi chạy trên mainnet, <code>EVM (Ethereum Virtual Machine)</code> thường xử lý bytecode chậm hơn kha khá so với các loại máy ảo thông thường. Nhưng cái này không phải bug đâu mà là tính năng 😎. </p>
+<p>Lý do chính là bởi mỗi phép toán (operation) phải được thực thi bởi tất cả các full node trong mạng để đảm bảo tính trustless tức không cần tin tưởng ai mà vẫn hoạt động được.</p>
+<p>Chính vì ưu tiên cho tính <code>đồng thuận phân tán (decentralized consensus)</code> này mà EVM chấp nhận đánh đổi xử lý chậm hơn và chi phí tính toán (gas fee) cao hơn nhiều so với các hệ thống tập trung.</p>
+<p>Đổi lại thì tính bất biến gần như tuyệt đối, khả năng chống lỗi cao, và zero downtimekhông bị “nghỉ server” giữa chừng như web2. Chưa hết, EVM còn có cơ chế gas metering như đồng hồ đo gas vậy.</p>
+<p>Nó đảm bảo rằng miners (hoặc validators sau The Merge) sẽ được trả công xứng đáng khi thêm transaction của bạn vào block. Đồng thời, cơ chế này ngăn chặn đoạn code bị loop vô tận. Nếu một chương trình chạy mãi không dừng và vượt quá giới hạn gas đã set, EVM sẽ auto <em>“đập”</em> giao dịch đó, revert toàn bộ các thay đổi state tạm thời (sandboxed state)</p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../03_non_evm_protocols/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../03_non_evm_protocols/" class="btn btn-xs btn-link">
+        What is NON-EVM ?
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../01_01_blockchain_dilemma/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../01_01_blockchain_dilemma/" class="btn btn-xs btn-link">
+        The blockchain trilemma
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<div class="giscus-wrapper">
+  <div class="giscus"></div>
+  <script src="https://giscus.app/client.js"
+          data-repo="hien-p/hari-docs"
+          data-repo-id="R_kgDOPQrn9w"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOPQrn984CtVCd"
+          data-mapping="title"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="1"
+          data-input-position="top"
+          data-theme="light"
+          data-lang="en"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
+
+<!-- <footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer> -->
+
+</body>
+</html>
