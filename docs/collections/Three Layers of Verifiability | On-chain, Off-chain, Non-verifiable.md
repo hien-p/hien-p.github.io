@@ -107,6 +107,10 @@ Tùy loại logic, ta chia được 3 cấp độ verifiability:
 3. Logic lặp lại / routine tasks (build UI, render ảnh, kiểm tra syntax, v.v.): có thể không cần verify
 
 
+Có hàng tá bài phân tích kỹ thuật về cách EigenCloud vận hành, về mô hình trust, AVS, v.v. Nhưng ở đây, mình sẽ không lặp lại mớ kiến thức đó làm gì. Thay vào đó, mình sẽ đưa 3 ví dụ cho thấy tại sao việc xác minh logic phức tạp là siêu quan trọng và thậm chí cả những hệ thống không phải crypto cũng có thể hưởng lợi từ EigenCloud:
+
+
+
 
 
 

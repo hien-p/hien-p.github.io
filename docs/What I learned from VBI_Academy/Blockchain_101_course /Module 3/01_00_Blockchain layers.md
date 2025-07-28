@@ -96,6 +96,8 @@ Nếu không có các nhà phát triển xây dựng sản phẩm, sẽ không c
 
 
 
+
+
 # Layer 2: Scaling based on Layer1
 
 Một trong những vấn đề lớn của Ethereum là TPS (transaction per second) quá thấp, chỉ khoảng 15–45 giao dịch mỗi giây. Kết quả là Gas fee cao, trải nghiệm tệ và các Dự án khó scale để cả hệ sinh thái phát triển chậm.

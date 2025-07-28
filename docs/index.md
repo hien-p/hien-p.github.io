@@ -9,7 +9,7 @@ But there is something about reading that has always fascinated me. You can watc
 Thats why I chose this format. I want my readers to participate with me, to actively think while reading my stuffs. And I want to be surrounded by the type of people who enjoy that activity. So if you are reading this, you are exactly who I want to be here. 
 
 
-Thank you a lot, and I wish yor with lots of growth and good challenges. We will see each other soon in 2025 🙏💚
+Thank you a lot, and I wish yor with lots of growth and good challenges. We will see each other soon in 2025 💚
 
 > Deciding what to write next???
 

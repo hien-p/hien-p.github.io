@@ -106,10 +106,6 @@ Ngược lại, các nền tảng non-EVM như Solana hoặc các chain dùng Mo
 Solana sử dụng mô hình tính phí dựa trên đơn vị tính toán (compute units), với mức phí cố định cho mỗi đơn vị. [Cách tiếp cận này cho phép mạng lưới xử lý hàng nghìn giao dịch mỗi giây với chi phí cực kỳ thấp](https://www.cfbenchmarks.com/blog/solana-the-high-speed-low-cost-blockchain-rival-2).
 
 
-# Developer activity
-
-Một trong những điều kiện tiên quyết để một hệ sinh thái Layer1 được chấp nhận rộng rãi là sự hiện diện của một cộng đồng lập trình viên mạnh mẽ.
-Nếu không có các nhà phát triển xây dựng sản phẩm, sẽ không có gì để người dùng tương tác và sử dụng.
 
 
 
