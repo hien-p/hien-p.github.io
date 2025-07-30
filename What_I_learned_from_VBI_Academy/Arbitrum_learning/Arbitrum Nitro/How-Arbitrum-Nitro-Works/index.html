@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://hien-p.github.io/hari-docs/What_I_learned_from_VBI_Academy/Arbitrum_learning/Arbitrum%20Nitro/How-Arbitrum-Nitro-Works/">
+    <link rel="shortcut icon" href="../../../../assets/cover.png">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>How Arbitrum Nitro works ? - Harry's Blog</title>
+    <link href="../../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <!-- mkdocs_windmill/partials/scripts.html -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S5RMPC6VZL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S5RMPC6VZL');
+</script>
+    
+    <script src="../../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "How Arbitrum Nitro works ?", url: "#_top", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../../js/base.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <meta property="og:title" content="Harry's Blog - Developer Documentation Technical Writer 🚀">
+    <meta property="og:description" content="Học Blockchain dễ hiểu, dành cho dev Web3">
+    <meta property="og:image" content="https://harriweb3.dev/assets/facebook_cover.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://harriweb3.dev/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Harry's Blog - Developer Documentation Technical Writer 🚀 ">
+    <meta name="twitter:description" content="Học Blockchain dễ hiểu, dành cho dev Web3 mới vào nghề!">
+    <meta name="twitter:image" content="https://harriweb3.dev/assets/facebook_cover.png">
+
+
+  <link rel="stylesheet" href="../../../../css/extra.css">
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../Build%20with%20Stylus/resources/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../Build%20with%20Stylus/resources/" class="btn btn-xs btn-link">
+        RESOURCES TO GET YOU STARTED WITH ARBITRUM STYLUS
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Arbitrum_intro/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Arbitrum_intro/" class="btn btn-xs btn-link">
+        Arbitrum Nitro: A đọc là arbitrum, A cũng là tháng 8 (autumn) 🤣
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="how-arbitrum-nitro-works">How Arbitrum Nitro works ?</h1>
+<p>Arbitrum Nitro là phiên bản nâng cấp toàn diện của Arbitrum, được thiết kế lại để cải thiện hiệu suất, tính tương thích và trải nghiệm nhà phát triển. Không giống như kiến trúc <strong>AVM (Arbitrum Virtual Machine)</strong> tùy chỉnh trong phiên bản <strong>Arbitrum Classic</strong>, Nitro biên dịch toàn bộ hệ thống sang WebAssembly (WASM). </p>
+<p>Điều này cho phép thay thế ngôn ngữ và trình biên dịch đặc thù trước đây bằng các công cụ tiêu chuẩn phổ biến, giúp việc phát triển và bảo trì trở nên dễ dàng hơn.</p>
+<p>Để tăng hiệu quả giao tiếp cross-chain và giảm chi phí trên Layer 1, <a href="../../ArbOS/"><strong>Offchain Labs cũng đã viết lại nhiều thành phần của ArbOS bằng ngôn ngữ Go</strong></a>. Ngoài ra, họ còn giới thiệu một cơ chế batching và compression mới, được tối ưu hóa để đóng gói và nén dữ liệu gửi về Ethereum một cách hiệu quả hơn, từ đó giảm gas fee đáng kể.</p>
+<p>Theo tài liệu chính thức, lõi của Nitro và những cải tiến then chốt xoay quanh bốn khái niệm chính:</p>
+<ul>
+<li>
+<p><strong>Sequencing (Trình tự giao dịch)</strong>: Nitro áp dụng hai bước chính để xử lý giao dịch. Trước tiên, tất cả các giao dịch được sắp xếp thành một chuỗi có thứ tự duy nhất, và hệ thống cam kết với chuỗi đó. Sau đó, một hàm chuyển trạng thái xác định sẽ xử lý các giao dịch theo đúng thứ tự này, đảm bảo tính nhất quán và khả năng xác minh.</p>
+</li>
+<li>
+<p>Geth Integration (Tích hợp Geth): Nitro tích hợp trực tiếp lõi mã nguồn của go-Ethereum (Geth), giúp nó hỗ trợ đầy đủ các cấu trúc dữ liệu, định dạng và máy ảo của Ethereum. Việc sử dụng Geth như một thư viện nền tảng đảm bảo mức độ tương thích rất cao giữa Arbitrum và Ethereum</p>
+</li>
+<li>
+<p>Separate Proving from Execution (Tách biệt bằng chứng và thực thi): Một điểm đặc biệt trong Nitro là việc biên dịch mã nguồn thành hai phiên bản riêng biệt. Một bản native code được dùng cho quá trình chứng minh (proving). Một bản WASM được tối ưu hóa cho hiệu suất, dùng để thực thi trực tiếp trên các node Nitro.</p>
+</li>
+<li>
+<p>Optimistic Rollup: Nitro tiếp tục sử dụng giao thức Optimistic Rollup với các cơ chế chứng minh gian lận (fraud proofs) của Arbitrum. Các giao dịch được xử lý off-chain ở Layer 2 và sau đó được ghi nhận và bảo mật ở Layer 1 Ethereum, đảm bảo độ tin cậy cao mà không hy sinh hiệu suất.</p>
+</li>
+</ul>
+<p><img alt="" src="https://chainstack.com/wp-content/uploads/2022/11/04-sequencer-1024x497.png" /></p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../Build%20with%20Stylus/resources/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../Build%20with%20Stylus/resources/" class="btn btn-xs btn-link">
+        RESOURCES TO GET YOU STARTED WITH ARBITRUM STYLUS
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Arbitrum_intro/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Arbitrum_intro/" class="btn btn-xs btn-link">
+        Arbitrum Nitro: A đọc là arbitrum, A cũng là tháng 8 (autumn) 🤣
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<div class="giscus-wrapper">
+  <div class="giscus"></div>
+  <script src="https://giscus.app/client.js"
+          data-repo="hien-p/hari-docs"
+          data-repo-id="R_kgDOPQrn9w"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOPQrn984CtVCd"
+          data-mapping="title"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="1"
+          data-input-position="top"
+          data-theme="light"
+          data-lang="en"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
+
+<!-- <footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer> -->
+
+</body>
+</html>

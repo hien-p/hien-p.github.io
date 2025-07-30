@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://hien-p.github.io/hari-docs/What_I_learned_from_VBI_Academy/Blockchain_101_course/Module_3/03_non_evm_protocols/">
+    <link rel="shortcut icon" href="../../../../assets/cover.png">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>What is NON-EVM ? - Harry's Blog</title>
+    <link href="../../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <!-- mkdocs_windmill/partials/scripts.html -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S5RMPC6VZL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S5RMPC6VZL');
+</script>
+    
+    <script src="../../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "What is NON-EVM ?", url: "#_top", children: [
+          ]},
+          {title: "1. Gi\u1ea3i th\u00edch v\u1ec1 Non-EVM", url: "#1-giai-thich-ve-non-evm", children: [
+          ]},
+          {title: "2. L\u1ee3i th\u1ebf c\u1ee7a Non-EVM blockchain l\u00e0 g\u00ec?", url: "#2-loi-the-cua-non-evm-blockchain-la-gi", children: [
+              {title: "2.1 Gi\u1ea3m chi ph\u00ed giao d\u1ecbch (Gas Fee)", url: "#21-giam-chi-phi-giao-dich-gas-fee" },
+              {title: "2.2 C\u1ea3i thi\u1ec7n t\u1ed1c \u0111\u1ed9 x\u1eed l\u00fd giao d\u1ecbch", url: "#22-cai-thien-toc-o-xu-ly-giao-dich" },
+              {title: "2.3 Kh\u1ea3 n\u0103ng m\u1edf r\u1ed9ng", url: "#23-kha-nang-mo-rong" },
+          ]},
+          {title: "H\u1ea1n ch\u1ebf c\u1ee7a c\u00e1c n\u1ec1n t\u1ea3ng Non-EVM", url: "#han-che-cua-cac-nen-tang-non-evm", children: [
+          ]},
+          {title: "3. S\u1ef1 \u0111a d\u1ea1ng ng\u00f4n ng\u1eef l\u1eadp tr\u00ecnh", url: "#3-su-a-dang-ngon-ngu-lap-trinh", children: [
+              {title: "3.1 Rust in Blockchain Development", url: "#31-rust-in-blockchain-development" },
+              {title: "3.2 Go in Blockchain development", url: "#32-go-in-blockchain-development" },
+              {title: "3.3 Move - Ng\u00f4n ng\u1eef l\u1eadp tr\u00ecnh qu\u1ea3n l\u00fd resources", url: "#33-move-ngon-ngu-lap-trinh-quan-ly-resources" },
+          ]},
+          {title: "T\u00e1c \u0111\u1ed9ng vi\u1ec7c l\u1ef1a ch\u1ecdn ng\u00f4n ng\u1eef", url: "#tac-ong-viec-lua-chon-ngon-ngu", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../../js/base.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <meta property="og:title" content="Harry's Blog - Developer Documentation Technical Writer 🚀">
+    <meta property="og:description" content="Học Blockchain dễ hiểu, dành cho dev Web3">
+    <meta property="og:image" content="https://harriweb3.dev/assets/facebook_cover.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://harriweb3.dev/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Harry's Blog - Developer Documentation Technical Writer 🚀 ">
+    <meta name="twitter:description" content="Học Blockchain dễ hiểu, dành cho dev Web3 mới vào nghề!">
+    <meta name="twitter:image" content="https://harriweb3.dev/assets/facebook_cover.png">
+
+
+  <link rel="stylesheet" href="../../../../css/extra.css">
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../04_evm_vs_non_evm/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../04_evm_vs_non_evm/" class="btn btn-xs btn-link">
+        EVM vs Non-EVM - Chọn Nền Tảng Nào?
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../02_EVM/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../02_EVM/" class="btn btn-xs btn-link">
+        Ethereum Virtual Machine (EVM)
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="what-is-non-evm">What is NON-EVM ?</h1>
+<h1 id="1-giai-thich-ve-non-evm">1. Giải thích về Non-EVM</h1>
+<p><img alt="" src="../../img_course/overall_non_evm.png" /></p>
+<p>Non-EVM blockchains là các nền tảng phi tập trung được phát triển độc lập, không tuân theo các tiêu chuẩn kỹ thuật do Ethereum Virtual Machine (EVM) thiết lập. </p>
+<p>Các giao thức Non-EVM (tức là không dùng Ethereum Virtual Machine) có cách tiếp cận rất khác khi thực thi smart contract, với những kiến trúc và tính năng thay thế riêng biệt. Những khác biệt này chủ yếu nằm ở công nghệ nền tảng, ngôn ngữ lập trình, cơ chế đồng thuận, và  thiết kế. </p>
+<p>Một số ví dụ tiêu biểu:</p>
+<ul>
+<li>Solana: Sử dụng ngôn ngữ Rust nổi bật với tốc độ xử lý cao và thời gian block cực ngắn. Đây là một blockchai hướng tới hiệu năng tối đa thay vì khả năng tương tác giữa các chain.</li>
+<li>Polkadot: Dựa trên nền tảng WebAssembly (WASM) để triển khai smart contract, Polkadot được thiết kế với mục tiêu interoperability tức khả năng kết nối và tương tác giữa nhiều blockchain thông qua các parachain và relay chain.</li>
+<li>Cosmos: Chạy trên cơ chế đồng thuận Tendermint và framework Cosmos SDK, Cosmos tập trung vào khả năng xây dựng các blockchain độc lập nhưng vẫn có thể giao tiếp với nhau qua IBC (Inter-Blockchain Communication).</li>
+</ul>
+<h1 id="2-loi-the-cua-non-evm-blockchain-la-gi">2. Lợi thế của Non-EVM blockchain là gì?</h1>
+<h2 id="21-giam-chi-phi-giao-dich-gas-fee">2.1 Giảm chi phí giao dịch (Gas Fee)</h2>
+<p>Một trong những hạn chế lớn nhất của Ethereum là chi phí giao dịch cao, đặc biệt trong thời điểm mạng lưới bị tắc nghẽn. Điều này gây cản trở cho người dùng phổ thông cũng như các ứng dụng đòi hỏi số lượng lớn giao dịch với chi phí thấp.</p>
+<p>Ngược lại, các nền tảng non-EVM thường áp dụng những cơ chế đồng thuận khác và mô hình tính phí linh hoạt hơn. Nhờ vậy, có thể duy trì chi phí giao dịch ở mức thấp hơn, qua đó tăng khả năng tiếp cận cho người dùng và hỗ trợ các ứng dụng có nhu cầu xử lý giao dịch lớn.</p>
+<h2 id="22-cai-thien-toc-o-xu-ly-giao-dich">2.2 Cải thiện tốc độ xử lý giao dịch</h2>
+<p>Nhiều non-EVM blockchain được thiết kế để tối ưu hóa hiệu suất xử lý, thông qua việc sử dụng các máy ảo riêng biệt và thuật toán đồng thuận nhanh hơn.</p>
+<p>Điều này cho phép các nền tảng này đạt được thông lượng cao hơn và thời gian xác nhận nhanh hơn, mang lại trải nghiệm người dùng mượt mà hơn</p>
+<h2 id="23-kha-nang-mo-rong">2.3 Khả năng mở rộng</h2>
+<p>Nhiều nền tảng non-EVM được xây dựng với kiến trúc mô-đun, tích hợp sẵn các giải pháp mở rộng như sharding, consensus hiệu quả cao hoặc cơ chế lưu trữ dữ liệu tối ưu..</p>
+<h1 id="han-che-cua-cac-nen-tang-non-evm">Hạn chế của các nền tảng Non-EVM</h1>
+<p>Dù mang lại nhiều ưu điểm về hiệu năng và khả năng mở rộng, các blockchain không tương thích với EVM vẫn tồn tại một số hạn chế đáng lưu ý: </p>
+<ul>
+<li>
+<p>Do không tương thích với chuẩn EVM, các nền tảng này thường yêu cầu team dev  phải làm quen với một hệ sinh thái hoàn toàn mới từ công cụ phát triển, ngôn ngữ lập trình, đến cơ chế triển khai. Điều này làm tăngthời gian phát triển, đặc biệt với các đội ngũ vốn quen thuộc với EVM stack.</p>
+</li>
+<li>
+<p>Không chỉ đối với developer, cả người dùng cũng phải thích nghi với các ví, công cụ, và cách tương tác mới. Việc thiếu tiêu chuẩn chung dẫn đến đường cong học tập cao hơn, khiến non-EVM khó tiếp cận với cộng đồng Web3 phổ thông.</p>
+</li>
+<li>
+<p>Không chỉ đối với developer, cả người dùng cũng phải thích nghi với các ví, công cụ, và cách tương tác mới. Việc thiếu tiêu chuẩn chung dẫn đến đường cong học tập cao hơn, khiến non-EVM khó tiếp cận với cộng đồng Web3 phổ thông.</p>
+</li>
+<li>
+<p>Khó khăn ở phần migration, vì việc chuyển một ứng dụng từ EVM sang non-EVM thường đòi hỏi phải viết lại toàn bộ smart contract, thay đổi kiến trúc backend/frontend và tích hợp lại các công cụ mới từ đầu. Quá trình này không chỉ phức tạp mà còn tiềm ẩn nhiều rủi ro kỹ thuật.</p>
+</li>
+<li>
+<p>Hệ sinh thái còn phân mảnh do số lượng dự án, công cụ hỗ trợ và cộng đồng trên các non-EVM chain hiện vẫn còn hạn chế so với hệ sinh thái EVM</p>
+</li>
+</ul>
+<h1 id="3-su-a-dang-ngon-ngu-lap-trinh">3. Sự đa dạng ngôn ngữ lập trình</h1>
+<p>Việc các blockchain project sử dụng nhiều ngôn ngữ lập trình khác nhau như Rust, Move hay Go.. cho thấy sự đa dạng và không ngừng phát triển của công nghệ này. </p>
+<p>Mỗi ngôn ngữ đều có ưu điểm riêng, phù hợp với từng loại nhu cầu và tư duy thiết kế của dev cũng như dự án.</p>
+<h2 id="31-rust-in-blockchain-development">3.1 Rust in Blockchain Development</h2>
+<ul>
+<li>
+<p>Hiệu năng và an toàn bộ nhớ: Rust được đánh giá cao nhờ khả năng kiểm soát bộ nhớ nghiêm ngặt mà không cần garbage collector, giúp loại bỏ nhiều lớp lỗi nguy hiểm trong runtime một yếu tố cực kỳ quan trọng trong defi.</p>
+</li>
+<li>
+<p>Hỗ trợ concurrency vượt trội: Với cơ chế thread-safe mặc định, Rust rất phù hợp cho xử lý song song một yêu cầu thiết yếu trong mạng lưới blockchain có throughput cao.</p>
+</li>
+<li>
+<p>Ví dụ như <strong>Solana</strong> xây dựng toàn bộ hệ sinh thái với Rust làm ngôn ngữ chính, nhắm đến mục tiêu high-performance và low-latency. Thâm chí <strong>Parity Ethereum (client cũ của Ethereum)</strong> cũng được viết bằng Rust. Và <strong>Polkadot</strong>, một nền tảng multi-chain, sử dụng Substrateframework viết hoàn toàn bằng Rust.</p>
+</li>
+</ul>
+<h2 id="32-go-in-blockchain-development">3.2 Go in Blockchain development</h2>
+<ul>
+<li>
+<p>Go nổi bật nhờ cú pháp đơn giản, tốc độ compile nhanh và bộ thư viện chuẩn mạnh. Điều này giúp rút ngắn thời gian phát triển và triển khai ứng dụng blockchain.</p>
+</li>
+<li>
+<p>Cơ chế concurrency nhẹ giúp Go đặc biệt phù hợp để xây dựng mạng lưới node lớn, giao tiếp thường xuyên và yêu cầu ổn định cao.</p>
+</li>
+<li>
+<p>Các dự án sử dụng Go như <strong>Geth</strong>, <strong>Hyperledger Fabric</strong> và cả <strong>Cosmos SDK</strong> </p>
+</li>
+</ul>
+<h2 id="33-move-ngon-ngu-lap-trinh-quan-ly-resources">3.3 Move - Ngôn ngữ lập trình quản lý resources</h2>
+<ul>
+<li>
+<p>Tính mô-đun, định hướng tài sản (resource-oriented): Move được thiết kế đặc biệt cho blockchain, với cơ chế quản lý tài sản dưới dạng resource – đảm bảo tài sản không bị sao chép hoặc mất mát ngoài ý muốn. Điều này tạo lớp bảo mật mặc định mà hầu hết các ngôn ngữ khác phải xử lý thủ công.</p>
+</li>
+<li>
+<p>Được tối ưu cho on-chain logic: Move có khả năng express logic phức tạp một cách an toàn, đặc biệt là các primitive như capability, permission, hoặc rules.</p>
+</li>
+<li>
+<p>Hệ sinh thái sử dụng Move: như Sui, Aptos hay Movement. Do Move vẫn còn mới, công cụ và cộng đồng vẫn đang phát triển. Tuy nhiên, các hệ sinh thái như Sui đã cung cấp các toolchain mạnh</p>
+</li>
+</ul>
+<p>Bên cạnh đó còn nhiều ngôn ngữ khác...</p>
+<h1 id="tac-ong-viec-lua-chon-ngon-ngu">Tác động việc lựa chọn ngôn ngữ</h1>
+<p>Việc lựa chọn ngôn ngữ sẽ quyết định mức độ dễ tiếp cận của một blockchain đối với dev mới. Go thu hút đông đảo developer Web2, Rust và Move thì thu hút những dev chuyên sâu, tập trung vào hiệu suất và an toàn.</p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../04_evm_vs_non_evm/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../04_evm_vs_non_evm/" class="btn btn-xs btn-link">
+        EVM vs Non-EVM - Chọn Nền Tảng Nào?
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../02_EVM/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../02_EVM/" class="btn btn-xs btn-link">
+        Ethereum Virtual Machine (EVM)
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<div class="giscus-wrapper">
+  <div class="giscus"></div>
+  <script src="https://giscus.app/client.js"
+          data-repo="hien-p/hari-docs"
+          data-repo-id="R_kgDOPQrn9w"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOPQrn984CtVCd"
+          data-mapping="title"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="1"
+          data-input-position="top"
+          data-theme="light"
+          data-lang="en"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
+
+<!-- <footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer> -->
+
+</body>
+</html>

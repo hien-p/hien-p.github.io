@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://hien-p.github.io/hari-docs/What_I_learned_from_VBI_Academy/Arbitrum_learning/00_Recap%20my%20first%20time%20share%20about%20Stylus/">
+    <link rel="shortcut icon" href="../../../assets/cover.png">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>00 Recap my first time share about Stylus - Harry's Blog</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <!-- mkdocs_windmill/partials/scripts.html -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S5RMPC6VZL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S5RMPC6VZL');
+</script>
+    
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Motivation for Arbitrum Stylus", url: "#_top", children: [
+          ]},
+          {title: "L\u00e0m sao \u0111\u1ec3 \"Smart Contract Execution\" c\u00f3 th\u1ec3 hi\u1ec7u qu\u1ea3 h\u01a1n ?", url: "#lam-sao-e-smart-contract-execution-co-the-hieu-qua-hon", children: [
+          ]},
+          {title: "Stylus: C\u1ea7u n\u1ed1i gi\u1eefa WASM v\u00e0 EVM", url: "#stylus-cau-noi-giua-wasm-va-evm", children: [
+          ]},
+          {title: "T\u00ednh nh\u1ea5t qu\u00e1n trong EVM+ Engine c\u1ee7a Stylus", url: "#tinh-nhat-quan-trong-evm-engine-cua-stylus", children: [
+          ]},
+          {title: "Stylus save ph\u1ea7n cost nh\u01b0 th\u1ebf n\u00e0o ?", url: "#stylus-save-phan-cost-nhu-the-nao", children: [
+          ]},
+          {title: "Github assignments", url: "#github-assignments", children: [
+          ]},
+          {title: "Reference:", url: "#reference", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../search/main.js"></script>
+    <meta property="og:title" content="Harry's Blog - Developer Documentation Technical Writer 🚀">
+    <meta property="og:description" content="Học Blockchain dễ hiểu, dành cho dev Web3">
+    <meta property="og:image" content="https://harriweb3.dev/assets/facebook_cover.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://harriweb3.dev/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Harry's Blog - Developer Documentation Technical Writer 🚀 ">
+    <meta name="twitter:description" content="Học Blockchain dễ hiểu, dành cho dev Web3 mới vào nghề!">
+    <meta name="twitter:image" content="https://harriweb3.dev/assets/facebook_cover.png">
+
+
+  <link rel="stylesheet" href="../../../css/extra.css">
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../ArbOS/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../ArbOS/" class="btn btn-xs btn-link">
+        ArbOS là gì?
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../../Everything%20that%20Sui%20devs%20have%20to%20know/Walrus%20dev/Walrus%20in%20a%20nutshell/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../../Everything%20that%20Sui%20devs%20have%20to%20know/Walrus%20dev/Walrus%20in%20a%20nutshell/" class="btn btn-xs btn-link">
+        Walrus in a nutshell
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <p><img alt="" src="../img_events/minievent_meetup.png" /></p>
+<p>Trong quá trình phát triển ứng dụng blockchain, đặc biệt là trên Ethereum, nhiều dev đã phải đối mặt với những challenges không nhỏ từ từ việc đọc và phân tích bytecode trên <strong>Etherscan</strong> cho đến việc  tránh các lỗ hổng tiềm ẩn trong code Solidity.</p>
+<p>Trong khi đa số lập trình viên quen thuộc với các ngôn ngữ như Rust, C++ hoặc Python.. thì việc bắt đầu tiếp cận Solidity và môi trường EVM đòi hỏi một quá trình học tập và làm quen không hề dễ dàng.</p>
+<h1 id="motivation-for-arbitrum-stylus">Motivation for Arbitrum Stylus</h1>
+<p>Arbitrum Stylus được sinh ra để giải quyết hai vấn đề: </p>
+<ul>
+<li>Blockchain khó tiếp cận với dev truyền thống </li>
+<li>Smart contract thì execute chậm.</li>
+</ul>
+<p><img alt="" src="../img_events/crypto_developer_data.png" /></p>
+<p>Theo báo cáo Developer Report của <strong>Electric Capital</strong>, hiện tại chỉ có khoảng 24,000 dev hoạt động hàng tháng trong mảng blockchain tính từ thời điểm mình viết bài này.</p>
+<p>Nghe thì có vẻ ổn, nhưng nếu so với hàng triệu (thậm chí chục triệu) dev đang dùng các ngôn ngữ như Rust hay C++ ngoài kia thì… vẫn còn cách biệt quá lớn. Khi Web3 càng mở rộng, nhu cầu onboard hàng triệu dev mới vào web3 developer đang trở thành bài toán cho Devrel như tụi mình 🥲. </p>
+<p>Và cách hiệu quả nhất để kéo dev truyền thống vào blockchain chính là cho họ dùng lại những ngôn ngữ họ đã quen thuộc như Rust hoặc C++. Nhiều hệ sinh thái non-EVM như Solana, Cosmos đã đi theo hướng này, với Rust gần như trở thành "tiêu chuẩn" để viết smart contract.</p>
+<p>Còn bên EVM, trước giờ vẫn phải xài Solidity. Nhưng giờ thì khác rồi, vì <strong>Arbitrum Stylus</strong> cho phép dev viết smart contract bằng Rust hoặc C++ và deploy thẳng lên chain <strong>EVM-compatible</strong> như thường. Một step cho phép để xóa bỏ rào cản ngôn ngữ và mở cửa cho dev web2.</p>
+<h1 id="lam-sao-e-smart-contract-execution-co-the-hieu-qua-hon">Làm sao để "Smart Contract Execution" có thể hiệu quả hơn ?</h1>
+<p>Khi các ứng dụng phi tập trung (dApps) bắt đầu scale, nhu cầu xử lý on-chain cũng tăng theo đặc biệt là trên <strong>Ethereum</strong>. Nhưng cũng chính nhờ áp lực này mà nhiều làn sóng sáng tạo để scale blockchain đã nổ ra và <strong>Arbitrum</strong> là một trong những cái tên nổi bật  với loạt solutions như <a href="https://arbitrum.io/rollup"><strong>Arbitrum One (Layer2 chain)</strong></a>  và công nghệ <a href="https://docs.arbitrum.io/how-arbitrum-works/a-gentle-introduction"><strong>Arbitrum Nitro</strong></a>.</p>
+<p>Nếu như các giải pháp trước chủ yếu tối ưu theo kiểu <strong>gộp nhiều transaction lại</strong> (inter-transactional optimization), thì Stylus sẽ tối ưu từng <strong>transaction được xử lý từ bên trong</strong> (intra-transactional).</p>
+<p>Cụ thể hơn, Stylus cho phép <strong>smart contract chạy bằng WebAssembly (WASM)</strong>. Với kết quả này thì Contract Stylus sẽ có thể chạy nhanh hơn nhiều lần, giúp <strong>giảm gas</strong> và khả năng sử dụng memory </p>
+<h1 id="stylus-cau-noi-giua-wasm-va-evm">Stylus: Cầu nối giữa WASM và EVM</h1>
+<p>Để hiểu vì sao Stylus một phần của hệ sinh thái Arbitrum lại hiệu quả và dễ mở rộng (composable) hơn so với các engine EVM truyền thống, ta cần bắt đầu từ nền tảng công nghệ mà Stylus sử dụng: <strong>WebAssembly (WASM)</strong>.</p>
+<p><strong>WebAssembly</strong>, hay WASM, là một dạng ngôn ngữ dạng assembly – tức là ngôn ngữ ở mức thấp, gần với máy, dạng mã nhị phân (binary) có thể được thực thi trực tiếp bởi trình duyệt hoặc máy ảo. </p>
+<p>Khác với các ngôn ngữ cấp cao như <strong>Rust, C++, hay Go</strong> vốn hướng đến con người đọc hiểu, những ngôn ngữ này cần phải <strong>biên dịch (compile)</strong> xuống WASM trước khi có thể được thực thi.</p>
+<p>Chính vì tính chất <strong>portable (di động), modular (mô-đun hóa) và hiệu suất cao</strong>, WASM ngày càng được sử dụng rộng rãi ngoài môi trường web, bao gồm cả trong blockchain và các VM (Virtual Machines) hiện đại.</p>
+<p>Với nâng cấp <strong>Arbitrum Nitro</strong> (Đọc thêm ở <a href="Arbitrum_intro.md">Arbitrum_intro.md</a>), mọi tranh chấp (dispute) trong hệ thống đều được xử lý bằng cách thực thi lại chương trình thông qua <strong>WASM-based fraud proofs</strong>. </p>
+<p><img alt="" src="https://substackcdn.com/image/fetch/$s_!vMrM!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8b3a1af4-9287-450f-bd8e-3bf8ab99a5ba_1600x900.png" /></p>
+<p>Điều này có nghĩa là bất kỳ đoạn mã nào được biên dịch xuống WASM đều có thể được xử lý trong hệ thống bằng cách chứng minh gian lận (fraud proof) một cách xác minh được on-chain.</p>
+<p>Dựa trên nền tảng đó, <strong>Arbitrum Stylus</strong> được xây dựng nhằm mở rộng khả năng thực thi contract bằng cách tích hợp một <strong>WASM execution engine</strong> vào hệ thống hiện có. </p>
+<p>Engine này được triển khai trên nền tảng <a href="https://wasmer.io/">Wasmer</a>, một trong những trình thực thi WASM hiệu suất cao hàng đầu hiện nay. So với máy ảo Ethereum (EVM) sử dụng Geth, Wasmer có khả năng thực thi nhanh hơn đáng kể.</p>
+<p>Với việc kết hợp cả engine thực thi (Wasmer) và engine xác minh (fraud prover từ Nitro), Stylus cho phép các smart contract:
+* Được viết bằng ngôn ngữ phổ thông như Rust hoặc C++ 
+* Được compiple sang WASM 
+* và được thực thi trong môi trường trustless. </p>
+<p>Thay vì giới hạn trong phạm vi Solidity và EVM bytecode, anh em dev có thể tận dụng các ngôn ngữ truyền thống vđể triển khai các ứng dụng Web3 hiệu suất cao trên Arbitrum.</p>
+<h1 id="tinh-nhat-quan-trong-evm-engine-cua-stylus">Tính nhất quán trong <code>EVM+ Engine</code> của Stylus</h1>
+<blockquote>
+<p>Đọc đến đây, bạn có thể thắc mắc là làm sao nó quản lý được hai máy ảo khác nhau? Stylus làm sao biết contract nào chạy bằng EVM? Contract nào chạy bằng WASM? Và làm sao để hai bên tương tác không bị lệch trạng thái?</p>
+</blockquote>
+<p>Từ hình minh hoạ trên, thì mọi người có thể hiểu Stylus được thiết kế với hai môi trường thực thi song song:</p>
+<ul>
+<li>
+<p><strong>EVM Engine</strong>, sử dụng Geth để chạy các contract viết bằng Solidity (hoặc các ngôn ngữ compile sang EVM bytecode).</p>
+</li>
+<li>
+<p><strong>WASM Engine</strong>: sử dụng Wasmer để chạy các contract viết bằng Rust hoặc các ngôn ngữ WASM-compatible.</p>
+</li>
+</ul>
+<p>Để cả hai engine này hoạt động đồng thời mà không gây xung đột, hệ thống cần đảm bảo tính nhất quán (coherence) trong cách truy cập và cập nhật trạng thái on-chain.</p>
+<p>Khi  viết smart contract bằng Solidity, nó sẽ được compile ra <strong>EVM bytecode</strong> như bình thường. Khi dùng Rust hoặc ngôn ngữ WASM-compatible, contract của bạn sẽ được compile ra <strong>WASM bytecode</strong>, nhưng có gắn thêm một phần gọi là “header” ở đầu nghĩa là giống như nhãn để Stylus biết “contract này là WASM”.</p>
+<p>Thiết kế này giúp Stylus <strong>tự động điều hướng chính xác</strong> giữa hai môi trường thực thi mà không cần dev phải can thiệp thủ công. Không chỉ vậy, nó còn mở ra khả năng <strong>interop (tương tác)</strong> cao:</p>
+<ul>
+<li>Contract viết bằng WASM có thể gọi contract Solidity.</li>
+<li>Contract Solidity cũng có thể gọi ngược lại contract WASM.</li>
+</ul>
+<p>Đây là điểm khác biệt lớn giữa Stylus và các chain WASM khác. Stylus không chỉ thêm một engine mới, mà còn đảm bảo sự <strong>hợp nhất liền mạch với hệ EVM hiện có</strong>, giúp giữ nguyên <strong>khả năng tương thích ngược (backward compatibility)</strong> và giúp các contract WASM tận dụng được <strong>thanh khoản của hệ sinh thái EVM (DeFi, NFT, token…)</strong>.</p>
+<p>Có thể hình dung blockchain như một “world state machine” nơi mọi giao dịch, gọi contract đều làm thay đổi trạng thái global. Trên Ethereum và Arbitrum, trạng thái này được lưu dưới dạng<strong> Trie structure</strong> là một dạng cây dữ liệu dùng để lưu trữ, truy xuất dữ liệu hiệu quả và dễ xác minh.</p>
+<p>Trong Stylus, cả EVM engine và WASM engine đều dùng chung Trie này để đọc và ghi dữ liệu. Điều này có nghĩa bất kể khi gọi contract Solidity hay Rust, kết quả cuối cùng đều cập nhật vào cùng một trạng thái blockchain.</p>
+<h1 id="stylus-save-phan-cost-nhu-the-nao">Stylus save phần cost như thế nào ?</h1>
+<p>Mình biết là <code>Stylus</code> có hai engine chạy song song là EVM và WASM. Giờ ta sẽ đi sâu vào lý do <strong>tại sao WASM lại tiết kiệm gas đến vậy</strong>.</p>
+<p>Để hiểu rõ điều này, hãy tưởng tượng mình cần thực hiện phép tính đơn giản: 2 + 3.</p>
+<p>Nếu dùng EVM, chuỗi thao tác để hoàn thành phép cộng này không chỉ là cộng hai số mà phải trả gas cho rất nhiều bước hệ thống như <strong>truy xuất bảng nhớ, pop số ra khỏi stack, xử lý phép cộng, rồi push kết quả trở lại stack</strong>.</p>
+<p>Tức là dù bạn chỉ cần cộng hai con số, bạn vẫn phải trả gas cho cả đống bước phụ tốn kém, mà chỉ có đúng một bước thực sự làm công việc cộng.</p>
+<p>Ngược lại, nếu bạn thực hiện cùng phép tính đó bằng WASM trong Stylus, nó chỉ cần một lệnh máy duy nhất – gọi thẳng tới lệnh ADD của CPU như x86 hay ARM. Không cần stack, không cần xử lý phụ. </p>
+<p><img alt="" src="https://substackcdn.com/image/fetch/$s_!RiBb!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc9e149bb-8ff9-421f-92f7-04146b469890_1050x574.png" /></p>
+<p>Kết quả là thao tác cộng này rẻ hơn gấp 150 lần so với chạy bằng EVM. Và vì WASM quá rẻ, Stylus còn tạo ra một đơn vị đo <strong>gas</strong> riêng gọi là <strong>ink</strong>, nơi 1 ink chỉ bằng <strong>1 phần 10.000 gas</strong>, để đo những phép tính siêu nhỏ một cách chính xác hơn. Bạn thậm chí có thể cấu hình đơn vị này nếu bạn đang chạy một chain riêng.</p>
+<p>Tuy nhiên, để khởi chạy môi trường WASM của Stylus, bạn cần trả một chi phí cố định ban đầu là <strong>114 triệu gas</strong>. </p>
+<p>Ngoài ra, mỗi lần gọi contract Stylus cũng tốn thêm từ 128 đến 2048 gas. </p>
+<p>Nên nếu bạn chỉ muốn dùng Stylus để cộng 2 số, thì không đáng. Nhưng nếu  đang xây những ứng dụng cần <strong>xử lý nhiều dữ liệu, dùng nhiều RAM, hay tính toán phức tạp như AI hoặc crypto-heavy apps</strong>, thì Stylus là giải pháp tốt.</p>
+<p>Ví dụ, việc cấp phát 3.8MB bộ nhớ trong EVM sẽ tốn tới 32 triệu gas, nhưng trong Stylus chỉ tốn khoảng 64 nghìn gas <strong>tức là tiết kiệm gấp 500 lần</strong>. Điều này có nghĩa là những ứng dụng memory-heavy mà EVM trước giờ không thể xử lý được thì với Stylus, không những xử lý được mà còn cực kỳ rẻ.</p>
+<h1 id="github-assignments">Github assignments</h1>
+<p>I have prepared the basic challenges for builders participating in the Arbitrum workshop: <a href="https://github.com/vbi-academy/stylus-workshop-basic">https://github.com/vbi-academy/stylus-workshop-basic</a></p>
+<h1 id="reference">Reference:</h1>
+<ul>
+<li>[1]: <a href="https://docs.arbitrum.io/stylus/stylus-gentle-introduction">A gentle introduction: Stylus</a></li>
+<li>[2]: <a href="https://medium.com/@eiki1212/ethereum-state-trie-architecture-explained-a30237009d4e">ETH State Trie Explained</a></li>
+<li>[3] <a href="https://docs.arbitrum.io/stylus/concepts/gas-metering">gas metering</a> </li>
+</ul>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../ArbOS/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../ArbOS/" class="btn btn-xs btn-link">
+        ArbOS là gì?
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../../Everything%20that%20Sui%20devs%20have%20to%20know/Walrus%20dev/Walrus%20in%20a%20nutshell/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../../Everything%20that%20Sui%20devs%20have%20to%20know/Walrus%20dev/Walrus%20in%20a%20nutshell/" class="btn btn-xs btn-link">
+        Walrus in a nutshell
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<div class="giscus-wrapper">
+  <div class="giscus"></div>
+  <script src="https://giscus.app/client.js"
+          data-repo="hien-p/hari-docs"
+          data-repo-id="R_kgDOPQrn9w"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOPQrn984CtVCd"
+          data-mapping="title"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="1"
+          data-input-position="top"
+          data-theme="light"
+          data-lang="en"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
+
+<!-- <footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer> -->
+
+</body>
+</html>

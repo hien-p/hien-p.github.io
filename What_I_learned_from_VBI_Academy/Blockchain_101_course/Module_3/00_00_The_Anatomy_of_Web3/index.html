@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://hien-p.github.io/hari-docs/What_I_learned_from_VBI_Academy/Blockchain_101_course/Module_3/00_00_The_Anatomy_of_Web3/">
+    <link rel="shortcut icon" href="../../../../assets/cover.png">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>A article on the anatomy of Web3 - Harry's Blog</title>
+    <link href="../../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <!-- mkdocs_windmill/partials/scripts.html -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S5RMPC6VZL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S5RMPC6VZL');
+</script>
+    
+    <script src="../../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "A article on the anatomy of Web3", url: "#_top", children: [
+          ]},
+          {title: "1. Blockchain network layer", url: "#1-blockchain-network-layer", children: [
+              {title: "1.1 Ph\u00e2n t\u1ea7ng ki\u1ebfn tr\u00fac: Layer 0 / Layer 1 / Layer 2", url: "#11-phan-tang-kien-truc-layer-0-layer-1-layer-2" },
+              {title: "1.2 M\u00f4i tr\u01b0\u1eddng ch\u1ea1y smart contract", url: "#12-moi-truong-chay-smart-contract" },
+              {title: "1.3 C\u00e1c vai tr\u00f2 trong to\u00e0n h\u1ec7 sinh th\u00e1i nh\u01b0 T\u00ednh to\u00e1n hay L\u01b0u tr\u1eef", url: "#13-cac-vai-tro-trong-toan-he-sinh-thai-nhu-tinh-toan-hay-luu-tru" },
+              {title: "1.4 Cross-chain bridges", url: "#14-cross-chain-bridges" },
+          ]},
+          {title: "2. Middleware layer", url: "#2-middleware-layer", children: [
+          ]},
+          {title: "3. Application Layer", url: "#3-application-layer", children: [
+              {title: "3.1 NFT (Non-Fungible Token)", url: "#31-nft-non-fungible-token" },
+              {title: "3.2 DeFi", url: "#32-defi" },
+              {title: "3.3 GameFi", url: "#33-gamefi" },
+              {title: "3.4 SocialFi", url: "#34-socialfi" },
+          ]},
+          {title: "4. Access Layer", url: "#4-access-layer", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../../js/base.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <meta property="og:title" content="Harry's Blog - Developer Documentation Technical Writer 🚀">
+    <meta property="og:description" content="Học Blockchain dễ hiểu, dành cho dev Web3">
+    <meta property="og:image" content="https://harriweb3.dev/assets/facebook_cover.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://harriweb3.dev/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Harry's Blog - Developer Documentation Technical Writer 🚀 ">
+    <meta name="twitter:description" content="Học Blockchain dễ hiểu, dành cho dev Web3 mới vào nghề!">
+    <meta name="twitter:image" content="https://harriweb3.dev/assets/facebook_cover.png">
+
+
+  <link rel="stylesheet" href="../../../../css/extra.css">
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../01_00_Blockchain%20layers/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../01_00_Blockchain%20layers/" class="btn btn-xs btn-link">
+        Layer 0, 1, 2, 3 - Hiểu Kiến Trúc Blockchain
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../intro/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../intro/" class="btn btn-xs btn-link">
+        Intro this course from VBI Academy
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="a-article-on-the-anatomy-of-web3">A article on the anatomy of Web3</h1>
+<p>Bài viết này viết toàn cảnh về hệ sinh thái của Web3 Blockchain (my POV). Web3 đến nay đã phát triển tương đối đầy đủ, hệ sinh thái cũng dần định hình rõ ràng. Nếu nhìn ở góc độ kiến trúc tổng thể hiện tại thì ta có thể chia thành các layers là blockchain network layer, middleware layer, application layer, và access layer...</p>
+<p>Trong phần này sẽ nhắc đến khá nhiều cái tên dự án, nhưng vì dung lượng kiến thức mình có hạn nên mình sẽ không đi sâu vào từng cái mà chỉ overall.</p>
+<h1 id="1-blockchain-network-layer">1. Blockchain network layer</h1>
+<p>Ở tầng thấp nhất trong kiến trúc Web3 là lớp mạng lưới blockchain (blockchain network layer) hay còn gọi là lớp nền tảng (foundation layer). Đây chính là “cái móng nhà” của toàn bộ hệ sinh thái Web3, nơi tập hợp các blockchain khác nhau vận hành độc lập hoặc tương tác với nhau.</p>
+<p>Hiện có rất nhiều blockchain nằm trong lớp này, có thể kể đến như: Bitcoin, Ethereum, BNB Chain (BSC), Polygon, Arbitrum, Polkadot, Cosmos, Celestia, Avalanche, Aptos, Sui và còn hàng tá cái tên khác nữa.</p>
+<h2 id="11-phan-tang-kien-truc-layer-0-layer-1-layer-2">1.1 Phân tầng kiến trúc: Layer 0 / Layer 1 / Layer 2</h2>
+<ul>
+<li>Layer 0 (L0): Layer 0 là lớp trừu tượng hơn, thường được gọi là lớp hạ tầng blockchain (infrastructure layer) – nơi cung cấp các dịch vụ cơ bản giúp nhiều blockchain có thể tương tác hoặc chia sẻ tài nguyên. Ví dụ: Cosmos, Polkadot,</li>
+</ul>
+<p><img alt="Layer 0 - coinbase" src="https://images.ctfassets.net/q5ulk4bp65r7/5w8dZBJye0z6uKpPaYD764/ef88b236609d4483917a031945e819e8/Learn_Illustration_What_are_Layer-0_protocols.jpg" />
+<br/></p>
+<ul>
+<li>Layer 1 (L1): Các Layer 1 cũng chính là ví dụ điển hình cho <a href="blockchain_dilemma.md"><code>“tam giác bất khả thi”</code></a> của blockchain khó để một blockchain đồng thời đảm bảo cả 3 yếu tố: mở rộng (scalability), bảo mật (security), và phi tập trung (decentralization).</li>
+</ul>
+<p><br/></p>
+<ul>
+<li>Layer 2 (L2): Layer 2 ra đời để giải bài toán “TPS thấp” của Layer 1, nhất là Ethereum. Layer 2 là các chuỗi phụ (subchain) nằm phía trên Layer 1, có nhiệm vụ xử lý giao dịch nhanh và rẻ hơn, sau đó gửi kết quả về Layer 1 để lưu trữ. Layer 2 giúp Layer 1 trở thành settlement layer (lớp thanh toán), còn mình thì lo phần execution layer (lớp thực thi). Một số Layer 2 nổi bật của Ethereum gồm: Arbitrum, Optimism, zkSync, StarkNet, Polygon. Bitcoin cũng có Layer 2 như: <code>Lightning Network</code>, <code>Stacks</code>, <code>RSK</code>, nhưng hiện tại vẫn chưa phổ biến bằng Ethereum.</li>
+</ul>
+<h2 id="12-moi-truong-chay-smart-contract">1.2 Môi trường chạy smart contract</h2>
+<p>Sự phát triển của Web3 chủ yếu nhờ vào smart contract, và các smart contract cần có môi trường để chạy – gọi là virtual machine (máy ảo). Tương tự như Java cần JVM vậy.</p>
+<p>Sau khi hiểu cấu trúc phân tầng, ta tiếp tục phân loại blockchain theo góc nhìn EVM compatibility  hay nói cách khác, blockchain đó có chạy được smart contract viết bằng Solidity và tương thích với máy ảo Ethereum hay không.</p>
+<p>Về cơ bản, có thể chia thành hai nhóm: <code>EVM chains</code> và <code>Non-EVM chains</code>.</p>
+<p>Hiện nay, EVM chains vẫn là dòng chủ đạo. Những blockchain này thu hút lượng lớn DApp và người dùng Web3, nhờ vào cộng đồng phát triển rộng và hệ sinh thái công cụ phong phú. Một số blockchain tương thích với EVM từ đầu như BSC, Heco, Arbitrum, Optimism, v.v. Một số khác thì phát triển sau này để tương thích, ví dụ như zkSync: phiên bản 1.0 không hỗ trợ EVM, nhưng từ 2.0 trở đi thì đã embrace EVM hoàn toàn. </p>
+<p>Tính đến hiện tại, phần lớn các blockchain lớn đều đã hoặc đang hỗ trợ EVM. Tuy nhiên, vẫn còn một số chuỗi nổi bật nằm ngoài hệ EVM, như Solana, Terra, NEAR, Aptos, và Sui. </p>
+<p>Các blockchain này thường chọn hướng đi khác biệt, cả về kiến trúc lẫn ngôn ngữ lập trình smart contract: nếu EVM chains dùng Solidity, thì các Non-EVM chains thường dùng Rust hoặc Move</p>
+<blockquote>
+<p>Tóm lại </p>
+</blockquote>
+<ul>
+<li><a href="https://gfiblockchain.com/evm-la-gi-tai-sao-evm-la-trai-tim-cua-ethereum.html"><code>EVM chains</code></a>: Là những blockchain tương thích với Ethereum Virtual Machine, có thể chạy các smart contract được viết bằng Solidity. Ví dụ: Ethereum, BNB Chain, Polygon, Avalanche C-Chain…</li>
+<li><a href="https://coin98.net/phan-tich-non-evm-blockchain"><code>Non-EVM chains</code></a>: Không tương thích với EVM, sử dụng máy ảo riêng và thường có ngôn ngữ lập trình riêng, như: Solana (Rust/C/C++), Aptos &amp; Sui (Move), Near protocol/ Cosmos dùng rust, Cardano dùng Haskell/Plutus..</li>
+</ul>
+<hr />
+<h2 id="13-cac-vai-tro-trong-toan-he-sinh-thai-nhu-tinh-toan-hay-luu-tru">1.3 Các vai trò trong toàn hệ sinh thái như <code>Tính toán</code> hay <code>Lưu trữ</code></h2>
+<p>Ta cũng có thể chia blockchain theo mục tiêu sử dụng:
+* Compute Chains: Tập trung vào xử lý logic và chạy smart contract.
+* Storage Chains: Tập trung vào lưu trữ dữ liệu phi tập trung – ví dụ: Filecoin, Arweave, Walrus..</p>
+<h2 id="14-cross-chain-bridges">1.4 Cross-chain bridges</h2>
+<p>Mở rộng hơn là các giao thức giao tiếp giữa nhiều blockchain. Khá khó để thống kê ra số lượng bao nhiêu cross-chain được triển khai nhưng ta có những tên dẫn đầu cho phép chuyển tài sản giữa layer 2 và Ethereum một cách mược mà như <code>Polygon</code>, <code>Arbitrum</code> và <code>Optimism</code>.  Xếp sau là <code>Multichain</code> (trước đây là Anyswap) - tuy nhiên, trải qua khoảng thời gian khắc nghiệt của thị trường, cái tên Multichain đã dần phai mờ trong trí nhớ của nhiều người.</p>
+<p>Tạm thời, đó là bức tranh tổng quan về các “thành viên” đang tạo nên lớp mạng lưới của blockchain. Tất nhiên, danh sách này sẽ còn tiếp tục thay đổi sẽ có những cái tên mới gia nhập, và cũng sẽ có những hệ sinh thái từng rầm rộ rồi dần bị lãng quên ở một góc của lịch sử Web3.</p>
+<h1 id="2-middleware-layer">2. Middleware layer</h1>
+<p>Ngay phía trên lớp mạng blockchain, mình gọi đây là "middleware layer" chuyên cung cấp các dịch vụ và chức năng nền tảng cho các ứng dụng <strong>Security audits, oracles, index query services, API services, data analysis, data storage, basic financial services, digital identities, DAO governance..</strong></p>
+<p>Các thành phần trong lớp middleware này có thể là:</p>
+<ul>
+<li>On-chain protocol (chạy trực tiếp trên blockchain),</li>
+<li>Off-chain platform (chạy ngoài blockchain),</li>
+<li>Hoặc các tổ chức  centralized enterprise.</li>
+</ul>
+<p>Trước tiên là về kiểm toán bảo mật (<code>Security Auditing</code>). Đây là một loại middleware cốt lõi. Vì phần lớn các blockchain và ứng dụng Web3 đều <code>mã nguồn mở</code> (open-source), và nhiều ứng dụng liên quan trực tiếp tới tài chính, nên vấn đề bảo mật trở thành ưu tiên hàng đầu, và kiểm toán bảo mật đương nhiên trở thành một nhu cầu bắt buộc. </p>
+<p>Các công ty nổi tiếng trong lĩnh vực này gồm: <code>CertiK</code>, <code>OpenZeppelin</code>, <code>ConsenSys</code>, <code>Hacken</code>, <code>Quantstamp</code>; ở Trung Quốc có <code>SlowMist</code>, <code>ChainSec</code>, và <code>Paidun</code>. Ngoài ra còn có nhiều công ty/team nhiều hơn thế nữa...</p>
+<p>Bên cạnh đó, không thể không kể tới các Bug Bounty platform như <code>Immunefi</code>, <code>Hacker proof</code>...</p>
+<p>Tiếp theo là <code>Oracle</code>, thành phần đóng vai trò rất quan trọng trong hệ sinh thái Web3. </p>
+<p>Oracle là cầu nối giữa hệ thống blockchain và nguồn dữ liệu bên ngoài, giúp thực hiện việc giao tiếp dữ liệu giữa smart contract và thế giới thực. Vì bản thân mạng lưới blockchain bị giới hạn bởi tính nhất quán trạng thái (<code>state consistency</code>), nên để đảm bảo rằng mỗi node đều cho ra cùng một kết quả khi nhận cùng một input, blockchain được thiết kế như một hệ thống đóng, chỉ có thể lấy dữ liệu nội bộ (on-chain), không thể chủ động lấy dữ liệu từ bên ngoài (off-chain). </p>
+<p>Tuy nhiên, trong nhiều tình huống ứng dụng, dữ liệu bên ngoài là bắt buộc và chúng được cung cấp thông qua <code>oracle</code>. Đây cũng là cách duy nhất để blockchain có thể tương tác với dữ liệu ngoài chuỗi.</p>
+<p>Các loại oracle hiện nay có thể chia thành: oracle cho DeFi, NFT, SocialFi, oracle cross-chain, oracle bảo mật riêng tư, oracle tín dụng, và mạng lưới oracle phi tập trung. Một số dự án oracle tiêu biểu gồm: CreDA, Privy, UMA, Banksea, DOS, NEST, Chainlink, v.v. Trong đó, Chainlink là dự án dẫn đầu mảng oracle, được định vị là một mạng lưới oracle phi tập trung, cung cấp nhiều sản phẩm như: Data Feeds, VRF, Keepers, Proof of Reserve, CCIP,…</p>
+<p>Tiếp theo là  truy vấn dữ liệu (<code>Index Query</code>), một middleware quan trọng giúp giải quyết bài toán truy vấn dữ liệu on-chain phức tạp. Ví dụ, nếu muốn truy vấn tổng khối lượng giao dịch trên Uniswap trong một ngày cụ thể, thì việc truy vấn trực tiếp từ blockchain là rất khó khăn. Do đó, cần có các dịch vụ truy vấn chỉ mục, với những đại diện chính là The Graph và Covalent. The Graph hoạt động bằng cách giám sát dữ liệu on-chain và chuyển hóa chúng thành dữ liệu tùy chỉnh để lưu trữ và truy vấn. Trong khi đó, Covalent đóng gói các dữ liệu phổ biến và thường dùng thành các API thống nhất để người dùng dễ truy vấn.</p>
+<hr />
+<p>Khi nói đến dịch vụ API, ngoài Covalent, còn có nhiều nhà cung cấp API phục vụ các mục đích khác nhau, ví dụ:
+* NFTScan: chuyên cung cấp dữ liệu API về NFT,
+* Infura và Alchemy: cung cấp dịch vụ node cho blockchain.</p>
+<hr />
+<p><strong>Data analytics</strong> cũng là một thành phần middleware liên quan tới dữ liệu. Bạn có thể từng nghe như <code>Dune Analytics</code>, <code>Flipside Crypto</code>, <code>DeBank</code>, <code>Chainalysis</code>. </p>
+<hr />
+<p>Tiếp theo là middleware cung cấp các <strong>defi service</strong>. Các giao thức tiêu biểu gồm: <code>Uniswap</code>, <code>Curve</code>, <code>Compound</code>, <code>Aave</code>, v.v.
+    •   Uniswap và Curve là các giao thức giao dịch (DEX),
+    •   Compound và Aave là các giao thức cho vay (lending).</p>
+<p>Về bản chất, đây là các giao thức ở lớp ứng dụng (application layer), nhưng vì ngày càng có nhiều ứng dụng khác dựa vào chúng như một thành phần cơ bản để xây dựng, nên chúng trở thành các giao thức dùng chung, tương tự như các khối Lego từ đó đảm nhận vai trò của middleware.</p>
+<p>⸻</p>
+<p>Trên thực tế, bất kỳ thành phần có thể tái sử dụng (composable) nào  dù là giao thức on-chain, dịch vụ off-chain do thực thể tập trung cung cấp, hoặc tổ chức <code>DAO</code> đều có thể được phân loại vào “lớp middleware”, miễn là dịch vụ mà nó cung cấp được đa số ứng dụng khác cần sử dụng.</p>
+<h1 id="3-application-layer">3. Application Layer</h1>
+<p>Đây là tầng sôi động và phong phú nhất trong hệ sinh thái Web3. Tại đây, hàng loạt dApp (decentralized applications) được phát triển, mỗi ứng dụng đại diện cho một hướng đi riêng. Mình dùng từ "Bách hoa đua nở, bách gia tranh minh" trong web3 hiện tại 🤣.</p>
+<p>Trong phần này, mình sẽ đi qua domain tiêu biểu và đang phát triển mạnh trong Application Layer</p>
+<h2 id="31-nft-non-fungible-token">3.1 NFT (Non-Fungible Token)</h2>
+<p>NFT là viết tắt của Non-Fungible Token — tức token không thể thay thế. Chúng ta thường gọi NFT là các tài sản kỹ thuật số. NFT đại diện cho tài sản số độc nhất, chẳng hạn như tác phẩm nghệ thuật, nhân vật game, hay vật phẩm sưu tầm.</p>
+<p>Dự án NFT thực sự đầu tiên là <strong>CryptoPunks</strong>, ra mắt vào tháng 6 năm 2017. Bộ sưu tập này gồm <strong>10.000 hình đại diện pixel kích thước 24x24</strong>, được tạo ra bằng thuật toán, mỗi hình là một cá thể độc lập, không trùng lặp. Hình dưới đây là ví dụ một số avatar hiển thị trên trang web chính thức của CryptoPunks:</p>
+<p><img alt="" src="https://img.learnblockchain.cn/attachments/2023/01/qwP3dC5S63d32dfba882c.png" /></p>
+<p>Bạn cũng có thể vào <a href="https://opensea.io/collection/cryptopunks"><code>OpenSea</code></a> để xem chi tiết nhé. Ở thời điểm mình viết bài này thì gía sàn(floor price) là 49.99 ETH (tương đương 185,000 USD tính theo giá hiện tại). Giao dịch đắt nhất từng được ghi nhận là <strong>8,000 ETH</strong> vào ngày 12/02/2022.</p>
+<p>Bạn sẽ thắc mắc là  vì sao một hình đại diện pixel có thể đắt như vậy?</p>
+<p>Một trong những lý do chính là tính tiên phong. CryptoPunks là dự án NFT đầu tiên trên Ethereum, tương tự như cách Bitcoin là blockchain đầu tiên, điều này mang lại giá trị biểu tượng và sưu tầm lớn.</p>
+<p>Lấy cảm hứng từ <code>CryptoPunks</code>, studio Axiom Zen (sau này là Dapper Labs) ra mắt CryptoKitties vào cuối năm 2017. Dự án nhanh chóng gây sốt, đến mức làm tắc nghẽn mạng Ethereum  từ đó bộc lộ rõ các vấn đề hiệu năng.</p>
+<p>Ngay trước khi phát hành, <code>Dieter Shirley</code>, CTO của Axiom Zen, đã đề xuất chuẩn ERC-721 là  chuẩn kỹ thuật giúp chuẩn hóa các token không thể thay thế (NFT). Sự thành công của CryptoKitties đã đẩy nhanh việc phổ biến của chuẩn này, và ngày nay ERC-721 đã trở thành tiêu chuẩn cơ bản của NFT trên EVM.</p>
+<hr />
+<h3 id="cac-linh-vuc-ung-dung-chinh-cua-nft">Các lĩnh vực ứng dụng chính của NFT</h3>
+<p>NFT đã mở rộng ra nhiều lĩnh vực trong thế giới số. Nếu phân loại theo ứng dụng, có thể chia ra các nhóm tiêu biểu sau:</p>
+<ul>
+<li>Sưu tầm (Collectibles): Sưu tầm là lĩnh vực NFT phát triển đầu tiên, với đặc điểm cốt lõi là tính khan hiếm. Ví dụ, trong 10,000 CryptoPunks thì “Alien” cực hiếm → giá cao còn “Male” phổ biến hơn → giá thấp hơn</li>
+<li>Nghệ thuật(artworks): NFT giúp nghệ sĩ bảo vệ bản quyền và sở hữu tác phẩm. </li>
+<li>Music: NFT giúp nhạc sĩ kiểm soát bản quyền và doanh thu:</li>
+<li>film: Nhiều thương hiệu phim lớn phát hành NFT như <strong>Game of Thrones, Matrix, Batman, Lord of the Rings, The Walking Dead</strong></li>
+<li>Gaming: NFT đóng vai trò là tài sản trong game — giúp người chơi thực sự sở hữu vật phẩm và có thể giao dịch bên ngoài</li>
+<li>Virtual Land: Đất ảo là thành phần quan trọng trong metavers với các dự án lớn: Decentraland, The Sandbox, Otherside, Axie Land, Roblox...</li>
+<li>NFT x DeFi: NFT có thể bị phân mảnh trở thành token có thể giao dịch, staking, lending…</li>
+<li>Brand: NFT như một hình thức marketing và kích thích cho cộng đồng. Các thương hiệu lớn đã tham gia như Gucci, LV, Hermes, Starbucks, <a href="https://foodinstitute.com/focus/rock-the-blockchain-nfts-in-food-and-beverage/">Taco Bell, Coca-Cola, Pizza Hut</a></li>
+<li>DID: DID là hạ tầng cho danh tính Web3. Ví dụ ENS (Ethereum Name Service) giống như “DNS” cho Web3</li>
+</ul>
+<p><strong>Ứng dụng của NFT thì nhiều vô kể, mấy nhóm trên chỉ là phần nổi của tảng băng</strong>. Vì NFT mang tính đại diện cho quyền sở hữu, nên gần như bất cứ thứ gì "có owner" đều có thể được mã hóa thành NFT. Vậy nên trong cộng đồng mới có câu: <em>everything can be NFT</em> nghĩa là cái gì cũng có thể NFT hóa được hết á!</p>
+<h2 id="32-defi">3.2 DeFi</h2>
+<p>DeFi viết tắt của Decentralized Finance (tài chính phi tập trung)  chính thức bùng nổ vào mùa hè năm 2020, tới mức người ta đặt hẳn cái tên riêng cho giai đoạn này là “DeFi Summer” 🌞. </p>
+<p>Theo số liệu từ TradingView, khi mới xuất hiện, tổng giá trị thị trường của DeFi chỉ khoảng 5 tỷ USD, nhưng sau đó thì leo dốc không phanh, chạm đỉnh vào cuối năm 2021 với <a href="https://www.investmentexecutive.com/news/research-and-markets/defi-poses-little-threat-to-traditional-finance-fitch/">gần 180 tỷ USD</a></p>
+<p>Bản thân Defi là một hệ sinh thái lớn với nhiều “sub-sector” khác nhau như: <strong>stablecoins, DEX, derivatives, lending, aggregators, insurance, prediction markets, index…</strong></p>
+<h3 id="321-stablecoin">3.2.1 Stablecoin</h3>
+<p>Stablecoin là “đồng tiền ổn định” ví dụ USD trên Web3. Có thể chia làm 3 loại chính:</p>
+<ul>
+<li>
+<p>Centralized Stablecoins: do tổ chức tập trung phát hành, backing bằng fiat thật, kiểu 1 USDT = 1 USD. Tiêu biểu có <strong>USDT (Tether), USDC (Circle), và BUSD (Binance + Paxos)</strong>. Tuy tập trung, nhưng hiện vẫn là dòng stablecoin thanh khoản cao nhất thị trường.</p>
+</li>
+<li>
+<p>Overcollateralized Stablecoins: loại này được đúc bằng cách thế chấp crypto khác, thường dùng smart contract và oracle để đảm bảo peg 1:1. Đại diện tiêu biểu là <strong>DAI</strong> từ MakerDAO có decentralization cao, nhưng phải thế chấp nhiều hơn giá trị cần mint.</p>
+</li>
+<li>
+<p>Algorithmic Stablecoins:  không cần thế chấp mà dùng thuật toán để cân bằng cung – cầu. Có hàng loạt tên tuổi từng thử như UST, FEI, FRAX, CUSD, USDD…</p>
+</li>
+</ul>
+<h3 id="322-dex-decentralized-exchange">3.2.2 DEX (Decentralized Exchange)</h3>
+<p>DEX (Decentralized Exchange) chính là nơi giao dịch tài sản crypto không cần trung gian. Đây là sector có market cap to nhất trong DeFi, và cũng là cái nôi cho đủ kiểu mô hình giao dịch như:</p>
+<ul>
+<li><strong>Spot DEX</strong> vs <strong>Derivatives DEX</strong></li>
+<li><strong>Orderbook mode</strong> vs <strong>AMM mode</strong></li>
+</ul>
+<p>Về <strong>Orderbook DEX</strong> thì giống sàn chứng khoán truyền thống. Người dùng đặt lệnh mua/bán. Có 3 kiểu triển khai:</p>
+<ul>
+<li>On-chain Orderbook: như EtherDelta, cực phi tập trung nhưng chậm &amp; phí cao.</li>
+<li>Off-chain match, on-chain settle: như 0x protocol, tiết kiệm gas hơn nhưng vẫn phải settle từng giao dịch</li>
+<li>Layer2 Orderbook: như dYdX dùng StarkEx – trade mượt như CEX nhưng vẫn giữ tính phi tập trung ở mức vừa phải.</li>
+</ul>
+<p>Về <strong>AMM DEX</strong>, AMM (Automated Market Maker) là cú bùng nổ thật sự của DEX. Khởi nguồn từ <strong>Uniswap</strong>, rồi lan ra <strong>SushiSwap, Curve, Balancer, GMX…</strong>. Mô hình này dựa trên liquidity pool, người dùng bơm tài sản vào pool để trở thành LP, đổi lại nhận fee từ người trade. Tức là bạn vừa làm trader, vừa làm ngân hàng luôn. </p>
+<p>Về Derivatives, là đòn bẩy thì trong DeFi gồm 4 nhóm chính:</p>
+<ul>
+<li>Perpetual contracts: giống futures, có leverage. Dẫn đầu là dYdX, apeX, GMX, Perpetual Protocol.</li>
+<li>Options: phức tạp hơn future, ít phổ biến. Có Hegic, Opyn, Charm, Primitive…</li>
+<li>Synthetic Assets: tạo tài sản mô phỏng như vàng, cổ phiếu… Tiêu biểu là Synthetix, UMA, Mirror, Duet.</li>
+<li>Interest Rate Derivatives: như BarnBridge, Swivel, cho phép user “đặt cược” vào lãi suất crypto.</li>
+</ul>
+<p>Về <strong>Lendind</strong>, cho vay là nền tảng thứ hai bên cạnh DEX. Các ông lớn gồm <strong>Compound, Aave, Maker, Cream, Liquity, Venus, Euler, Fuse…</strong> Chủ yếu dùng mô hình <strong>over-collateralized</strong>: muốn vay $80 thì phải bạn cắm ít nhất $100 tài sản điều này nhằm bảo vệ cả borrower lẫn protocol.</p>
+<p>Ngoài ra còn có:</p>
+<ul>
+<li><strong>Interest-free loan</strong>: như Liquity, vay không lãi, chỉ trả 1 lần phí upfront.</li>
+<li><strong>Asset isolation pools</strong>: tách các pool ra </li>
+<li><strong>Cross-chain lending</strong>: với các tên như Flux, Aave, Compound mở rộng sang nhiều chain.</li>
+<li><strong>Credit-based loan</strong>: như Wing Finance, nhưng vẫn thiếu hệ thống on-chain credit chuẩn chỉnh.</li>
+</ul>
+<p>Về Aggregator, bạn sẽ thắc mắc nếu có rất nhiều protocol thì làm sao để ta có thể quản lý thì  Aggregator là công cụ gom tụ mọi thứ lại:</p>
+<ul>
+<li><strong>DEX Aggregator</strong>: tìm giá tốt nhất từ nhiều DEX → 1inch, Matcha, ParaSwap, MetaMask Swap.</li>
+<li><strong>Yield Aggregator</strong>: tự động yield farming → Yearn Finance, Alpha Finance, Harvest, Convex</li>
+<li><strong>Asset Management</strong>: quản lý danh mục &amp; portfolio → Zapper, Zerion.</li>
+<li><strong>Data Aggregator</strong>: như CoinMarketCap, DeFi Pulse, DeBank – dù là centralized nhưng vẫn cực quan trọng.</li>
+</ul>
+<p>Về <strong>Insurance</strong>, một số cái tên tiên phong gồm: Nexus Mutual, Cover, Unslashed, Opium…</p>
+<p>Về <strong>Prediction Markets</strong>, dự đoán kết quả bầu cử, giá crypto, hay bất cứ sự kiện nào,dự đoán là playground cho ai muốn predict bằng dữ liệu. </p>
+<p>Ngoài ra ta còn có ETF phiên bản web3, nghĩa là thay vì pick một token thì bạn có thể hold nhiều token. Một số chỉ số nổi bật ta nên biết như <strong>DPI, sDEFI, PIPT, DEFI++, BCP...</strong></p>
+<p>DeFi là nơi rebuild lại từ đầu, bằng smart contract, phi tập trung, permissionless. Mỗi mảnh ghép mà mình kể trên đều đóng vai trò riêng và khi xâu chuỗi lại, nó tạo nên hệ sinh thái lớn.</p>
+<h2 id="33-gamefi">3.3 GameFi</h2>
+<p>GameFi là viết tắt của Game Finance tức là game + tài chính. Nói cách khác, đây chính là thuật ngữ cool ngầu hơn của Web3 games. </p>
+<p>Trước khi cái tên GameFi xuất hiện, người ta thường gọi mấy trò này là blockchain games hay chain games. </p>
+<p>Như đề cập trong nội dung NFT, Dự án tiên phong phải kể đến là CryptoKitties là trò nuôi mèo ảo từng làm tắc nghẽn cả mạng Ethereum hồi 2017. </p>
+<p>Mỗi chú mèo là một NFT độc lập, có gen, có ngoại hình riêng. Người chơi mua mèo, rồi “phối giống” để đẻ ra mèo con cũng là NFT mới. Mèo nào gen hiếm thì giá càng chát. Tính đến cuối tháng 1/2023, đã có hơn 2 triệu mèo được “mint”, với hơn <strong>136,000</strong> ví đang giữ mèo. Sau CryptoKitties là loạt clone sinh sản như <strong>CryptoRabbit, CryptoFrog, CryptoDongle</strong>…  </p>
+<p>Hoặc một game xổ số tên <strong>Fomo3D</strong> dùng ETH.  Cứ mua Key là nhận được cổ tức. Ai là người cuối cùng mua Key trước khi countdown kết thúc (24h) thì sẽ jackpot. Nhưng mỗi lần ai đó mua Key mới, thời gian sẽ cộng thêm 30s.</p>
+<p>Nói đến gamefi, mình không thể nào không kể đến là <strong>Axie Infinity</strong>. Ra mắt từ 2018, nhưng phải đến 2021 mới “nổ tung” với mô hình Play-to-Earn (P2E). Trong game, bạn sắm vài con <em>Axie</em> (kiểu Pokémon NFT), sau đó đem đi đánh nhau, breed (phối giống), trade trên marketplace. </p>
+<p>Chiến thắng sẽ nhận được SLP token, dùng SLP + AXS để đúc Axie mới → bán lấy lời → quy đổi thành ETH hoặc stablecoin, rồi rút về ví. <strong>Axie Infinity</strong> tạo ra một làn sóng lớn giúp gamefi bùng nổ ở thời điểm 2021. </p>
+<p>Sau Axie, mô hình chơi để kiếm (P2E) gần như trở thành tiêu chuẩn cho Web3 games. <strong>“tokenomics”, “earn model”, “NFT assets”</strong> sẽ là tiêu chuẩn để mọi người đánh giá. </p>
+<h2 id="34-socialfi">3.4 SocialFi</h2>
+<p>SocialFi là viết tắt của Social + Finance. Hiểu đơn giản là mạng xã hội phiên bản Web3 phi tập trung, tích hợp tài chính, và cho phép người dùng kiếm tiền từ tương tác xã hội. Khái niệm này chỉ thực sự hot trong 1–2 năm trở lại đây.</p>
+<p>Hầu hết các nền tảng SocialFi ngày nay đều vận hành theo mô hình quản trị DAO (Decentralized Autonomous Organization) tức cộng đồng là người đưa ra quyết định.</p>
+<p>Khác với memecoin, thì socialfi sẽ có tính thực tế hơn và có thể scale được. Tuy nhiên để build một dapp Socialfi thì technical có rất nhiều thử thách và builder phải có tìm những câu trả lời phù hợp. Bởi vì khác với việc xử lý data ở web2 như Facebook, X khi mà mỗi ngày generate hàng tỷ interactions thì liệu mỗi post/comment trên socialfi có thể là on chain transaction được ko? </p>
+<p>Thứ 2 là Người dùng Web2 đã quen với mô hình như subcription (Patreon, Substack), Donate cho creator (Ko-fi, BuyMeACoffee)... SocialFi muốn bắt chước mô hình này thì phải build tools đủ đơn giản, nhưng vẫn an toàn để người dùng setup .</p>
+<h1 id="4-access-layer">4. Access Layer</h1>
+<p>Đây là tầng trên cùng của kiến trúc Web3 nơi user như bạn và mình thực sự tương tác blockchain. Các access layer chính là: <strong>wallets, browsers, aggregators, và cả… Twitter nữa</strong>.</p>
+<p>Đầu tiên là <strong>Wallet</strong>: Đây là entry point quan trọng nhất. Không có ví bạn sẽ không thể tương tác với Blockchain. Hiện tại có các loại ví như: 
+* Browser Wallets: Metamask, Coinbase Wallet, WalletConnect...
+* Mobile Wallets: Ví nổi bậ MetaMask Mobile, Coinbase Wallet, TokenPocket, Rainbow, BitKeep, Crypto.com, imToken… Và cũng có nhiều ví hỗ trợ đa chain như BTC, ETH, BNB Chain, Polygon, Solana, Aptos, Cosmos…
+* Hardware Wallets: Lưu private key riêng trong thiết bị vật lý offline. Nổi bật như Ledger (Nano X, Nano S Plus, Ledger Stax), Trezor (Model One, Model T)
+* Multi-Signature Wallet: dành cho ví cần nhiều người ký dùng set cấu hình 2/3 người ký thì mới thực hiện giao dịch. Dùng nhiều trong DAO hoặc team để tránh mất tiền oan.
+*  MPC Wallet: MPC = Multi-Party Computation. Ví chia nhỏ private key thành nhiều mảnh, mỗi bên giữ một phần. khi ký, mới “ghép lại” đủ mảnh để unlock. Gần giống multi-sig nhưng chạy off-chain, không cần smart contract.
+* Smart Contract Wallet + Account Abstraction</p>
+<p>Các browsers: Hầu hết các DApp hiện vẫn là web app, nên trình duyệt đóng vai trò quan trọng trong việc render UI và kết nối với ví. Chrome là browser phổ biến nhất vì mọi browser extension wallet đều support. Tiếp đến ta có như Brave ( có sẵn Brave wallet)</p>
+<p>Nhiều nền tảng như Twitter (X), Reddit… là nơi mà crypto culture diễn ra với các Cộng đồng NFT, DAO, memecoin... </p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../01_00_Blockchain%20layers/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../01_00_Blockchain%20layers/" class="btn btn-xs btn-link">
+        Layer 0, 1, 2, 3 - Hiểu Kiến Trúc Blockchain
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../intro/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../intro/" class="btn btn-xs btn-link">
+        Intro this course from VBI Academy
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<div class="giscus-wrapper">
+  <div class="giscus"></div>
+  <script src="https://giscus.app/client.js"
+          data-repo="hien-p/hari-docs"
+          data-repo-id="R_kgDOPQrn9w"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOPQrn984CtVCd"
+          data-mapping="title"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="1"
+          data-input-position="top"
+          data-theme="light"
+          data-lang="en"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
+
+<!-- <footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer> -->
+
+</body>
+</html>

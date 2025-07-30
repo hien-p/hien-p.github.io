@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://hien-p.github.io/hari-docs/What_I_learned_from_VBI_Academy/Rust%20learning%20course/01-installing-rust/">
+    <link rel="shortcut icon" href="../../../assets/cover.png">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Cài Rust cho mọi OS - Harry's Blog</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <!-- mkdocs_windmill/partials/scripts.html -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S5RMPC6VZL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S5RMPC6VZL');
+</script>
+    
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "C\u00e0i Rust cho m\u1ecdi OS", url: "#_top", children: [
+          ]},
+          {title: "1. Rust cho Linux", url: "#1-rust-cho-linux", children: [
+              {title: "\ud83d\udce6 C\u00e1ch 1: Download tr\u1ef1c ti\u1ebfp g\u00f3i c\u00e0i \u0111\u1eb7t", url: "#cach-1-download-truc-tiep-goi-cai-at" },
+              {title: "C\u00e1ch 2: C\u00e0i Rust b\u1eb1ng m\u1ed9t d\u00f2ng l\u1ec7nh duy nh\u1ea5t (One-click install)", url: "#cach-2-cai-rust-bang-mot-dong-lenh-duy-nhat-one-click-install" },
+          ]},
+          {title: "2. Rust cho MacOS", url: "#2-rust-cho-macos", children: [
+          ]},
+          {title: "3. Rust cho Windows", url: "#3-rust-cho-windows", children: [
+          ]},
+          {title: "4. Rustup \u2013 Qu\u1ea3n l\u00fd phi\u00ean b\u1ea3n Rust", url: "#4-rustup-quan-ly-phien-ban-rust", children: [
+              {title: "4.1 C\u00e0i \u0111\u1eb7t rustup", url: "#41-cai-at-rustup" },
+              {title: "4.2 C\u00e1c l\u1ec7nh rustup th\u01b0\u1eddng d\u00f9ng (Common rustup commands)", url: "#42-cac-lenh-rustup-thuong-dung-common-rustup-commands" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../search/main.js"></script>
+    <meta property="og:title" content="Harry's Blog - Developer Documentation Technical Writer 🚀">
+    <meta property="og:description" content="Học Blockchain dễ hiểu, dành cho dev Web3">
+    <meta property="og:image" content="https://harriweb3.dev/assets/facebook_cover.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://harriweb3.dev/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Harry's Blog - Developer Documentation Technical Writer 🚀 ">
+    <meta name="twitter:description" content="Học Blockchain dễ hiểu, dành cho dev Web3 mới vào nghề!">
+    <meta name="twitter:image" content="https://harriweb3.dev/assets/facebook_cover.png">
+
+
+  <link rel="stylesheet" href="../../../css/extra.css">
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Rust%20Core%20Concept%20Analysis/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Rust%20Core%20Concept%20Analysis/" class="btn btn-xs btn-link">
+        Rust core concepts analysis: references, borrowing and internal mutability
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../00-introduction/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../00-introduction/" class="btn btn-xs btn-link">
+        Intro đầu tiên cho Rust Deep learning
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="cai-rust-cho-moi-os">Cài Rust cho mọi OS</h1>
+<p>Trong chương này, mình sẽ hướng dẫn cách cài đặt Rust trên ba nền tảng phổ biến nhất hiện nay: <strong>Linux, macOS và Windows</strong>.</p>
+<h1 id="1-rust-cho-linux">1. Rust cho Linux</h1>
+<p>Với Linux, Rust cung cấp 2 cách cài chính:</p>
+<h2 id="cach-1-download-truc-tiep-goi-cai-at">📦 Cách 1: Download trực tiếp gói cài đặt</h2>
+<p>Nếu bạn chọn cách này thì cần kiểm tra trước xem hệ điều hành hiện tại của bạn là <strong>64-bit hay 32-bit</strong> để tải đúng version phù hợp.</p>
+<p>Để kiểm tra hệ điều hành, mở terminal và chạy lệnh sau:</p>
+<pre><code>uname -a
+</code></pre>
+<p>Kết quả sẽ trả về kiểu kiểu như vầy:</p>
+<pre><code>Linux harry-laptop 5.15.0-106-generic #116-Ubuntu SMP x86_64 GNU/Linux
+</code></pre>
+<p>Như hình minh hoạ ở trên, nếu output chứa dòng x86_64 → nghĩa là bạn đang dùng 64-bit system hãy tải gói cài đặt 64-bit.</p>
+<p>Ngược lại, nếu output là i386 hoặc x86-32 thì bạn đang dùng 32-bit system → nhớ tải đúng gói 32-bit tương ứng nha.</p>
+<p>Để giải nén cài đặt thì ta dùng: </p>
+<pre><code>tar -zxvf rust-1.5.0-x86_64-unknown-linux-gnu.tar.gz
+</code></pre>
+<p>Di chuyển vào thư mục đã giải nén:</p>
+<pre><code>cd rust-1.5.0-x86_64-unknown-linux-gnu
+</code></pre>
+<p>Chạy script cài đặt:</p>
+<pre><code>./install.sh
+</code></pre>
+<p>Nếu mọi thứ diễn ra ok, bạn sẽ thấy:</p>
+<pre><code>Rust is ready to roll.
+</code></pre>
+<p><strong>Kiểm tra phiên bản Rust đã cài:</strong> bằng cách chạy lệnh: </p>
+<pre><code>rustc --version 
+</code></pre>
+<p>Output sẽ giống như vầy:</p>
+<pre><code>rustc 1.5.0 (3d7cd77e4 2015-12-04)
+</code></pre>
+<p>Dòng này xác nhận bạn đã có <strong>Rust compiler (rustc)</strong> hoạt động ổn định trên máy.</p>
+<h2 id="cach-2-cai-rust-bang-mot-dong-lenh-duy-nhat-one-click-install">Cách 2: Cài Rust bằng một dòng lệnh duy nhất (One-click install)</h2>
+<p>Mở Terminal và chạy:</p>
+<pre><code>curl -sSf https://static.rust-lang.org/rustup.sh | sh
+</code></pre>
+<p>Lệnh này sẽ:
+* Tự tải script cài đặt về
+* Chạy quá trình setup tự động
+* Thiết lập môi trường cargo, rustc, rustup,… đầy đủ</p>
+<p>Tuy nhiên, rust sẽ không chỉ có mỗi <strong>stable version (bản ổn định)</strong>, mà còn có:</p>
+<ul>
+<li>Beta</li>
+<li>Nightly: bản bleeding-edge, hỗ trợ tính năng mới, nhưng không đảm bảo ổn định</li>
+</ul>
+<p>Bạn có thể chọn và tải các bản này tại:
+<a href="https://www.rust-lang.org/zh-CN/other-installers.html">https://www.rust-lang.org/zh-CN/other-installers.html</a></p>
+<p>Hoặc dùng trực tiếp với bản browser: <a href="http://play.rust-lang.org/">http://play.rust-lang.org/</a></p>
+<h1 id="2-rust-cho-macos">2. Rust cho MacOS</h1>
+<h1 id="3-rust-cho-windows">3. Rust cho Windows</h1>
+<h1 id="4-rustup-quan-ly-phien-ban-rust">4. Rustup – Quản lý phiên bản Rust</h1>
+<p>Website dự án: <a href="https://github.com/rust-lang/rustup">https://github.com/rust-lang/rustup</a></p>
+<p>Rustup là công cụ chính thức dùng để cài đặt và quản lý các phiên bản Rust. Đây là lựa chọn hàng đầu dành cho bất kỳ ai bắt đầu học hoặc làm việc với Rust.</p>
+<p>Khi bạn cài Rust thông qua rustup, bạn không chỉ có rustc (compiler) mà còn có thêm:</p>
+<ul>
+<li>cargo: trình quản lý package và build tool</li>
+<li>rustup: công cụ cài, cập nhật và chuyển đổi giữa các phiên bản Rust</li>
+<li>khả năng chuyển đổi nhanh giữa stable, beta, nightly</li>
+<li>khả năng cấu hình toolchain riêng cho từng project hoặc thư mục</li>
+<li>khả năng cài thêm target để cross-compile</li>
+<li>và nhiều tiện ích khác giúp dev Rust thoải mái hơn trong quá trình phát triển</li>
+</ul>
+<h2 id="41-cai-at-rustup">4.1 Cài đặt rustup</h2>
+<p>Trên Windows</p>
+<ol>
+<li>Truy cập trang chủ: <a href="https://rustup.rs">https://rustup.rs</a></li>
+<li>Tải file rustup-init.exe</li>
+<li>Chạy file và làm theo hướng dẫn. Bạn sẽ thấy màn hình tương tác như sau:</li>
+</ol>
+<pre><code class="language-bash">Welcome to Rust!
+
+1) Proceed with installation (default)
+2) Customize installation
+3) Cancel installation
+</code></pre>
+<p>Bạn có thể chọn:</p>
+<p>1: Cài đặt nhanh với thiết lập mặc định (stable, thêm vào PATH)
+2: Tuỳ chỉnh cho phép chọn toolchain (nightly, beta…), kiến trúc, và có thêm PATH hay không</p>
+<p>Trên Linux &amp; macOS thì mở Terminal và gõ lệnh sau:</p>
+<pre><code>curl https://sh.rustup.rs -sSf | sh
+</code></pre>
+<p>Lệnh này sẽ:</p>
+<ul>
+<li>Tải script cài đặt về</li>
+<li>Tự động cài rustup, cargo, rustc</li>
+<li>Thiết lập stable làm toolchain mặc định</li>
+<li>Tự thêm $HOME/.cargo/bin vào PATH</li>
+</ul>
+<p>📍 Sau khi cài xong, bạn cần restart terminal hoặc thêm dòng sau vào <code>.bashrc/.zshrc</code> nếu chưa tự động nhận:</p>
+<pre><code>export PATH=&quot;$HOME/.cargo/bin:$PATH&quot;
+</code></pre>
+<p>Nếu bạn muốn gỡ toàn bộ Rust và rustup, chỉ cần chạy:</p>
+<pre><code>rustup self uninstall
+</code></pre>
+<h2 id="42-cac-lenh-rustup-thuong-dung-common-rustup-commands">4.2 Các lệnh rustup thường dùng (Common rustup commands)</h2>
+<p>Sau khi cài đặt rustup, bạn có thể sử dụng hàng loạt lệnh tiện lợi để quản lý Rust toolchain và cấu hình môi trường lập trình của mình.</p>
+<p>Cấu hình toolchain:</p>
+<pre><code>rustup default &lt;toolchain&gt;
+</code></pre>
+<p>Thiết lập phiên bản Rust mặc định cho toàn hệ thống.</p>
+<pre><code>rustup default stable
+rustup default nightly
+</code></pre>
+<p>Quản lý toolchain, cài một toolchain mới:</p>
+<pre><code>rustup toolchain install &lt;toolchain&gt;
+
+# rustup toolchain install nightly
+# rustup toolchain install 1.68.2
+
+</code></pre>
+<p>Liên kết toolchain tùy chỉnh:</p>
+<pre><code>rustup toolchain link &lt;toolchain-name&gt; &quot;&lt;toolchain-path&gt;&quot;
+</code></pre>
+<p>Gán toolchain riêng cho thư mục,rustup override cho phép thiết lập toolchain cụ thể cho một folder và tất cả các thư mục con bên trong.</p>
+<pre><code>rustup override set &lt;toolchain&gt;
+
+# rustup override set nightly
+</code></pre>
+<p>Quản lý cross-compilation target. Nếu bạn muốn build Rust cho một nền tảng khác (như WebAssembly, ARM, iOS…), bạn cần thêm target vào toolchain của mình.</p>
+<pre><code>rustup target add &lt;target&gt;
+</code></pre>
+<p>Ví dụ: </p>
+<pre><code>rustup target add wasm32-unknown-unknown
+
+
+
+# gỡ target 
+rustup target remove &lt;target&gt;
+
+# Cài target cho một toolchain cụ thể:
+
+rustup target add --toolchain &lt;toolchain&gt; &lt;target&gt;
+</code></pre>
+<p>Rustup component cho phép cài thêm các thành phần như linter, source code, RLS…</p>
+<pre><code>rustup component add &lt;component&gt;
+
+# Gỡ component 
+rustup component remove &lt;component&gt;
+
+# Xem danh sách component khả dụng:
+
+rustup component list
+</code></pre>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Rust%20Core%20Concept%20Analysis/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Rust%20Core%20Concept%20Analysis/" class="btn btn-xs btn-link">
+        Rust core concepts analysis: references, borrowing and internal mutability
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../00-introduction/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../00-introduction/" class="btn btn-xs btn-link">
+        Intro đầu tiên cho Rust Deep learning
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<div class="giscus-wrapper">
+  <div class="giscus"></div>
+  <script src="https://giscus.app/client.js"
+          data-repo="hien-p/hari-docs"
+          data-repo-id="R_kgDOPQrn9w"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOPQrn984CtVCd"
+          data-mapping="title"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="1"
+          data-input-position="top"
+          data-theme="light"
+          data-lang="en"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
+
+<!-- <footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer> -->
+
+</body>
+</html>

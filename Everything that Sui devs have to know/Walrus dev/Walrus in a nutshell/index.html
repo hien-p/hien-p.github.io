@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://hien-p.github.io/hari-docs/Everything%20that%20Sui%20devs%20have%20to%20know/Walrus%20dev/Walrus%20in%20a%20nutshell/">
+    <link rel="shortcut icon" href="../../../assets/cover.png">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Walrus in a nutshell - Harry's Blog</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <!-- mkdocs_windmill/partials/scripts.html -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S5RMPC6VZL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S5RMPC6VZL');
+</script>
+    
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Walrus in a nutshell", url: "#_top", children: [
+          ]},
+          {title: "How Walrus Works: Breaking It Down", url: "#how-walrus-works-breaking-it-down", children: [
+          ]},
+          {title: "Hosting a local Walrus Site portal", url: "#hosting-a-local-walrus-site-portal", children: [
+          ]},
+          {title: "Introduction", url: "#introduction", children: [
+          ]},
+          {title: "Build a website", url: "#build-a-website", children: [
+              {title: "Install the template", url: "#install-the-template" },
+              {title: "Build the site", url: "#build-the-site" },
+          ]},
+          {title: "Upload it to Walrus", url: "#upload-it-to-walrus", children: [
+              {title: "Install Dependencies", url: "#install-dependencies" },
+              {title: "Deploy to Walrus", url: "#deploy-to-walrus" },
+          ]},
+          {title: "Point your SuiNS name to it", url: "#point-your-suins-name-to-it", children: [
+              {title: "Buy a SuiNS name", url: "#buy-a-suins-name" },
+              {title: "Link your SuiNs name", url: "#link-your-suins-name" },
+              {title: "Navigate to your site with your SuiNS name", url: "#navigate-to-your-site-with-your-suins-name" },
+          ]},
+          {title: "Reference", url: "#reference", children: [
+          ]},
+          {title: "", url: "#_1", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../search/main.js"></script>
+    <meta property="og:title" content="Harry's Blog - Developer Documentation Technical Writer 🚀">
+    <meta property="og:description" content="Học Blockchain dễ hiểu, dành cho dev Web3">
+    <meta property="og:image" content="https://harriweb3.dev/assets/facebook_cover.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://harriweb3.dev/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Harry's Blog - Developer Documentation Technical Writer 🚀 ">
+    <meta name="twitter:description" content="Học Blockchain dễ hiểu, dành cho dev Web3 mới vào nghề!">
+    <meta name="twitter:image" content="https://harriweb3.dev/assets/facebook_cover.png">
+
+
+  <link rel="stylesheet" href="../../../css/extra.css">
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../../What_I_learned_from_VBI_Academy/Arbitrum_learning/00_Recap%20my%20first%20time%20share%20about%20Stylus/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../../What_I_learned_from_VBI_Academy/Arbitrum_learning/00_Recap%20my%20first%20time%20share%20about%20Stylus/" class="btn btn-xs btn-link">
+        00 Recap my first time share about Stylus
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Everything%20about%20Quilt/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Everything%20about%20Quilt/" class="btn btn-xs btn-link">
+        Everything about Quilt
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="walrus-in-a-nutshell"><strong>Walrus in a nutshell</strong></h1>
+<p>Bài viết này giải thích về <strong>Walrus: A Decentralized Storage Solution</strong> </p>
+<blockquote>
+<p>Walrus is a decentralized storage solution that provides cheap, out-of-the-box features for large blobs, long periods of storage, and flexible storage nodes, making it suitable for applications where decentralization matters and single points of failure are undesirable</p>
+</blockquote>
+<p>Giải thích dễ hiểu thì Walrus là giải pháp để mình lưu trữ phi tập trung với chi phí thấp cho các khối dữ liệu lớn, thời gian lưu trữ dài, và các nodes lưu trữ flexible, phù hợp cho các decentralization application.  Lưu trữ thì tất nhiên nó rất quan trọng rồi và dữ liệu thì phải luôn có tính data availability. </p>
+<p>Các ứng dụng đều luôn cần lưu trữ data, đó có thể là <strong>data input, program hay result nào đó</strong>. Vì thế mà walrus cũng có nhiều use cases khác nhau. </p>
+<p>Vậy thì tại sao ta phải nói tầm quan trọng của <strong>Decentralization là data ownership và security.</strong> </p>
+<blockquote>
+<p>Walrus promotes decentralization to ensure users maintain ownership of their data, avoiding the pitfalls of centralized systems that can lead to censorship and data loss.</p>
+</blockquote>
+<p>Walrus thúc đẩy <strong>data ownership</strong> bằng cách trao lại quyền kiểm soát dữ liệu cho chính user  không ai khác. Trong khi các mô hình centralized service như AWS hay Google Cloud thì ngược lại. Dữ liệu bạn upload là dữ liệu bị kiểm soát. Bạn là user, nhưng đôi khi lại thành sản phẩm.</p>
+<blockquote>
+<p>“If you’re not paying for the product, you are the product.”</p>
+</blockquote>
+<p>Nhưng với Walrus thì khác. Vì nó phi tập trung nên: 
+*   Data luôn thuộc về bạn, không ai can thiệp được.
+* Lưu trữ redundant, đảm bảo <strong>data availability và integrity</strong>.
+* Ai cũng có thể tham gia hệ thống lưu trữ bằng cách fund thông qua <strong>protocol-level incentives</strong> ví dụ như stake token, hoặc cung cấp node.</p>
+<p><strong>Decentralized storage isn’t just about hosting files — it’s about freedom, resilience, and long-term sustainability for your project.</strong> </p>
+<p>Tweet của Adeniyi.sui khi nói về Walrus + Sui: https://x.com/EmanAbio/status/1848785669700915623</p>
+<h1 id="how-walrus-works-breaking-it-down"><strong>How Walrus Works: Breaking It Down</strong></h1>
+<p>Walrus không chỉ là nơi lưu trữ dữ liệu, mà còn là một lớp điều phối dữ liệu phi tập trung decentralized data coordination layer cho dev quyền set rule, gán permission, và thiết lập các quy trình tự động xung quanh dữ liệu đó.</p>
+<ul>
+<li>Walrus blobs: blob như những “hộp dữ liệu”có thể là file ảnh, video, model AI, code…. Mỗi blob có ID riêng biệt, có thể chia nhỏ thành các shard để lưu rải rác trên nhiều node, đảm bảo <strong>redundancy (dự phòng) và resilience (bền vững)</strong>.</li>
+<li>
+<p>🗄 Storage Nodes:. Mỗi node phải chứng minh độ tin cậy bằng cryptographic proof, và để stake WAL token </p>
+</li>
+<li>
+<p>Aggregators: Aggregators không lưu trữ dữ liệu, nhưng đóng vai trò rất quan trọng trong việc tối ưu hoá việc truy xuất và quản lý metadata. Họ tạo ra chỉ mục (index) cho các blob, cho phép người dùng tìm kiếm và truy xuất dữ liệu nhanh hơn. Giúp điều phối việc phân phối dữ liệu từ nhiều storage node khi có truy vấn đến. Có thể được dùng để quản lý caching, load balancing và tối ưu UX của các ứng dụng dApp xây dựng trên Walrus.</p>
+</li>
+</ul>
+<p><img alt="" src="../../img/walrus_image/walrus_workflow.png" /></p>
+<h1 id="hosting-a-local-walrus-site-portal"><strong>Hosting a local Walrus Site portal</strong></h1>
+<p><img alt="image.png" src="attachment:c5fd479c-9a76-4c1a-a4b7-bfd2ef45ca5d:image.png" /></p>
+<p>https://www.youtube.com/watch?v=ktjvd8y7qY8</p>
+<p><em>This guide is for </em><em>Sui and Walrus mainnet</em>*. Here is a video demo that follows this guide</p>
+<h1 id="introduction">Introduction</h1>
+<p>Create your own decentralized website by utilizing the power of the Sui blockchain, resilience of Walrus, and the seamless UX of SuiNS.</p>
+<p><strong>In this tutorial you:</strong></p>
+<ol>
+<li><a href="https://www.notion.so/10337af41c6e80109cb1ee7912de19c2?pvs=21">Build a website</a></li>
+<li><a href="https://www.notion.so/10337af41c6e80109cb1ee7912de19c2?pvs=21">Upload it to Walrus</a></li>
+<li><a href="https://www.notion.so/10337af41c6e80109cb1ee7912de19c2?pvs=21">Point your SuiNS name to it</a></li>
+</ol>
+<h1 id="build-a-website">Build a website</h1>
+<p>In this section, create a basic Sui website to deploy to Walrus using the <a href="https://sdk.mystenlabs.com/dapp-kit/create-dapp">Sui Dapp starter kit</a>. </p>
+<h2 id="install-the-template">Install the template</h2>
+<ol>
+<li>Run <code>pnpm create @mysten/dapp</code> in your terminal.</li>
+<li>Select <code>react-client-dapp</code></li>
+<li>Name your project</li>
+</ol>
+<h2 id="build-the-site">Build the site</h2>
+<ol>
+<li>Run <code>pnpm install</code> to install dependencies</li>
+<li>Run <code>pnpm build</code> to build the site for deployment</li>
+</ol>
+<h1 id="upload-it-to-walrus">Upload it to Walrus</h1>
+<p>After you have a build of your app, deploy it to Walrus using the Walrus site builder CLI tool.</p>
+<h2 id="install-dependencies">Install Dependencies</h2>
+<ol>
+<li><a href="https://docs.wal.app/usage/setup.html">Install Walrus CLI</a></li>
+<li><a href="https://docs.wal.app/walrus-sites/tutorial-install.html">Install site-builder</a></li>
+</ol>
+<h2 id="deploy-to-walrus">Deploy to Walrus</h2>
+<p>Run the following command to deploy your site to Walrus: </p>
+<pre><code class="language-rust">site-builder --config {PATH_TO_CONFIG} publish {PATH_TO_APP}/dist --site-name &quot;decentralized website test&quot; --epochs 200 
+</code></pre>
+<p>After a successful deployment, you should receive a similar output:</p>
+<pre><code class="language-markdown">Storing resources on Walrus: batch 1 of 1 ... [Ok]
+Applying the Walrus Site object updates on Sui ... [Ok]
+
+Execution completed
+Resource operations performed:
+  - created resource /assets/index-C8a3C9Y3.js with blob ID W6lLyahP4IgJh7t36vOO22m23ZTATzMyyRwrk733bgg
+  - created resource /assets/index-scVC05-f.css with blob ID I22agaqaim_M3oRHwXjF4nbtAVba4SZDDQMXFAZns-Y
+  - created resource /index.html with blob ID jQ6aA4VEElNJnC7PL7G2he48TeICY6e2jKD2QQHuyrQ
+The site routes were left unchanged
+
+Created new site: test-website
+New site object ID: 0xf98a54de897b50ed014d7c99d7ae5471ec3b5fd0f517d36f6ae5bc2e1083ce37
+To browse the site, you have the following options:
+        1. Run a local portal, and browse the site through it: e.g. http://67wi4siou7p4kljjwmejdd98ofl7vnte8bhwu1flfua8r7mmgn.localhost:3000
+           (more info: https://docs.wal.app/walrus-sites/portal.html#running-the-portal-locally)
+        2. Use a third-party portal (e.g. wal.app), which will require a SuiNS name.
+           First, buy a SuiNS name at suins.io (e.g. example-domain), then point it to the site object ID.
+           Finally, browse it with: https://example-domain.wal.app
+</code></pre>
+<p>This contains the ID of your Walrus site’s Sui object (<code>0xf98a54de897b50ed014d7c99d7ae5471ec3b5fd0f517d36f6ae5bc2e1083ce37</code>). </p>
+<h1 id="point-your-suins-name-to-it">Point your SuiNS name to it</h1>
+<p>Now that you have your deployed Walrus site, point a SuiNS name to it to be accessible by the <a href="http://wal.app">wal.app</a> portal. </p>
+<h2 id="buy-a-suins-name">Buy a SuiNS name</h2>
+<p>Navigate to <a href="https://suins.io/">SuiNS</a> and buy a name.</p>
+<p><img alt="image.png" src="attachment:6f78b90d-b879-4325-92ae-84f8a69335cc:image.png" /></p>
+<h2 id="link-your-suins-name">Link your SuiNs name</h2>
+<p>Set your SuiNS name to the address of your Walrus site’s Sui object (provided in the Walrus site deployment output above)</p>
+<p><img alt="image.png" src="attachment:c7a3e905-7cd9-4f10-9b2e-699044033384:image.png" /></p>
+<p><img alt="image.png" src="attachment:7efbc0d6-4112-4536-88c1-c869fbc47553:image.png" /></p>
+<h2 id="navigate-to-your-site-with-your-suins-name">Navigate to your site with your SuiNS name</h2>
+<p>You can now navigate to <code>https://{SuiNS name}.wal.app</code> to view your finished decentralized site!</p>
+<p>https://x.com/_smbrian/status/1909468495676686837</p>
+<h1 id="reference">Reference</h1>
+<ol>
+<li>https://medium.com/@thaninsta/what-is-walrus-a-detailed-guide-163f3c236171</li>
+</ol>
+<p><a href="https://www.notion.so/Building-Your-First-Walrus-Site-on-Sui-Testnet-on-Windows-11-1e44f8e09bb380f08d36c7cf3880b49d?pvs=21">
+<strong>Building Your First Walrus Site on Sui Testnet (on Windows 11)</strong>
+</a></p>
+<p><a href="https://www.notion.so/Walrus-ecosystem-Map-1e54f8e09bb38092913dd32f2967b255?pvs=21">Walrus ecosystem Map </a></p>
+<h1 id="_1"></h1>
+<ol>
+<li>https://x.com/EmanAbio/status/1848785669700915623 </li>
+<li>https://www.youtube.com/watch?v=0T9X1gGoUtk</li>
+<li>https://www.youtube.com/watch?v=4_b8vfcSSa4</li>
+</ol>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../../What_I_learned_from_VBI_Academy/Arbitrum_learning/00_Recap%20my%20first%20time%20share%20about%20Stylus/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../../What_I_learned_from_VBI_Academy/Arbitrum_learning/00_Recap%20my%20first%20time%20share%20about%20Stylus/" class="btn btn-xs btn-link">
+        00 Recap my first time share about Stylus
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Everything%20about%20Quilt/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Everything%20about%20Quilt/" class="btn btn-xs btn-link">
+        Everything about Quilt
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<div class="giscus-wrapper">
+  <div class="giscus"></div>
+  <script src="https://giscus.app/client.js"
+          data-repo="hien-p/hari-docs"
+          data-repo-id="R_kgDOPQrn9w"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOPQrn984CtVCd"
+          data-mapping="title"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="1"
+          data-input-position="top"
+          data-theme="light"
+          data-lang="en"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
+
+<!-- <footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer> -->
+
+</body>
+</html>

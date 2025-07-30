@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://hien-p.github.io/hari-docs/Everything%20that%20Sui%20devs%20have%20to%20know/Move%20101/move_101_module_3/">
+    <link rel="shortcut icon" href="../../../assets/cover.png">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Advanced Smart Contract – Modules, Entry Functions &amp; Practice - Harry's Blog</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <!-- mkdocs_windmill/partials/scripts.html -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S5RMPC6VZL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S5RMPC6VZL');
+</script>
+    
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Advanced Smart Contract \u2013 Modules, Entry Functions \u0026amp; Practice", url: "#_top", children: [
+          ]},
+          {title: "N\u1ed9i dung ch\u00ednh:", url: "#noi-dung-chinh", children: [
+          ]},
+          {title: "1. Review l\u1ea1i n\u1ed9i dung h\u1ecdc tu\u1ea7n tr\u01b0\u1edbc", url: "#1-review-lai-noi-dung-hoc-tuan-truoc", children: [
+          ]},
+          {title: "2. V\u1eady package l\u00e0 g\u00ec ?", url: "#2-vay-package-la-gi", children: [
+              {title: "2.1 Package Layout", url: "#21-package-layout" },
+              {title: "2.2 Manifest Structure( Move.toml ): Config file trong sui move contract", url: "#22-manifest-structure-movetoml-config-file-trong-sui-move-contract" },
+          ]},
+          {title: "3. Modules trong Sui l\u00e0 g\u00ec ?", url: "#3-modules-trong-sui-la-gi", children: [
+              {title: "3.1 T\u1eeb kho\u00e1 use - c\u00e1ch \u0111\u1ec3 import b\u1ea5t k\u1ef3 module", url: "#31-tu-khoa-use-cach-e-import-bat-ky-module" },
+          ]},
+          {title: "4. \u200bT\u00ecm hi\u1ec3u Entry Function \u2013 c\u00e1ch t\u01b0\u01a1ng t\u00e1c v\u1edbi contract th\u00f4ng qua call", url: "#4-tim-hieu-entry-function-cach-tuong-tac-voi-contract-thong-qua-call", children: [
+              {title: "4.1 S\u1ef1 kh\u00e1c bi\u1ec7t gi\u1eefa public v\u00e0 entry trong Sui Move", url: "#41-su-khac-biet-giua-public-va-entry-trong-sui-move" },
+              {title: "4.2 Rule r\u00e0ng bu\u1ed9c ri\u00eang c\u1ee7a Sui \u0111\u1ed1i v\u1edbi entry", url: "#42-rule-rang-buoc-rieng-cua-sui-oi-voi-entry" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../search/main.js"></script>
+    <meta property="og:title" content="Harry's Blog - Developer Documentation Technical Writer 🚀">
+    <meta property="og:description" content="Học Blockchain dễ hiểu, dành cho dev Web3">
+    <meta property="og:image" content="https://harriweb3.dev/assets/facebook_cover.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://harriweb3.dev/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Harry's Blog - Developer Documentation Technical Writer 🚀 ">
+    <meta name="twitter:description" content="Học Blockchain dễ hiểu, dành cho dev Web3 mới vào nghề!">
+    <meta name="twitter:image" content="https://harriweb3.dev/assets/facebook_cover.png">
+
+
+  <link rel="stylesheet" href="../../../css/extra.css">
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../Move%20102/Sui%20Move%20standard%20library/Illustration%20of%20type%20name/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../Move%20102/Sui%20Move%20standard%20library/Illustration%20of%20type%20name/" class="btn btn-xs btn-link">
+        Illustration of Sui Move standard library - type name (type_name)
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../move_101_module_2/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../move_101_module_2/" class="btn btn-xs btn-link">
+        Move 101 module 2
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="advanced-smart-contract-modules-entry-functions-practice">Advanced Smart Contract – Modules, Entry Functions &amp; Practice</h1>
+<p><img alt="" src="https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,background=white,quality=75,width=300,height=300/event-covers/98/db4a428f-e07b-4685-85f6-116d26448d3a.png" /></p>
+<p>link event: </p>
+<h1 id="noi-dung-chinh">Nội dung chính:</h1>
+<ul>
+<li>​Hiểu rõ vai trò và cấu trúc của Module trong Move</li>
+</ul>
+<p>​* Tìm hiểu Entry Function – cách tương tác với contract thông qua call</p>
+<p>​* Tổ chức project chuẩn theo cấu trúc Move.toml và sources/</p>
+<p>​* Viết thêm các chức năng nâng cao cho token và NFT đã học</p>
+<h1 id="1-review-lai-noi-dung-hoc-tuan-truoc">1. Review lại nội dung học tuần trước</h1>
+<p>Slides xem lại buổi 2 nghe: https://x.tusky.io/Zoo9i </p>
+<h1 id="2-vay-package-la-gi">2. Vậy package là gì ?</h1>
+<p>Theo định nghĩa từ documentation:</p>
+<blockquote>
+<p>Packages are immutable. After you publish a package object on chain to a network, it lives there forever. You cannot directly change the code of an on-chain</p>
+</blockquote>
+<p>Nghĩa là một package là khi được publish trên Blockchain và được xác định là một address. Trong package có thể chứa một hoặc nhiều modules.</p>
+<p><img alt="" src="../../img/move_101_img/code_org_move.png" /></p>
+<p>Riêng phần Package, mình sẽ chia nhỏ thành từng phần là: </p>
+<ul>
+<li>Package Layout: Cấu trúc của package</li>
+<li>Published Package: Các package đã được published bạn cần lưu ý</li>
+<li>Manifest Structure( Move.toml ): Config file trong sui move contract</li>
+<li>Artifact</li>
+</ul>
+<h2 id="21-package-layout">2.1 Package Layout</h2>
+<p>Một package sẽ chứa nhiều Modules. Trong từng modules đó bao gồm functions, types...</p>
+<p>Đây là ví dụ minh hoạ cho một package layout:</p>
+<pre><code>package HELLO_WORLD
+    module a
+        struct A1
+        fun hello_world()
+    module b
+        struct B1
+        fun hello_package()
+</code></pre>
+<p>Để tạo package mới, bạn có thể sử dụng lệnh CLI Sui move new <Name Package>. Mục đích của Move package system là để cho phép các developer có thể define dễ dàng nơi chứa các move code, bạn có thể import và use packages ở file move code khác.</p>
+<h2 id="22-manifest-structure-movetoml-config-file-trong-sui-move-contract">2.2 Manifest Structure( Move.toml ): Config file trong sui move contract</h2>
+<p>Một thư mục source move package sẽ luôn có <code>Move.toml</code> là package manifest file bao gồm các metadata cho package đó. File này vô cùng quan trọng vì nó quản lý các dependencies, đảm bảo được môi trường stable cho move project của bạn và để quản lý project. Đây là cấu trúc của một package layout:</p>
+<p><img alt="" src="https://sui-bootcamp-2024.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fsui_manifest_structure.6ad20e8c.png&amp;w=3840&amp;q=75" /></p>
+<p>Root của project là tên folder move project của bạn. Trong folder sẽ chứa các files để chạy move project. Trên hình bạn đã thấy các components quan trọng <strong>Move.toml, Move.lock và thư mục sources.</strong></p>
+<p>Đối với <strong>Move.toml</strong> và <strong>Move.lock</strong> chịu trách nghiệm trong việc quản lý các dependencies. Còn trong thư mục <strong>Source</strong> là nơi ta thấy các file module.move. Các file này chính là core logic của move code. Ngoài ra, còn có thư mục test. Đây là nơi để bạn có thể viết test case cho move code của bạn đảm bảo dự án chạy như kì vọng và maintain được chất lượng codebase.</p>
+<p>Cấu trúc được thiết kế giúp cho các developer có thể quản lý code dễ hơn. Tuy nhiên đây chưa honaf toàn là cấu trúc đầy đủ. Nó còn thêm doc_templates và examples.</p>
+<pre><code class="language-rust">Your_Move_Project
+├── Move.toml      (required)
+├── Move.lock      (generated)
+├── sources        (required)
+├── doc_templates  (optional)
+├── examples       (optional, test &amp; dev mode)
+└── tests          (optional, test mode)
+</code></pre>
+<ul>
+<li>Move.toml file:  Đây là package manifest (mình không biết dịch tiếng việt sao nên hiểu như package.json nhé) chứa các metadata cần thiết cho package. Các thông tin trong package đó bao gồm</li>
+</ul>
+<p><img alt="" src="https://sui-bootcamp-2024.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FCode_movetoml.9c601b5d.png&amp;w=3840&amp;q=75" /></p>
+<hr />
+<h1 id="3-modules-trong-sui-la-gi">3. Modules trong Sui là gì ?</h1>
+<p>Ở Sui Move, khi khai báo một smart contract, ta sẽ sử dụng từ khoá module, giống với ở solidity ta sẽ có từ contract. Đây là syntax khi khai báo smart contract</p>
+<pre><code>module &lt;package_name&gt;::&lt;module_name&gt; { 
+    //module code ở đây 
+}
+</code></pre>
+<p>Nhưng mọi người có thể set up một module thế này cũng được:</p>
+<pre><code>module &lt;package_name&gt;::&lt;module_name&gt;;
+</code></pre>
+<p><code>package_name</code> là tên của package mà bạn đã tạo. Ví dụ trong lệnh <code>sui move new hello_world</code> thì package name sẽ là <code>hello_world</code>. Còn <code>module_name</code> sẽ là cái tên module mà bạn đã tạo trong package.</p>
+<p>Ở đây bạn cũng có thể xem như <code>module</code> là thư viện con trong package.</p>
+<blockquote>
+<p>Tính chất đóng gói (encapsulation) của module giúp cho việc phát triển smart contract trở nên module hóa, có khả năng kết hợp linh hoạt, đồng thời nâng cao khả năng tái sử dụng mã nguồn và tính bảo mật.</p>
+</blockquote>
+<h2 id="31-tu-khoa-use-cach-e-import-bat-ky-module">3.1 Từ khoá use - cách để import bất kỳ module</h2>
+<p>Trong Sui move, <code>use</code> được sử dụng để import bất kì module. Đây là cấu trúc của cách sử dụng use:</p>
+<pre><code>use &lt;Address/Alias&gt;::&lt;ModuleName&gt;;
+</code></pre>
+<p>Giải thích về <code>&lt;Address/Alias&gt;</code> và <code>&lt;ModuleName&gt;</code>:</p>
+<ul>
+<li><code>&lt;Address/Alias&gt;</code> là những địa chỉ của package có chứa những module mà ta muốn dùng. Chúng ta thể sử dụng alias được đặt trong Move.toml mà đã viết ở mục Package manifest. Ví dụ: </li>
+</ul>
+<pre><code>[addresses]
+sui = &quot;0x2&quot;
+# Trước là suilend = &quot;0x0&quot; nhưng giờ package đã published rồi nên ta có thể thay thế thành
+suilend = &quot;0xf95b06141ed4a174f239417323bde3f209b972f5930d8521ea38a52aff3a6ddf&quot;
+</code></pre>
+<ul>
+<li><code>&lt;ModuleName&gt;</code> đơn giản đại diện cho tên của module đó.</li>
+</ul>
+<p>Sau đây là một số Sui modules mà bạn sẽ thường sử dụng:</p>
+<pre><code class="language-rust"># Module này giúp chúng ta xử lý liên quan đến string 
+use std::string;
+
+// https://github.com/MystenLabs/sui/blob/main/crates/sui-framework/packages/move-stdlib/sources/string.move
+
+# Module này sẽ giúp khi ta cần các chức năng transfer object từ một account đến account khác 
+use sui::transfer; 
+// https://github.com/MystenLabs/sui/blob/main/crates/sui-framework/packages/sui-framework/sources/transfer.move
+
+# dòng dưới đây giúp cho việc tạo object trong module.
+use sui::object;
+// https://github.com/MystenLabs/sui/blob/main/crates/sui-framework/packages/sui-framework/sources/object.move
+
+
+# Đây là đoạn import từ sui framework. Giúp ta trong việc đinh nghĩa các thông tin của transaction như là địa chỉ của sender, địa chỉ người ký ...
+use sui::tx_context;
+// https://github.com/MystenLabs/sui/blob/main/crates/sui-framework/packages/sui-framework/sources/tx_context.move
+</code></pre>
+<p>Bên cạnh việc import một module, Move cho phép bạn import cụ thể đối tượng từ module bao gồm functions và types. Điều này hữu ích khi bạn chỉ muốn một chức năng của module, Giảm việc không cần những đoạn code không cần thiết. Ví dụ:</p>
+<pre><code>// import function từ một module 
+use sui_bootcamp::module_one::learn; 
+
+// import từ Learner Type 
+use sui_bootcamp::module_one::Learner;
+</code></pre>
+<p>Không chỉ thế Move cho phép ta import nhiều từ module hoặc package bằng cách dùng dấu <code>{}</code>:</p>
+<pre><code>// import learn function và Learner type từ module one
+use sui_bootcamp::module_one::{learn, Learner};
+
+// import module và Learner type
+
+use sui_bootcamp::module_one::{Self, Learner};
+</code></pre>
+<blockquote>
+<p>Làm sao để giải quyết vấn đề trùng tên? (Name conflict) 👀 
+Mình để các bạn tìm câu trả lời nhé hoặc thảo luận trong nhóm First Movers </p>
+</blockquote>
+<hr />
+<h1 id="4-tim-hieu-entry-function-cach-tuong-tac-voi-contract-thong-qua-call">4. ​Tìm hiểu Entry Function – cách tương tác với contract thông qua call</h1>
+<p>Trước tiên bạn cần hiểu về <strong>Visibility (phạm vi truy cập) trong module</strong>.</p>
+<p>Mỗi phần tử (member) trong một module đều có visibility tức là mức độ cho phép truy cập từ bên ngoài hay không? Theo mặc định trong Sui move, tất cả các member đều là private nghĩa là anh em chỉ được dùng trong chính module nơi chúng được định nghĩa</p>
+<p>Đây là ví dụ cho entry function:</p>
+<pre><code>entry fun mint(ctx: &amp;mut TxContext) {
+
+    let object = HelloWorldObject {
+        id: object::new(ctx),
+        text: string::utf8(b&quot;Hello World!&quot;)
+    };
+
+    transfer::public_transfer(object, tx_context::sender(ctx));
+}
+
+</code></pre>
+<p><code>&amp;mut TxContext</code>chính là biến tham chiếu có thể thay đổi được giúp cho việc biết địa chỉ sender là ai để mint được contract này. Trong đó hàm transfer ở cuối function không phải trả về bất kì giá trị gì mà giúp store object vào địa chỉ sender sau khi publish module.</p>
+<h2 id="41-su-khac-biet-giua-public-va-entry-trong-sui-move">4.1 Sự khác biệt giữa public và entry trong Sui Move</h2>
+<p>Trong Sui Move, hai từ khóa <code>public</code> và <code>entry</code> đều dùng để định nghĩa hàm có thể được gọi từ bên ngoài module. Nhưng cách mà chúng được gọi, và ai được quyền gọi lại khác nhau khá rõ.</p>
+<p>Khi bạn dùng <code>public fun</code>, hàm đó có thể được gọi từ bất kỳ đâu: trong cùng module, từ module khác trong cùng package, thậm chí từ module khác hoàn toàn nếu bạn import nó.</p>
+<p>Đây là kiểu viết phổ biến nhất khi bạn muốn chia sẻ logic giữa nhiều module. Nhưng nó cũng giống như bạn mở cửa nhà và mời mọi người vô :V.</p>
+<p>Còn Còn <code>entry</code>  fun thì là một kiểu đặc biệt. Hàm có entry chỉ được gọi trực tiếp từ transaction — tức là từ một Programmable Transaction Block (PTB). Frontend có thể gọi, ví có thể gọi.</p>
+<p>Tất nhiên một entry function vãn có thể gọi bởi các  Move functions khác trong cùng module</p>
+<pre><code>module a::m {
+    entry fun foo(): u64 { 0 }
+    fun calls_foo(): u64 { foo() } // valid!
+}
+
+module a::n {
+    fun calls_m_foo(): u64 {
+        a::m::foo() // ERROR!
+//      ^^^^^^^^^^^ 'foo' is internal to 'a::m'
+    }
+}
+</code></pre>
+<p>Nhưng trong module khác thì không được phép wrap hoặc gọi lại hàm đó.  Điều này cực kỳ quan trọng khi bạn viết những logic nhạy cảm như randomness, mint NFT, hoặc bất kỳ thứ gì có thể bị lợi dụng nếu người khác wrap lại hàm của bạn và thử chạy trước. </p>
+<p>Một chi tiết nữa là <code>entry</code> thường đi chung với <code>&amp;mut TxContext</code> </p>
+<p>Nhưng entry không phải không có giới hạn. Vì để đảm bảo an toàn cho hệ thống sẽ có một số quy tắc sau. </p>
+<h2 id="42-rule-rang-buoc-rieng-cua-sui-oi-voi-entry">4.2  Rule ràng buộc riêng của Sui đối với entry</h2>
+<ul>
+<li>
+<p>Chỉ được return các kiểu có drop ability (để Sui đảm bảo không leak object ownership)</p>
+</li>
+<li>
+<p>Ngoài ra, nếu bạn dùng một object nào đó trong entry fun, bạn không được phép sử dụng lại object đó trong một non-entry khác trong cùng PTB. Điều này giúp Sui tránh được việc cùng một object bị xử lý trong hai context khác nhau.</p>
+</li>
+</ul>
+<h3 id="43-no-public-entry-only-public-or-entry">4.3 No public entry, Only public or entry</h3>
+<p>Nếu bạn viết code như thế này: </p>
+<pre><code>// ❌ Sai: dùng `entry` không cần thiết, vì không bắt buộc để gọi hàm từ transaction
+public entry fun do_something() { /* ... */ }
+
+// ✅ Đúng: dùng `public` thôi là đủ — vừa gọn, lại cho phép return giá trị public 
+fun do_something_2(): T { /* ... */ }
+
+</code></pre>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../Move%20102/Sui%20Move%20standard%20library/Illustration%20of%20type%20name/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../Move%20102/Sui%20Move%20standard%20library/Illustration%20of%20type%20name/" class="btn btn-xs btn-link">
+        Illustration of Sui Move standard library - type name (type_name)
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../move_101_module_2/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../move_101_module_2/" class="btn btn-xs btn-link">
+        Move 101 module 2
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<div class="giscus-wrapper">
+  <div class="giscus"></div>
+  <script src="https://giscus.app/client.js"
+          data-repo="hien-p/hari-docs"
+          data-repo-id="R_kgDOPQrn9w"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOPQrn984CtVCd"
+          data-mapping="title"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="1"
+          data-input-position="top"
+          data-theme="light"
+          data-lang="en"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
+
+<!-- <footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer> -->
+
+</body>
+</html>

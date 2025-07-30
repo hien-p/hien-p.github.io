@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://hien-p.github.io/hari-docs/What_I_learned_from_VBI_Academy/Rust%20learning%20course/00-introduction/">
+    <link rel="shortcut icon" href="../../../assets/cover.png">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Intro đầu tiên cho Rust Deep learning - Harry's Blog</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <!-- mkdocs_windmill/partials/scripts.html -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S5RMPC6VZL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S5RMPC6VZL');
+</script>
+    
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Intro \u0111\u1ea7u ti\u00ean cho Rust Deep learning", url: "#_top", children: [
+          ]},
+          {title: "Reference", url: "#reference", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../search/main.js"></script>
+    <meta property="og:title" content="Harry's Blog - Developer Documentation Technical Writer 🚀">
+    <meta property="og:description" content="Học Blockchain dễ hiểu, dành cho dev Web3">
+    <meta property="og:image" content="https://harriweb3.dev/assets/facebook_cover.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://harriweb3.dev/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Harry's Blog - Developer Documentation Technical Writer 🚀 ">
+    <meta name="twitter:description" content="Học Blockchain dễ hiểu, dành cho dev Web3 mới vào nghề!">
+    <meta name="twitter:image" content="https://harriweb3.dev/assets/facebook_cover.png">
+
+
+  <link rel="stylesheet" href="../../../css/extra.css">
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../01-installing-rust/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../01-installing-rust/" class="btn btn-xs btn-link">
+        Cài Rust cho mọi OS
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../Hyperliquid/Hyperliquid%20builder%20code/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../Hyperliquid/Hyperliquid%20builder%20code/" class="btn btn-xs btn-link">
+        Hyperliquid builder code
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="intro-au-tien-cho-rust-deep-learning">Intro đầu tiên cho Rust Deep learning</h1>
+<p>Build rust_deep community for this:</p>
+<ol>
+<li>Telegram: Unvailable 👀</li>
+<li>Facebook group: Unvailable 👀</li>
+</ol>
+<hr />
+<p><img alt="" src="https://github.com/sunface/rust-course/blob/main/assets/banner.jpg?raw=true" /></p>
+<p>Rust là một <strong>systems-level programming language</strong> được thiết kế với mục tiêu bảo đảm <strong>memory safety và thread safety</strong> tức là tránh các lỗi kinh điển như segmentation fault, crash hay race condition.</p>
+<p>Với triết lý <code>zero-overhead abstraction</code>, Rust hướng tới việc viết code cấp thấp (như C/C++) nhưng vẫnan toàn mà không phải trả giá bằng hiệu suất. Nói một cách dễ hiểu thì <strong>tốc độ của Rust gần như là same same với C/C++, nhưng lại an toàn hơn rất nhiều.</strong></p>
+<p>Rust được xếp vào nhóm <strong>multi-paradigm compiled programming languages</strong>  tức là hỗ trợ nhiều phong cách lập trình khác nhau và được biên dịch (chứ không phải interpreted). Về bản chất, nó có thể thay thế cho C/C++ trong nhiều tình huống, nhưng điểm đặc biệt là Rust là <strong>thread-safe by default.</strong></p>
+<p>Rust vẫn có đầy đủ control structure quen thuộc như if, else, for, while,… và dùng {} để bao khối lệnh giống phong cách curly-brace của các ngôn ngữ như C, Java.</p>
+<p>Tuy nhiên, Rust không dùng class hay inheritance như C++/Java mà chọn hướng khác: dùng struct, impl và trait – một cách tiếp cận khá giống với functional languages như Haskell hay OCaml. </p>
+<p>Điều ấn tượng là <strong>Rust không dùng garbage collector</strong> như Java hay C#, nhưng vẫn đảm bảo memory safety thông qua ownership, borrowing, lifetime và hệ thống type-checking cực kỳ chặt chẽ. Khi bạn hiểu được ownership model của Rust, bạn sẽ thấy nó là một masterpiece về design system.</p>
+<p>Ví dụ đơn giản nhất – Hello World:</p>
+<pre><code>fn main() {
+    println!(&quot;hello, world&quot;);
+}
+</code></pre>
+<p>Rust chịu ảnh hưởng từ nhiều ngôn ngữ nổi tiếng như C, C++, Haskell, OCaml, Ruby, Scheme, Swift,… và ngược lại, cũng ảnh hưởng tới C# 7, Elm, Idris, Swift sau này. </p>
+<p>Việc cài đặt rust rất dễ bạn chỉ cần vào trang <a href="rust-lang.org">rust-lang.org</a> tải installer phù hợp OS là xong. Hỗ trợ mọi hệ điều hành phổ biến như Windows, macOS, Linux, FreeBSD, Android, iOS.</p>
+<p>Về lịch sử:</p>
+<blockquote>
+<p>Rust bắt đầu như một dự án cá nhân của Graydon Hoare (một dev ở Mozilla) vào năm 2009, sau đó được Mozilla Research hỗ trợ chính thức và công bố public năm 2010. Từ đó đến khi ra mắt bản stable 1.0 (ngày 15 tháng 5 năm 2015), Rust đã trải qua nhiều lần lột xác, thay đổi thiết kế một hành trình khá “painful” nhưng cực kỳ đáng nể. Và kể từ đó, Rust trở thành một ngôn ngữ với cộng đồng dev đóng góp mạnh, tài liệu, và một quy trình contribution rất bài bản tại <a href="https://github.com/rust-lang/rust">github</a></p>
+</blockquote>
+<p>Mục tiêu của khoá học này là để <strong>truyền tải Rust một cách đúng nhất, cập nhật, dễ hiểu bằng tiếng việt cho những người mới bắt đầu.</strong></p>
+<h1 id="reference">Reference</h1>
+<ol>
+<li>https://course.rs/about-book.html</li>
+<li>https://rustcc.gitbooks.io/rustprimer/content/install/rustup.html</li>
+</ol>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../01-installing-rust/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../01-installing-rust/" class="btn btn-xs btn-link">
+        Cài Rust cho mọi OS
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../Hyperliquid/Hyperliquid%20builder%20code/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../Hyperliquid/Hyperliquid%20builder%20code/" class="btn btn-xs btn-link">
+        Hyperliquid builder code
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<div class="giscus-wrapper">
+  <div class="giscus"></div>
+  <script src="https://giscus.app/client.js"
+          data-repo="hien-p/hari-docs"
+          data-repo-id="R_kgDOPQrn9w"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOPQrn984CtVCd"
+          data-mapping="title"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="1"
+          data-input-position="top"
+          data-theme="light"
+          data-lang="en"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
+
+<!-- <footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer> -->
+
+</body>
+</html>

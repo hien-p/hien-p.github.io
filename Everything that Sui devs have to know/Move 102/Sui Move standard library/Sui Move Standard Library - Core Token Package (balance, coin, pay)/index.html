@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://hien-p.github.io/hari-docs/Everything%20that%20Sui%20devs%20have%20to%20know/Move%20102/Sui%20Move%20standard%20library/Sui%20Move%20Standard%20Library%20-%20Core%20Token%20Package%20%28balance%2C%20coin%2C%20pay%29/">
+    <link rel="shortcut icon" href="../../../../assets/cover.png">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Sui Move Standard Library - Core Token Package (balance, coin, pay) - Harry's Blog</title>
+    <link href="../../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <!-- mkdocs_windmill/partials/scripts.html -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S5RMPC6VZL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S5RMPC6VZL');
+</script>
+    
+    <script src="../../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Sui Move Standard Library - Core Token Package (balance, coin, pay)", url: "#_top", children: [
+          ]},
+          {title: "1. Module Description", url: "#1-module-description", children: [
+          ]},
+          {title: "2. Method Description", url: "#2-method-description", children: [
+              {title: "2.1 sui::balance", url: "#21-suibalance" },
+              {title: "2.2 sui::coin", url: "#22-suicoin" },
+              {title: "2.3 sui::coin (Regulated currency \u0026amp; deny list functions)", url: "#23-suicoin-regulated-currency-deny-list-functions" },
+              {title: "2.4 sui::pay", url: "#24-suipay" },
+          ]},
+          {title: "3. Example", url: "#3-example", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../../js/base.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <meta property="og:title" content="Harry's Blog - Developer Documentation Technical Writer 🚀">
+    <meta property="og:description" content="Học Blockchain dễ hiểu, dành cho dev Web3">
+    <meta property="og:image" content="https://harriweb3.dev/assets/facebook_cover.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://harriweb3.dev/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Harry's Blog - Developer Documentation Technical Writer 🚀 ">
+    <meta name="twitter:description" content="Học Blockchain dễ hiểu, dành cho dev Web3 mới vào nghề!">
+    <meta name="twitter:image" content="https://harriweb3.dev/assets/facebook_cover.png">
+
+
+  <link rel="stylesheet" href="../../../../css/extra.css">
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../../Walrus%20dev/Deploy_walrus/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../../Walrus%20dev/Deploy_walrus/" class="btn btn-xs btn-link">
+        How to deploy a walrus site?
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Illustration%20of%20type%20name/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Illustration%20of%20type%20name/" class="btn btn-xs btn-link">
+        Illustration of Sui Move standard library - type name (type_name)
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="sui-move-standard-library-core-token-package-balance-coin-pay">Sui Move Standard Library - Core Token Package (balance, coin, pay)</h1>
+<p>This article analyzes the three core components of Sui Move tokens: balance (value storage layer), coin (token operation layer), and pay (payment abstraction layer). Through principle diagrams and code examples, the design principles of the three-layer architecture are revealed.</p>
+<h1 id="1-module-description">1. Module Description</h1>
+<table>
+<thead>
+<tr>
+<th>Modules</th>
+<th>Tiers</th>
+<th>Function</th>
+<th>Scenario</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sui::balance</code></td>
+<td>Value storage layer (underlying storage)</td>
+<td>Manage the mapping relationship <strong>between addresses and token balances</strong></td>
+<td>Balance query, token ownership verification</td>
+</tr>
+<tr>
+<td><code>sui::coin</code></td>
+<td>Token operation layer (basic operation)</td>
+<td>Focus on <strong>the life cycle management of the token itself</strong>, including: token creation, destruction and metadata management</td>
+<td>Custom token issuance and token metadata maintenance</td>
+</tr>
+<tr>
+<td><code>sui::pay</code></td>
+<td>Payment abstraction layer (high-level encapsulation)</td>
+<td>Provides <strong>compound operations for token payment</strong>, including: single or batch token splitting, merging, transfer, etc.</td>
+<td>Batch transfer, split account logic, airdrop etc.</td>
+</tr>
+</tbody>
+</table>
+<p>The balance.move: https://github.com/MystenLabs/sui/blob/main/crates/sui-framework/packages/sui-framework/sources/balance.move</p>
+<p>The Coin.move: https://github.com/MystenLabs/sui/blob/main/crates/sui-framework/packages/sui-framework/sources/coin.move</p>
+<p>The Pay.move: https://github.com/MystenLabs/sui/blob/main/crates/sui-framework/packages/sui-framework/sources/pay.move</p>
+<p><img alt="" src="https://img.learnblockchain.cn/attachments/2025/06/KkT4imET685d6769f311e.png" /></p>
+<h1 id="2-method-description">2. Method Description</h1>
+<h2 id="21-suibalance">2.1 <code>sui::balance</code></h2>
+<table>
+<thead>
+<tr>
+<th>Classification</th>
+<th>Function Name</th>
+<th>Parameter</th>
+<th>Functional Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Balance Operations</strong></td>
+<td><code>zero</code></td>
+<td>No parameters</td>
+<td>Create a balance object with a quantity of zero</td>
+</tr>
+<tr>
+<td></td>
+<td><code>value</code></td>
+<td><code>self: &amp;Balance&lt;T&gt;</code></td>
+<td>Get the amount stored in the balance object</td>
+</tr>
+<tr>
+<td></td>
+<td><code>join</code></td>
+<td><code>self: &amp;mut Balance&lt;T&gt;, balance: Balance&lt;T&gt;</code></td>
+<td>Merge two balance objects</td>
+</tr>
+<tr>
+<td></td>
+<td><code>split</code></td>
+<td><code>self: &amp;mut Balance&lt;T&gt;, value: u64</code></td>
+<td>Separate the specified number of sub-balance objects from the balance object</td>
+</tr>
+<tr>
+<td></td>
+<td><code>withdraw_all</code></td>
+<td><code>self: &amp;mut Balance&lt;T&gt;</code></td>
+<td>Withdraw all balances, remaining balance is 0</td>
+</tr>
+<tr>
+<td></td>
+<td><code>destroy_zero</code></td>
+<td><code>balance: Balance&lt;T&gt;</code></td>
+<td>Destroys the balance object with zero quantity</td>
+</tr>
+<tr>
+<td><strong>Supply Operation</strong></td>
+<td><code>create_supply</code></td>
+<td><code>_: T</code></td>
+<td>Create new supply for type T</td>
+</tr>
+<tr>
+<td></td>
+<td><code>supply_value</code></td>
+<td><code>supply: &amp;Supply&lt;T&gt;</code></td>
+<td>Get the value of supply</td>
+</tr>
+<tr>
+<td></td>
+<td><code>increase_supply</code></td>
+<td><code>self: &amp;mut Supply&lt;T&gt;, value: u64</code></td>
+<td>Increases the supply and creates a corresponding amount of balance</td>
+</tr>
+<tr>
+<td></td>
+<td><code>decrease_supply</code></td>
+<td><code>self: &amp;mut Supply&lt;T&gt;, balance: Balance&lt;T&gt;</code></td>
+<td>Destroy balances and reduce supply</td>
+</tr>
+<tr>
+<td></td>
+<td><code>destroy_supply</code></td>
+<td><code>self: Supply&lt;T&gt;</code></td>
+<td>Destroys supply, preventing further minting and burning</td>
+</tr>
+</tbody>
+</table>
+<h2 id="22-suicoin">2.2 <code>sui::coin</code></h2>
+<table>
+<thead>
+<tr>
+<th>Classification</th>
+<th>Function Name</th>
+<th>Parameter</th>
+<th>Functional Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Supply Operation</strong></td>
+<td><code>total_supply</code></td>
+<td><code>cap: &amp;TreasuryCap&lt;T&gt;</code></td>
+<td>Returns the total number of tokens in circulation</td>
+</tr>
+<tr>
+<td></td>
+<td><code>treasury_into_supply</code></td>
+<td><code>treasury: TreasuryCap&lt;T&gt;</code></td>
+<td>Unpack TreasuryCap to obtain Supply (irreversible)</td>
+</tr>
+<tr>
+<td></td>
+<td><code>supply_immut</code></td>
+<td><code>treasury: &amp;TreasuryCap&lt;T&gt;</code></td>
+<td>Get an immutable reference to the treasury’s Supply</td>
+</tr>
+<tr>
+<td></td>
+<td><code>supply_mut</code></td>
+<td><code>treasury: &amp;mut TreasuryCap&lt;T&gt;</code></td>
+<td>Get a mutable reference to the treasury’s Supply</td>
+</tr>
+<tr>
+<td><strong>Balance Operations</strong></td>
+<td><code>value</code></td>
+<td><code>self: &amp;Coin&lt;T&gt;</code></td>
+<td>Get the value of the coin</td>
+</tr>
+<tr>
+<td></td>
+<td><code>balance</code></td>
+<td><code>coin: &amp;Coin&lt;T&gt;</code></td>
+<td>Get an immutable reference to the coin’s balance</td>
+</tr>
+<tr>
+<td></td>
+<td><code>balance_mut</code></td>
+<td><code>coin: &amp;mut Coin&lt;T&gt;</code></td>
+<td>Get a mutable reference to the coin’s balance</td>
+</tr>
+<tr>
+<td></td>
+<td><code>from_balance</code></td>
+<td><code>balance: Balance&lt;T&gt;, ctx: &amp;mut TxContext</code></td>
+<td>Wrap the balance into transferable coins</td>
+</tr>
+<tr>
+<td></td>
+<td><code>into_balance</code></td>
+<td><code>coin: Coin&lt;T&gt;</code></td>
+<td>Deconstruct coin wrapper and preserve balance</td>
+</tr>
+<tr>
+<td></td>
+<td><code>take</code></td>
+<td><code>balance: &amp;mut Balance&lt;T&gt;, value: u64, ctx: &amp;mut TxContext</code></td>
+<td>Withdraw coins of specified value from balance</td>
+</tr>
+<tr>
+<td></td>
+<td><code>put</code></td>
+<td><code>balance: &amp;mut Balance&lt;T&gt;, coin: Coin&lt;T&gt;</code></td>
+<td>Add coins to balance</td>
+</tr>
+<tr>
+<td><strong>Token Operations</strong></td>
+<td><code>join</code></td>
+<td><code>self: &amp;mut Coin&lt;T&gt;, c1: Coin&lt;T&gt;</code></td>
+<td>Merge two coins</td>
+</tr>
+<tr>
+<td></td>
+<td><code>split</code></td>
+<td><code>self: &amp;mut Coin&lt;T&gt;, split_amount: u64, ctx: &amp;mut TxContext</code></td>
+<td>Split the coin into two parts</td>
+</tr>
+<tr>
+<td></td>
+<td><code>divide_into_n</code></td>
+<td><code>self: &amp;mut Coin&lt;T&gt;, n: u64, ctx: &amp;mut TxContext</code></td>
+<td>Divide coin equally into n–1 coins</td>
+</tr>
+<tr>
+<td></td>
+<td><code>zero</code></td>
+<td><code>ctx: &amp;mut TxContext</code></td>
+<td>Create a coin with zero value</td>
+</tr>
+<tr>
+<td></td>
+<td><code>destroy_zero</code></td>
+<td><code>c: Coin&lt;T&gt;</code></td>
+<td>Destroy coins with zero value</td>
+</tr>
+<tr>
+<td></td>
+<td><code>mint</code></td>
+<td><code>cap: &amp;mut TreasuryCap&lt;T&gt;, value: u64, ctx: &amp;mut TxContext</code></td>
+<td>Mint coins of specified value</td>
+</tr>
+<tr>
+<td></td>
+<td><code>mint_balance</code></td>
+<td><code>cap: &amp;mut TreasuryCap&lt;T&gt;, value: u64</code></td>
+<td>Mint a balance of specified value</td>
+</tr>
+<tr>
+<td></td>
+<td><code>burn</code></td>
+<td><code>cap: &amp;mut TreasuryCap&lt;T&gt;, c: Coin&lt;T&gt;</code></td>
+<td>Destroy coins and reduce total supply</td>
+</tr>
+<tr>
+<td></td>
+<td><code>create_currency</code></td>
+<td><code>witness: T, decimals: u8, symbol: vector&lt;u8&gt;, name: vector&lt;u8&gt;, description: vector&lt;u8&gt;, icon_url: Option&lt;u8&gt;, ctx: &amp;mut TxContext</code></td>
+<td>Create a new currency type</td>
+</tr>
+<tr>
+<td></td>
+<td><code>mint_and_transfer</code></td>
+<td><code>c: &amp;mut TreasuryCap&lt;T&gt;, amount: u64, recipient: address, ctx: &amp;mut TxContext</code></td>
+<td>Mint coins and transfer to recipients</td>
+</tr>
+<tr>
+<td><strong>Metadata Operations</strong></td>
+<td><code>update_name</code></td>
+<td><code>t_treasury: &amp;mut TreasuryCap&lt;T&gt;, metadata: &amp;mut CoinMetadata&lt;T&gt;, name: string::String</code></td>
+<td>Update the name of the coin</td>
+</tr>
+<tr>
+<td></td>
+<td><code>update_symbol</code></td>
+<td><code>t_treasury: &amp;mut TreasuryCap&lt;T&gt;, metadata: &amp;mut CoinMetadata&lt;T&gt;, symbol: ascii::String</code></td>
+<td>Update coin symbol</td>
+</tr>
+<tr>
+<td></td>
+<td><code>update_description</code></td>
+<td><code>t_treasury: &amp;mut TreasuryCap&lt;T&gt;, metadata: &amp;mut CoinMetadata&lt;T&gt;, description: string::String</code></td>
+<td>Update coin description</td>
+</tr>
+<tr>
+<td></td>
+<td><code>update_icon_url</code></td>
+<td><code>t_treasury: &amp;mut TreasuryCap&lt;T&gt;, metadata: &amp;mut CoinMetadata&lt;T&gt;, url: ascii::String</code></td>
+<td>Update the coin icon URL</td>
+</tr>
+<tr>
+<td></td>
+<td><code>get_decimals</code></td>
+<td><code>metadata: &amp;CoinMetadata&lt;T&gt;</code></td>
+<td>Get number of decimal places of the coin</td>
+</tr>
+<tr>
+<td></td>
+<td><code>get_name</code></td>
+<td><code>metadata: &amp;CoinMetadata&lt;T&gt;</code></td>
+<td>Get the name of the coin</td>
+</tr>
+<tr>
+<td></td>
+<td><code>get_symbol</code></td>
+<td><code>metadata: &amp;CoinMetadata&lt;T&gt;</code></td>
+<td>Get the coin symbol</td>
+</tr>
+<tr>
+<td></td>
+<td><code>get_description</code></td>
+<td><code>metadata: &amp;CoinMetadata&lt;T&gt;</code></td>
+<td>Get the description of the coin</td>
+</tr>
+<tr>
+<td></td>
+<td><code>get_icon_url</code></td>
+<td><code>metadata: &amp;CoinMetadata&lt;T&gt;</code></td>
+<td>Get the coin icon URL</td>
+</tr>
+</tbody>
+</table>
+<h2 id="23-suicoin-regulated-currency-deny-list-functions">2.3 <code>sui::coin</code> (Regulated currency &amp; deny list functions)</h2>
+<table>
+<thead>
+<tr>
+<th>Classification</th>
+<th>Function Name</th>
+<th>Parameter</th>
+<th>Functional Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Create and Migrate</strong></td>
+<td><code>create_regulated_currency_v2</code></td>
+<td><code>witness: T, decimals: u8, symbol: vector&lt;u8&gt;, name: vector&lt;u8&gt;, description: vector&lt;u8&gt;, icon_url: Option&lt;u8&gt;, allow_global_pause: bool, ctx: &amp;mut TxContext</code></td>
+<td>Creating a Currency with Regulatory Functions</td>
+</tr>
+<tr>
+<td></td>
+<td><code>migrate_regulated_currency_to_v2</code></td>
+<td><code>deny_list: &amp;mut DenyList, cap: DenyCap&lt;T&gt;, allow_global_pause: bool, ctx: &amp;mut TxContext</code></td>
+<td>Migrate regulated currency to v2</td>
+</tr>
+<tr>
+<td><strong>Blacklist Operation</strong></td>
+<td><code>deny_list_v2_add</code></td>
+<td><code>deny_list: &amp;mut DenyList, _deny_cap: &amp;mut DenyCapV2&lt;T&gt;, addr: address, ctx: &amp;mut TxContext</code></td>
+<td>Add an address to a deny list</td>
+</tr>
+<tr>
+<td></td>
+<td><code>deny_list_v2_remove</code></td>
+<td><code>deny_list: &amp;mut DenyList, _deny_cap: &amp;mut DenyCapV2&lt;T&gt;, addr: address, ctx: &amp;mut TxContext</code></td>
+<td>Remove an address from the deny list</td>
+</tr>
+<tr>
+<td></td>
+<td><code>deny_list_v2_contains_current_epoch</code></td>
+<td><code>deny_list: &amp;DenyList, addr: address, ctx: &amp;TxContext</code></td>
+<td>Check if current epoch's deny list contains the address</td>
+</tr>
+<tr>
+<td></td>
+<td><code>deny_list_v2_contains_next_epoch</code></td>
+<td><code>deny_list: &amp;DenyList, addr: address</code></td>
+<td>Check if next epoch's deny list contains the address</td>
+</tr>
+<tr>
+<td></td>
+<td><code>deny_list_v2_enable_global_pause</code></td>
+<td><code>deny_list: &amp;mut DenyList, deny_cap: &amp;mut DenyCapV2&lt;T&gt;, ctx: &amp;mut TxContext</code></td>
+<td>Enable global pause</td>
+</tr>
+<tr>
+<td></td>
+<td><code>deny_list_v2_disable_global_pause</code></td>
+<td><code>deny_list: &amp;mut DenyList, deny_cap: &amp;mut DenyCapV2&lt;T&gt;, ctx: &amp;mut TxContext</code></td>
+<td>Disable global pause</td>
+</tr>
+<tr>
+<td></td>
+<td><code>deny_list_v2_is_global_pause_enabled_current_epoch</code></td>
+<td><code>deny_list: &amp;DenyList, ctx: &amp;TxContext</code></td>
+<td>Check if global pause is enabled for the current epoch</td>
+</tr>
+<tr>
+<td></td>
+<td><code>deny_list_v2_is_global_pause_enabled_next_epoch</code></td>
+<td><code>deny_list: &amp;DenyList</code></td>
+<td>Check if global pause is enabled for the next epoch</td>
+</tr>
+</tbody>
+</table>
+<h2 id="24-suipay">2.4 <code>sui::pay</code></h2>
+<table>
+<thead>
+<tr>
+<th>Classification</th>
+<th>Function Name</th>
+<th>Parameter</th>
+<th>Functional Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Transfer</strong></td>
+<td><code>keep</code></td>
+<td><code>c: Coin&lt;T&gt;, ctx: &amp;TxContext</code></td>
+<td>Transfer coins to the sender of the current transaction</td>
+</tr>
+<tr>
+<td><strong>Segmentation</strong></td>
+<td><code>split</code></td>
+<td><code>coin: &amp;mut Coin&lt;T&gt;, split_amount: u64, ctx: &amp;mut TxContext</code></td>
+<td>Split the coin into two parts, specify the split amount</td>
+</tr>
+<tr>
+<td></td>
+<td><code>split_vec</code></td>
+<td><code>self: &amp;mut Coin&lt;T&gt;, split_amounts: vector&lt;u64&gt;, ctx: &amp;mut TxContext</code></td>
+<td>Split the coin into multiple coins, balances specified by a vector</td>
+</tr>
+<tr>
+<td></td>
+<td><code>split_and_transfer</code></td>
+<td><code>c: &amp;mut Coin&lt;T&gt;, amount: u64, recipient: address, ctx: &amp;mut TxContext</code></td>
+<td>Split specified amount of coins and send them to the recipient</td>
+</tr>
+<tr>
+<td></td>
+<td><code>divide_and_keep</code></td>
+<td><code>self: &amp;mut Coin&lt;T&gt;, n: u64, ctx: &amp;mut TxContext</code></td>
+<td>Divide the coin into n–1 coins equally, and keep the remainder</td>
+</tr>
+<tr>
+<td><strong>Merge</strong></td>
+<td><code>join</code></td>
+<td><code>self: &amp;mut Coin&lt;T&gt;, coin: Coin&lt;T&gt;</code></td>
+<td>Merge two coins (<strong>deprecated</strong>)</td>
+</tr>
+<tr>
+<td></td>
+<td><code>join_vec</code></td>
+<td><code>self: &amp;mut Coin&lt;T&gt;, coins: vector&lt;Coin&lt;T&gt;&gt;</code></td>
+<td>Merge all coins in the vector into the main coin</td>
+</tr>
+<tr>
+<td></td>
+<td><code>join_vec_and_transfer</code></td>
+<td><code>coins: vector&lt;Coin&lt;T&gt;&gt;, receiver: address</code></td>
+<td>Combine the coins in the vector and transfer them to the recipient</td>
+</tr>
+</tbody>
+</table>
+<h1 id="3-example">3. Example</h1>
+<pre><code>module cookbook::aig_token {
+    use std::string::{Self, String};
+    use std::ascii;
+    use sui::coin::{Self, TreasuryCap};
+    use sui::balance::{Self, Balance};
+    use sui::url::{Self, Url};
+    use sui::event;
+
+    public struct EventMint has copy, drop {
+        sender: address,
+        amount: u64,
+        coin_left: u64
+    }
+
+    public struct EventAirdrop has copy, drop {
+        method: String,
+        sender: address,
+        amount: u64
+    }
+
+    public struct EventCoinMeta has copy, drop {
+        decimals: u8,
+        symbol: ascii::String,
+        name: String,
+        description: String,
+        icon_url: Option&lt;Url&gt;,
+    }
+
+    public struct EventTotalSupply has copy, drop {
+        total_supply: u64
+    }
+
+    public struct Vault has key {
+        id: UID,
+        balance: Balance&lt;AIG_TOKEN&gt;,
+    }
+
+    public struct AIG_TOKEN has drop {}
+
+    fun init(
+        witness: AIG_TOKEN,
+        ctx: &amp;mut TxContext
+    ) {
+
+        let decimals = 3;
+        let symbol = b&quot;AIG&quot;;
+        let name = b&quot;AIG Token&quot;;
+        let description = b&quot;AIG Token is a token that is used to incentivize the community to achieve the goals of the AI Goal.&quot;;
+        let url = url::new_unsafe_from_bytes(b&quot;https://ai-goal.vercel.app/&quot;);
+
+        let (treasury_cap, metadata) = coin::create_currency&lt;AIG_TOKEN&gt;(
+            witness,
+            decimals,
+            symbol,
+            name,
+            description,
+            option::some(url),
+            ctx
+        );
+
+        event::emit(
+            EventCoinMeta {
+                decimals: coin::get_decimals(&amp;metadata),
+                symbol: coin::get_symbol(&amp;metadata),
+                name: coin::get_name(&amp;metadata),
+                description: coin::get_description(&amp;metadata),
+                icon_url: option::some(url),
+            }
+        );
+
+        transfer::public_freeze_object(metadata);
+        transfer::public_transfer(treasury_cap, ctx.sender());
+
+        transfer::share_object(
+            Vault {
+                id: object::new(ctx),
+                balance: balance::zero(),
+            }
+        );
+    }
+
+    public(package) fun airdrop(
+        vault: &amp;mut Vault,
+        amount: u64,
+        method: vector&lt;u8&gt;,
+        ctx: &amp;mut TxContext
+    ) {
+        let sender = ctx.sender();
+
+        let mut balance_drop = balance::split(&amp;mut vault.balance, amount);
+        let coin_drop = coin::take(&amp;mut balance_drop, amount, ctx);
+        transfer::public_transfer(coin_drop, sender);
+        balance::destroy_zero(balance_drop);
+
+        event::emit(
+            EventAirdrop {
+                method: string::utf8(method),
+                sender,
+                amount,
+            }
+        );
+    }
+
+    public fun mint_balance(
+        treasury_cap: &amp;mut TreasuryCap&lt;AIG_TOKEN&gt;,
+        vault: &amp;mut Vault,
+        amount: u64,
+        ctx: &amp;mut TxContext
+    ) {
+        let balance_minted = coin::mint_balance(treasury_cap, amount);
+        balance::join(&amp;mut vault.balance, balance_minted);
+
+        event::emit(
+            EventMint {
+                sender: ctx.sender(),
+                amount: amount,
+                coin_left: balance::value(&amp;vault.balance)
+            }
+        );
+    }
+
+    #[allow(lint(self_transfer))]
+    public fun mint_coin(
+        treasury_cap: &amp;mut TreasuryCap&lt;AIG_TOKEN&gt;,
+        amount: u64,
+        ctx: &amp;mut TxContext
+    ) {
+        let coin_minted = coin::mint(treasury_cap, amount, ctx);
+        transfer::public_transfer(coin_minted, ctx.sender());
+
+        coin::mint_and_transfer(
+            treasury_cap,
+            amount,
+            ctx.sender(),
+            ctx
+        );
+
+        event::emit(
+            EventTotalSupply {
+                total_supply: coin::total_supply(treasury_cap)
+            }
+        )
+    }
+}
+
+</code></pre>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../../Walrus%20dev/Deploy_walrus/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../../Walrus%20dev/Deploy_walrus/" class="btn btn-xs btn-link">
+        How to deploy a walrus site?
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Illustration%20of%20type%20name/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Illustration%20of%20type%20name/" class="btn btn-xs btn-link">
+        Illustration of Sui Move standard library - type name (type_name)
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<div class="giscus-wrapper">
+  <div class="giscus"></div>
+  <script src="https://giscus.app/client.js"
+          data-repo="hien-p/hari-docs"
+          data-repo-id="R_kgDOPQrn9w"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOPQrn984CtVCd"
+          data-mapping="title"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="1"
+          data-input-position="top"
+          data-theme="light"
+          data-lang="en"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
+
+<!-- <footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer> -->
+
+</body>
+</html>

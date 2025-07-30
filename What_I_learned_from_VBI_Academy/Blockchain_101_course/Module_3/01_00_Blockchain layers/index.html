@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://hien-p.github.io/hari-docs/What_I_learned_from_VBI_Academy/Blockchain_101_course/Module_3/01_00_Blockchain%20layers/">
+    <link rel="shortcut icon" href="../../../../assets/cover.png">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Layer 0, 1, 2, 3 - Hiểu Kiến Trúc Blockchain - Harry's Blog</title>
+    <link href="../../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <!-- mkdocs_windmill/partials/scripts.html -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S5RMPC6VZL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S5RMPC6VZL');
+</script>
+    
+    <script src="../../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Layer 0, 1, 2, 3 - Hi\u1ec3u Ki\u1ebfn Tr\u00fac Blockchain", url: "#_top", children: [
+          ]},
+          {title: "Why do we need so many layers?", url: "#why-do-we-need-so-many-layers", children: [
+          ]},
+          {title: "Layer 0 \u2013 kh\u1ea3 n\u0103ng t\u01b0\u01a1ng t\u00e1c li\u00ean chu\u1ed7i( inter-chain interactions)", url: "#layer-0-kha-nang-tuong-tac-lien-chuoi-inter-chain-interactions", children: [
+          ]},
+          {title: "Layer 1 Th\u1ef1c thi (execution) v\u00e0 x\u00e1c nh\u1eadn cu\u1ed1i c\u00f9ng (final settlement) c\u1ee7a c\u00e1c giao d\u1ecbch.", url: "#layer-1-thuc-thi-execution-va-xac-nhan-cuoi-cung-final-settlement-cua-cac-giao-dich", children: [
+              {title: "Self-improvement in ethererum", url: "#self-improvement-in-ethererum" },
+              {title: "Developer activity", url: "#developer-activity" },
+          ]},
+          {title: "Layer 2: Scaling based on Layer1", url: "#layer-2-scaling-based-on-layer1", children: [
+          ]},
+          {title: "Layer 3: Pure application layer", url: "#layer-3-pure-application-layer", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../../js/base.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <meta property="og:title" content="Harry's Blog - Developer Documentation Technical Writer 🚀">
+    <meta property="og:description" content="Học Blockchain dễ hiểu, dành cho dev Web3">
+    <meta property="og:image" content="https://harriweb3.dev/assets/facebook_cover.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://harriweb3.dev/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Harry's Blog - Developer Documentation Technical Writer 🚀 ">
+    <meta name="twitter:description" content="Học Blockchain dễ hiểu, dành cho dev Web3 mới vào nghề!">
+    <meta name="twitter:image" content="https://harriweb3.dev/assets/facebook_cover.png">
+
+
+  <link rel="stylesheet" href="../../../../css/extra.css">
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../01_01_blockchain_dilemma/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../01_01_blockchain_dilemma/" class="btn btn-xs btn-link">
+        The blockchain trilemma
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../00_00_The_Anatomy_of_Web3/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../00_00_The_Anatomy_of_Web3/" class="btn btn-xs btn-link">
+        A article on the anatomy of Web3
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="layer-0-1-2-3-hieu-kien-truc-blockchain">Layer 0, 1, 2, 3 - Hiểu Kiến Trúc Blockchain</h1>
+<p>Mục tiêu Lesson: Giải thích mô hình kiến trúc phân lớp của Blockchain, tập trung vào cách các giải pháp Layer 2 và Layer 3 giúp cải thiện khả năng mở rộng và hiệu suất của Layer 1.</p>
+<p><img alt="" src="https://www.solulab.com/wp-content/uploads/2025/06/Blockchain-Layer-0-L1-L2-and-L3-scaled.webp" /></p>
+<blockquote>
+<p>What are Layer 1 to Layer 3 doing?</p>
+</blockquote>
+<h1 id="why-do-we-need-so-many-layers">Why do we need so many layers?</h1>
+<p>“Layer” hiểu đơn giản là tầng trong hệ sinh thái blockchain, giống như cách mạng Web2 có mô hình 4 tầng TCP/IP: mỗi tầng lo một việc, từ gửi gói tin cho tới hiển thị web.</p>
+<p>Trong blockchain, cũng vậy. Hệ sinh thái thường được chia làm nhiều tầng, và mỗi tầng là đất sống của hàng loạt dự án khác nhau. Hình trên minh hoạ về các layers. </p>
+<p>Bitcoin và Ethereum ưu tiên decentralization + security lên hàng đầu. Chính nhờ đó mà chúng đảm bảo được tính open, neutral, anti-censorship. Nhưng đổi lại, khả năng mở rộng (scalability) sẽ kém. </p>
+<p>Vì thế nên devs mới tìm mọi cách để scale blockchain lên mà không phá vỡ trilemma. Một hướng phổ biến nhất là đưa phần tính toán ra off-chain (ngoài chain), chỉ để phần xác minh và lưu trữ lại on-chain. Đây chính là lý do ra đời của Layer2. Bên dưới là sơ đồ kiến trúc phân tầng: </p>
+<p><img alt="" src="https://img.learnblockchain.cn/pics/20230209171636.png" /></p>
+<h1 id="layer-0-kha-nang-tuong-tac-lien-chuoi-inter-chain-interactions">Layer 0 – khả năng tương tác liên chuỗi( inter-chain interactions)</h1>
+<p>Chúng ta sẽ bắt đầu phân tích từ tầng thấp nhất trong kiến trúc Web3 là Layer 0. Layer 0 có thể được xem như là tầng vật lý (physical layer) trong mô hình Internet truyền thống. Vì Layer 0 đóng vai trò là hạ tầng liên kết và hỗ trợ tương tác giữa nhiều Layer 1 khác nhau.</p>
+<p>Các chức năng chính được triển khai ở tầng Layer 0 bao gồm:</p>
+<ul>
+<li>
+<p>Kết nối và tương tác giữa các blockchain khác nhau (Layer 1):
+Layer 0 tạo điều kiện cho các blockchain độc lập có thể giao tiếp, chia sẻ dữ liệu hoặc tài sản, thay vì bị cô lập như trước đây.</p>
+</li>
+<li>
+<p>Tốc độ giao dịch nhanh hơn, chi phí rẻ hơn:
+Nhờ cấu trúc thiết kế từ tầng hạ tầng, Layer 0 có thể hỗ trợ Layer 1 xử lý giao dịch hiệu quả hơn, từ đó giảm chi phí và tăng throughput.</p>
+</li>
+<li>
+<p>Cung cấp hạ tầng để dễ dàng triển khai blockchain mới:
+Layer 0 thường cung cấp công cụ, SDK, framework để developers có thể tạo ra Layer 1 của riêng họ mà không phải xây lại từ đầu.</p>
+</li>
+</ul>
+<p>Những dự án tiêu biểu của Layer 0: </p>
+<ul>
+<li><strong>Cosmos</strong>: Với kiến trúc <strong>IBC (Inter-Blockchain Communication)</strong>, Cosmos cho phép các blockchain độc lập “nói chuyện” với nhau dễ dàng. Nổi bật với hệ sinh thái như <strong>Osmosis, Oraichain...</strong></li>
+<li>
+<p><strong>Polkadot</strong>: Sử dụng mô hình <strong>relay chain + parachains</strong>, giúp nhiều chain chạy song song, kết nối mượt mà. Developer có thể build chain riêng thông qua <strong>framework Substrate</strong>.</p>
+</li>
+<li>
+<p><strong>Avalanche</strong>: Mặc dù thường được nhắc là Layer 1, nhưng kiến trúc multi-chain của Avalanche <strong>(X-Chain, C-Chain, P-Chain)</strong> mang nhiều yếu tố Layer 0. Nó cho phép khởi tạo subnet riêng cho từng ứng dụng.</p>
+</li>
+<li>
+<p><strong>Cardano</strong>: Dù thường được gọi là Layer 1, nhưng mục tiêu dài hạn của Cardano là phát triển thành một nền tảng đa chuỗi, hỗ trợ nhiều dApp và blockchain vận hành song song.</p>
+</li>
+</ul>
+<h1 id="layer-1-thuc-thi-execution-va-xac-nhan-cuoi-cung-final-settlement-cua-cac-giao-dich">Layer 1 Thực thi (execution) và xác nhận cuối cùng (final settlement) của các giao dịch.</h1>
+<p>Layer 1 chính là tầng blockchain quen thuộc nhất với tất cả chúng ta nơi diễn ra việc thực thi (execution) và xác nhận cuối cùng (final settlement) của các giao dịch.</p>
+<p>Các blockchain như <strong>Bitcoin, Ethereum, BNB Chain, Solana, Sui, Aptos…</strong> đều là những ví dụ điển hình thuộc Layer 1.</p>
+<p>Ở tầng này, mỗi blockchain sẽ:</p>
+<ul>
+<li>Tự xử lý giao dịch của chính mình</li>
+<li><strong>Thiết lập cơ chế đồng thuận dữ liệu (consensus)</strong> thông qua các thuật toán như <strong>Proof of Work (PoW) hoặc Proof of Stake (PoS)</strong>..</li>
+<li>Ghi dữ liệu giao dịch lên chain để tạo thành sổ cái bất biến</li>
+</ul>
+<p>Layer 1 cũng là nơi xuất hiện tam giác bất khả thi (blockchain trilemma) nổi tiếng. Bởi vì Một blockchain khó có thể đồng thời đạt được cả 3 yếu tố:</p>
+<ul>
+<li>Scalability – khả năng mở rộng để xử lý nhiều giao dịch</li>
+<li>Security – bảo mật chống lại tấn công</li>
+<li>Decentralization – phân quyền, không bị kiểm soát bởi một bên</li>
+</ul>
+<p>Thông thường, nếu một chain tăng tốc độ (scalability), thì phải đánh đổi phần nào tính phi tập trung hoặc bảo mật và ngược lại. </p>
+<p>Ví dụ:
+* Bitcoin ưu tiên bảo mật và phân quyền → rất chậm
+* Solana tối ưu hiệu suất cao → giảm phần nào tính phân tán</p>
+<h2 id="self-improvement-in-ethererum">Self-improvement in ethererum</h2>
+<p>Nhìn vào Ethereum Roadmap, ta thấy Ethereum đang đi theo hướng tối ưu hoá từng lớp của hệ thống, mà nổi bật nhất là </p>
+<ul>
+<li>
+<p><strong>SSF (Single Slot Finality)</strong> sẽ là cơ chế sản xuất block mới với mục tiêu là tăng security + stability cho mạng lưới. Đây chính là trung tâm của quá trình nâng cấp cơ chế đồng thuận (consensus).</p>
+</li>
+<li>
+<p><strong>DA (Data Availability)</strong> là vấn đề sống còn cho tương lai các ứng dụng, đặc biệt trong bối cảnh Layer2 phát triển mạnh. Ethereum Layer1 buộc phải giải quyết bài toán này để không trở thành bottleneck.</p>
+</li>
+</ul>
+<p>EVM thì vẫn đang được liên tục upgrade qua từng bản cập nhật..</p>
+<p><img alt="" src="https://img.learnblockchain.cn/attachments/2024/03/ZAr9vwtW65e9ccff091ed.png" /></p>
+<h2 id="developer-activity">Developer activity</h2>
+<p>Một trong những điều kiện tiên quyết để một hệ sinh thái Layer1 được chấp nhận rộng rãi là sự hiện diện của một cộng đồng lập trình viên mạnh mẽ.</p>
+<p>Nếu không có các nhà phát triển xây dựng sản phẩm, sẽ không có gì để người dùng tương tác và sử dụng.</p>
+<p><img alt="" src="https://substackcdn.com/image/fetch/$s_!zdsw!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F1bf2ec1f-77e2-4db3-b9f1-0b9050cc22e8_685x324.png" /></p>
+<h1 id="layer-2-scaling-based-on-layer1">Layer 2: Scaling based on Layer1</h1>
+<p>Một trong những vấn đề lớn của Ethereum là TPS (transaction per second) quá thấp, chỉ khoảng 15–45 giao dịch mỗi giây. Kết quả là Gas fee cao, trải nghiệm tệ và các Dự án khó scale để cả hệ sinh thái phát triển chậm.</p>
+<p>Vì vậy ta cần một giải pháp mở rộng và đó là lý do Layer 2 ra đời. Hiểu đơn giản thì Layer 2 là <strong>các giải pháp mở rộng chạy song song với Layer 1</strong>, hoạt động như một “phụ tá” giúp xử lý giao dịch nhanh và rẻ hơn. Sau khi xử lý xong, kết quả sẽ được đưa trở lại Layer 1 để lưu trữ vĩnh viễn (final settlement).</p>
+<p>Layer 2 giúp Ethereum (và các Layer 1 khác) nâng cao TPS mà không phải hy sinh bảo mật hay phi tập trung</p>
+<p>Một số dạng Layer 2 phổ biến:</p>
+<ul>
+<li>
+<p><strong>zkRollup (Zero-Knowledge Rollup)</strong>: sử dụng bằng chứng mật mã để chứng minh giao dịch hợp lệ, rất bảo mật, dữ liệu nén cực tốt.</p>
+</li>
+<li>
+<p><strong>Optimistic Rollup (opRollup)</strong>: giả định mọi giao dịch là hợp lệ</p>
+</li>
+<li>
+<p><strong>Sidechain</strong>: chuỗi chạy song song, tự có cơ chế đồng thuận riêng, độ an toàn phụ thuộc vào thiết kế từng chain.</p>
+</li>
+</ul>
+<h1 id="layer-3-pure-application-layer">Layer 3: Pure application layer</h1>
+<p>Đây còn được gọi là lớp ứng dụng, là một lớp blockchain được xây dựng trên Layer 2 (và gián tiếp trên Layer 1). Nó tập trung vào việc cung cấp môi trường cho các ứng dụng phi tập trung (DApps) </p>
+<p>Hiện tại, hầu hết các layer 3 đều được xây dựng trên Ethereum: </p>
+<p><img alt="" src="https://img.learnblockchain.cn/attachments/2022/11/7QUUBQQx637ad3b461c3b.png!/scale/40" /></p>
+<p><strong>Vitalik</strong> từng <a href="https://vitalik.eth.limo/general/2022/09/17/layer_3.html">chia sẻ một vài định nghĩa khá kỹ thuật về Layer 3</a>, dù không nói rõ nó sẽ “dùng để làm gì” trong thực tế. Nhưng từ bài viết đó, có thể tóm gọn thành 3 góc nhìn về L3 như sau:</p>
+<ul>
+<li>
+<p>L2 để scale, L3 để tùy biến (custom features): Ở góc nhìn này, Layer2 đóng vai trò mở rộng TPS (throughput), còn <strong>Layer3 sinh ra để phục vụ các nhu cầu riêng</strong> ví dụ như <strong>privacy, compliance</strong>, hoặc các tính năng đặc thù của Dapp. L2 thì lo phần performance chung, còn L3 là sandbox cho mỗi ứng dụng tự tối ưu theo style riêng.</p>
+</li>
+<li>
+<p>L2 = general scaling, L3 = customized scaling: Vitalik đưa ra hướng phân biệt theo dạng scaling. L2 thì kiểu <strong>EVM-compatible</strong>, phục vụ chung cho mọi loại dApp. Còn <strong>L3 thì thiên về kiểu application-specific</strong>, tức mỗi app có thể tự chọn cách tính toán, format data riêng, thậm chí xài non-EVM VM.</p>
+</li>
+<li>
+<p>L2 = trustless (rollups), L3 = weak trust (validiums): Ở vision này, L2 thì là  fully trustless, giống như rollup: mọi thứ được xác minh và dữ liệu luôn công khai. Còn L3 sẽ là <strong>semi-trust</strong>, như <strong>Validium</strong> vẫn dùng SNARK để đảm bảo đúng sai, nhưng phần data availability thì phụ thuộc vào 1 bên thứ 3 hoặc hội đồng tin cậy.</p>
+</li>
+</ul>
+<p>Vitalik cho rằng <strong>validium bị undervalued</strong>, dù nó cực kỳ hợp với các use case enterprise, các mô hình kiểu doanh nghiệp chỉ cần đảm bảo dữ liệu được chứng thực, nhưng không cần phải công khai toàn bộ transaction ra public.</p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../01_01_blockchain_dilemma/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../01_01_blockchain_dilemma/" class="btn btn-xs btn-link">
+        The blockchain trilemma
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../00_00_The_Anatomy_of_Web3/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../00_00_The_Anatomy_of_Web3/" class="btn btn-xs btn-link">
+        A article on the anatomy of Web3
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<div class="giscus-wrapper">
+  <div class="giscus"></div>
+  <script src="https://giscus.app/client.js"
+          data-repo="hien-p/hari-docs"
+          data-repo-id="R_kgDOPQrn9w"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOPQrn984CtVCd"
+          data-mapping="title"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="1"
+          data-input-position="top"
+          data-theme="light"
+          data-lang="en"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
+
+<!-- <footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer> -->
+
+</body>
+</html>

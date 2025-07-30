@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://hien-p.github.io/hari-docs/Everything%20that%20Sui%20devs%20have%20to%20know/Move%20102/Sui%20Move%20standard%20library/Illustration%20of%20type%20name/">
+    <link rel="shortcut icon" href="../../../../assets/cover.png">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Illustration of Sui Move standard library - type name (type_name) - Harry's Blog</title>
+    <link href="../../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <!-- mkdocs_windmill/partials/scripts.html -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S5RMPC6VZL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S5RMPC6VZL');
+</script>
+    
+    <script src="../../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Illustration of Sui Move standard library - type name (type_name)", url: "#_top", children: [
+          ]},
+          {title: "Code before upgrade", url: "#code-before-upgrade", children: [
+          ]},
+          {title: "Upgraded code", url: "#upgraded-code", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../../js/base.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <meta property="og:title" content="Harry's Blog - Developer Documentation Technical Writer 🚀">
+    <meta property="og:description" content="Học Blockchain dễ hiểu, dành cho dev Web3">
+    <meta property="og:image" content="https://harriweb3.dev/assets/facebook_cover.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://harriweb3.dev/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Harry's Blog - Developer Documentation Technical Writer 🚀 ">
+    <meta name="twitter:description" content="Học Blockchain dễ hiểu, dành cho dev Web3 mới vào nghề!">
+    <meta name="twitter:image" content="https://harriweb3.dev/assets/facebook_cover.png">
+
+
+  <link rel="stylesheet" href="../../../../css/extra.css">
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Sui%20Move%20Standard%20Library%20-%20Core%20Token%20Package%20%28balance%2C%20coin%2C%20pay%29/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Sui%20Move%20Standard%20Library%20-%20Core%20Token%20Package%20%28balance%2C%20coin%2C%20pay%29/" class="btn btn-xs btn-link">
+        Sui Move Standard Library - Core Token Package (balance, coin, pay)
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../../Move%20101/move_101_module_3/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../../Move%20101/move_101_module_3/" class="btn btn-xs btn-link">
+        Advanced Smart Contract – Modules, Entry Functions &amp; Practice
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="illustration-of-sui-move-standard-library-type-name-type_name">Illustration of Sui Move standard library - type name (type_name)</h1>
+<p><code>std::type_name</code> provides functions such as obtaining type string names, parsing their composition information, and runtime reflection, which helps to construct more robust and secure contract codes by judging the types.</p>
+<ul>
+<li>Get type information : Convert Move type to string representation</li>
+<li>Determine the basic type : Check whether it is a basic data type</li>
+<li>Extract address : parse package address from type name</li>
+<li>Get module name : extract module identifier from type name</li>
+<li>String conversion : TypeNameconversion to and from strings</li>
+<li>Runtime reflection : supports dynamic type checking and processing</li>
+</ul>
+<p>Source code path: https://github.com/MystenLabs/sui/blob/main/crates/sui-framework/packages/move-stdlib/sources/type_name.move</p>
+<p>The method diagram: </p>
+<p><img alt="" src="https://img.learnblockchain.cn/attachments/2025/06/GmwRTgXw685ac0d195c87.png" /></p>
+<h1 id="code-before-upgrade">Code before upgrade</h1>
+<pre><code>module cookbook::bookself {
+    use sui::event;
+    use std::ascii::String;
+    use std::type_name::{Self, TypeName};
+
+    public struct BookShelf has key {
+        id: UID,
+    }
+
+    fun init(ctx: &amp;mut TxContext) {
+        transfer::share_object(
+            Bookshelf{
+                id: object::new(ctx),
+            }
+        );
+    }
+
+    public struct EventPrimitiveTypes has copy, drop {
+        bool_type_name: String,
+        u8_type_name: String,
+        u256_type_name: String,
+        address_type_name: String,
+        vector_type_name: String,
+        u8_is_primitive: bool,
+        book_shelf_is_primitive: bool,
+    }
+
+    public struct EventInfo has copy, drop {
+        type_name_address: String,
+        type_name_module: String,
+    }
+
+    public entry fun emit_primitive_types() {
+        event::emit(EventPrimitiveTypes{
+            bool_type_name: type_name::get&lt;bool&gt;().into_string(),
+            u8_type_name: type_name::get&lt;u8&gt;().into_string(),
+            u256_type_name: type_name::get&lt;u256&gt;().into_string(),
+            address_type_name: type_name::get&lt;address&gt;().into_string(),
+            vector_type_name: type_name::get&lt;vector&lt;u8&gt;&gt;().into_string(),
+            u8_is_primitive: type_name::get&lt;u8&gt;().is_primitive(),
+            book_shelf_is_primitive: type_name::get&lt;Bookshelf&gt;().is_primitive(),
+        })
+    }
+
+    public entry fun emit_get_info() {
+        event::emit(EventInfo{
+            type_name_address: type_name::get&lt;Bookshelf&gt;().get_address(),
+            type_name_module: type_name::get&lt;Bookshelf&gt;().get_module(), 
+        })
+    }
+}
+</code></pre>
+<p>After deployment: </p>
+<pre><code>export PACKAGE_ID=0xa2bf2b8207708d9d4e7c57e3d035537ca80e490240340369ed0837f40f231fe2
+export UPGRADE_CAP=0x8655cc8ea0c7b79abac0f15157c81c25b0a72b66efcdec32d8c8aa914faea1aa
+</code></pre>
+<pre><code>sui client call --package $PACKAGE_ID --module bookself --function emit_primitive_types
+</code></pre>
+<p>The output: </p>
+<pre><code>─────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Transaction Block Events                                                                                        │
+├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  ┌──                                                                                                            │
+│  │ EventID: 3Mkw7VBPCuyjGGWhxHd76Bog1Tb5pA183yMB2D9AwPYU:0                                                      │
+│  │ PackageID: 0xa2bf2b8207708d9d4e7c57e3d035537ca80e490240340369ed0837f40f231fe2                                │
+│  │ Transaction Module: bookself                                                                                 │
+│  │ Sender: 0x915c2d19ee5fde257693f25e6c2cabb04c25e7ae03932817d52e122258c88ddb                                   │
+│  │ EventType: 0xa2bf2b8207708d9d4e7c57e3d035537ca80e490240340369ed0837f40f231fe2::bookself::EventPrimitiveTypes │
+│  │ ParsedJSON:                                                                                                  │
+│  │   ┌─────────────────────────┬────────────┐                                                                   │
+│  │   │ address_type_name       │ address    │                                                                   │
+│  │   ├─────────────────────────┼────────────┤                                                                   │
+│  │   │ book_shelf_is_primitive │ false      │                                                                   │
+│  │   ├─────────────────────────┼────────────┤                                                                   │
+│  │   │ bool_type_name          │ bool       │                                                                   │
+│  │   ├─────────────────────────┼────────────┤                                                                   │
+│  │   │ u256_type_name          │ u256       │                                                                   │
+│  │   ├─────────────────────────┼────────────┤                                                                   │
+│  │   │ u8_is_primitive         │ true       │                                                                   │
+│  │   ├─────────────────────────┼────────────┤                                                                   │
+│  │   │ u8_type_name            │ u8         │                                                                   │
+│  │   ├─────────────────────────┼────────────┤                                                                   │
+│  │   │ vector_type_name        │ vector&lt;u8&gt; │                                                                   │
+│  │   └─────────────────────────┴────────────┘                                                                   │
+│  └──                                                                                                            │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+</code></pre>
+<p>Call the event interface of the throwing address and module name</p>
+<pre><code>sui client call --package $PACKAGE_ID --module bookself --function emit_get_info
+</code></pre>
+<pre><code>╭───────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Transaction Block Events                                                                              │
+├───────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  ┌──                                                                                                  │
+│  │ EventID: CzjFhrgr4vHxbdp6tfr13LLM3EaXrDCbW2K275Sd8jeC:0                                            │
+│  │ PackageID: 0xa2bf2b8207708d9d4e7c57e3d035537ca80e490240340369ed0837f40f231fe2                      │
+│  │ Transaction Module: bookself                                                                       │
+│  │ Sender: 0x915c2d19ee5fde257693f25e6c2cabb04c25e7ae03932817d52e122258c88ddb                         │
+│  │ EventType: 0xa2bf2b8207708d9d4e7c57e3d035537ca80e490240340369ed0837f40f231fe2::bookself::EventInfo │
+│  │ ParsedJSON:                                                                                        │
+│  │   ┌───────────────────┬──────────────────────────────────────────────────────────────────┐         │
+│  │   │ type_name_address │ a2bf2b8207708d9d4e7c57e3d035537ca80e490240340369ed0837f40f231fe2 │         │
+│  │   ├───────────────────┼──────────────────────────────────────────────────────────────────┤         │
+│  │   │ type_name_module  │ bookself                                                         │         │
+│  │   └───────────────────┴──────────────────────────────────────────────────────────────────┘         │
+│  └──                                                                                                  │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────╯
+</code></pre>
+<h1 id="upgraded-code">Upgraded code</h1>
+<p>In order to show the difference <code>get&lt;T&gt;</code> between and <code>get_with_original_ids&lt;T&gt;</code>, the contract is upgraded first. The following upgraded contract code ignores some of the codes before the upgrade.</p>
+<pre><code>module cookbook::bookshelf {
+    use sui::event;
+    use std::ascii::String;
+    use std::type_name::{Self, TypeName};
+
+    /// The Bookshelf object
+    public struct BookShelf has key {
+        id: UID,
+    }
+
+    /// Book structure definition
+    public struct Book has key {
+        id: UID,
+        /// Book title
+        title: String,
+    }   
+
+    ..
+
+    /// Event structure to emit type name comparison
+    public struct EventTypeName has copy, drop {
+        defining_id_type: String,
+        original_id_type: String,
+    }
+
+    /// Entry function to compare `get&lt;T&gt;()` and `get_with_original_ids&lt;T&gt;()`
+    public entry fun compare_get_methods&lt;T&gt;() {
+        let defining_id_type = type_name::get&lt;T&gt;();
+        let original_id_type = type_name::get_with_original_ids&lt;T&gt;();
+
+        event::emit(EventTypeName {
+            defining_id_type: defining_id_type.into_string(),
+            original_id_type: original_id_type.into_string(),
+        });
+    }
+}
+</code></pre>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Sui%20Move%20Standard%20Library%20-%20Core%20Token%20Package%20%28balance%2C%20coin%2C%20pay%29/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Sui%20Move%20Standard%20Library%20-%20Core%20Token%20Package%20%28balance%2C%20coin%2C%20pay%29/" class="btn btn-xs btn-link">
+        Sui Move Standard Library - Core Token Package (balance, coin, pay)
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../../Move%20101/move_101_module_3/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../../Move%20101/move_101_module_3/" class="btn btn-xs btn-link">
+        Advanced Smart Contract – Modules, Entry Functions &amp; Practice
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<div class="giscus-wrapper">
+  <div class="giscus"></div>
+  <script src="https://giscus.app/client.js"
+          data-repo="hien-p/hari-docs"
+          data-repo-id="R_kgDOPQrn9w"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOPQrn984CtVCd"
+          data-mapping="title"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="1"
+          data-input-position="top"
+          data-theme="light"
+          data-lang="en"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
+
+<!-- <footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer> -->
+
+</body>
+</html>

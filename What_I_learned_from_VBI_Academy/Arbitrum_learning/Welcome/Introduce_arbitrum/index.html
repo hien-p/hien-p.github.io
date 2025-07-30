@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://hien-p.github.io/hari-docs/What_I_learned_from_VBI_Academy/Arbitrum_learning/Welcome/Introduce_arbitrum/">
+    <link rel="shortcut icon" href="../../../../assets/cover.png">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Arbitrum: Tăng tốc Ethereum với công nghệ Optimistic Rollups - Harry's Blog</title>
+    <link href="../../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <!-- mkdocs_windmill/partials/scripts.html -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S5RMPC6VZL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S5RMPC6VZL');
+</script>
+    
+    <script src="../../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Arbitrum: T\u0103ng t\u1ed1c Ethereum v\u1edbi c\u00f4ng ngh\u1ec7 Optimistic Rollups", url: "#_top", children: [
+          ]},
+          {title: "Gi\u1edbi thi\u1ec7u v\u1ec1 Arbitrum", url: "#gioi-thieu-ve-arbitrum", children: [
+          ]},
+          {title: "\u01afu \u0111i\u1ec3m n\u1ed5i b\u1eadt c\u1ee7a Arbitrum", url: "#uu-iem-noi-bat-cua-arbitrum", children: [
+              {title: "1. B\u1ea3o m\u1eadt phi t\u1eadp trung (Trustless Security)", url: "#1-bao-mat-phi-tap-trung-trustless-security" },
+              {title: "2. T\u01b0\u01a1ng th\u00edch ho\u00e0n to\u00e0n v\u1edbi Ethereum (Ethereum Compatibility)", url: "#2-tuong-thich-hoan-toan-voi-ethereum-ethereum-compatibility" },
+              {title: "3. Kh\u1ea3 n\u0103ng m\u1edf r\u1ed9ng (Scalability)", url: "#3-kha-nang-mo-rong-scalability" },
+              {title: "4. Chi ph\u00ed th\u1ea5p (Low Cost)", url: "#4-chi-phi-thap-low-cost" },
+          ]},
+          {title: "Arbitrum Mainnet and Testnets", url: "#arbitrum-mainnet-and-testnets", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../../js/base.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <meta property="og:title" content="Harry's Blog - Developer Documentation Technical Writer 🚀">
+    <meta property="og:description" content="Học Blockchain dễ hiểu, dành cho dev Web3">
+    <meta property="og:image" content="https://harriweb3.dev/assets/facebook_cover.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://harriweb3.dev/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Harry's Blog - Developer Documentation Technical Writer 🚀 ">
+    <meta name="twitter:description" content="Học Blockchain dễ hiểu, dành cho dev Web3 mới vào nghề!">
+    <meta name="twitter:image" content="https://harriweb3.dev/assets/facebook_cover.png">
+
+
+  <link rel="stylesheet" href="../../../../css/extra.css">
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../../Blockchain_101_course/intro/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../../Blockchain_101_course/intro/" class="btn btn-xs btn-link">
+        Intro this course from VBI Academy
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../Build%20with%20Stylus/resources/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../Build%20with%20Stylus/resources/" class="btn btn-xs btn-link">
+        RESOURCES TO GET YOU STARTED WITH ARBITRUM STYLUS
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="arbitrum-tang-toc-ethereum-voi-cong-nghe-optimistic-rollups">Arbitrum: Tăng tốc Ethereum với công nghệ Optimistic Rollups</h1>
+<h1 id="gioi-thieu-ve-arbitrum">Giới thiệu về Arbitrum</h1>
+<p><a href="https://youtu.be/UQqvO4SlUZ4">Video</a></p>
+<p>Arbitrum là một trong những giải pháp mở rộng quy mô (scaling solution)ucủa Ethereum, nhưng ít ai biết rằng nó được khởi nguồn từ môi trường học thuật.</p>
+<blockquote>
+<p>Dự án được hình thành tại Đại học Princeton (Mỹ), nơi Giáo sư Ed Felten đã khởi xướng ý tưởng cùng với hai nghiên cứu sinh tiến sĩ của mình là Steven Goldfeder và Harry Kalodner.</p>
+</blockquote>
+<p>Từ những thảo luận học thuật ban đầu vào năm 2015, đến năm 2018, nhóm nghiên cứu đã chính thức công bố một bài nghiên cứu chi tiết về giải pháp mở rộng Ethereum, đồng thời xin cấp phép thương mại hoá công nghệ từ Đại học Princeton. Từ đây, Arbitrum chính thức ra đời và tiếp tục phát triển mạnh mẽ dưới sự điều hành của công ty <strong>Offchain Labs</strong> – nơi cả ba người sáng lập cùng tham gia.</p>
+<p>Vào tháng 8 năm 2021, Arbitrum đã huy động thành công <strong>120 triệu USD</strong> trong vòng gọi vốn Series B, đạt mức định giá <strong>1,2 tỷ USD</strong>, chính thức trở thành một kỳ lân (unicorn) trong ngành blockchain.</p>
+<p>Mục tiêu trọng tâm của Arbitrum là giải quyết <strong>vấn đề tắc nghẽn và chi phí cao của Ethereum</strong>, đồng thời vẫn duy trì được các yếu tố cốt lõi như <strong>tính bảo mật, tính phi tập trung, và khả năng tương thích với EVM.</strong></p>
+<p><img alt="https://pbs.twimg.com/media/GwPMeUIbkAALkVC?format=jpg&amp;name=medium" src="https://pbs.twimg.com/media/GwPMeUIbkAALkVC?format=jpg&amp;name=medium" /></p>
+<p>Để hiện thực hóa điều này, Arbitrum sử dụng một giải pháp có tên gọi Optimistic Rollup – cơ chế giúp gộp nhiều giao dịch thành một cụm và xử lý ngoài chuỗi chính (off-chain), sau đó ghi lại kết quả lên Ethereum. Cách làm này giúp giảm tải cho mạng lưới Ethereum.</p>
+<p>Hiện tại, hệ sinh thái Arbitrum bao gồm nhiều sản phẩm phục vụ các nhu cầu khác nhau trong Web3:</p>
+<ul>
+<li>Arbitrum One: mạng Layer 2 chính dành cho hầu hết các ứng dụng DeFi và dApps thông thường.</li>
+<li>Arbitrum Nitro: kiến trúc nâng cấp giúp cải thiện hiệu suất của Arbitrum One, giảm chi phí và tăng thông lượng.</li>
+<li>Arbitrum Nova: mạng chuyên biệt cho các ứng dụng có tần suất giao dịch cao như gaming và mạng xã hội.</li>
+<li>Arbitrum Orbit: framework cho phép các developer tạo Layer 3 chain tuỳ chỉnh, xây dựng hệ sinh thái riêng trên nền tảng Arbitrum.</li>
+<li>Arbitrum Stylus: môi trường lập trình mới cho phép viết smart contract bằng Rust, C và C++, mở rộng khả năng phát triển ra ngoài phạm vi của Solidity.</li>
+</ul>
+<p><img alt="" src="https://storage.googleapis.com/hackquest-gcs-prod-asia-northeast1/courses/6d9521f9-7953-4041-9548-64038a35362a/172cd9f1-c69f-49bc-8c93-3f59f594c7d3/0da030fd-4c40-4ef9-a10a-82585eed2990/3pJve-f_CIroY1XyaO7v-.webp?X-Goog-Algorithm=GOOG4-RSA-SHA256&amp;X-Goog-Credential=hackquest-server-prod%40artela-hackquest.iam.gserviceaccount.com%2F20250730%2Fauto%2Fstorage%2Fgoog4_request&amp;X-Goog-Date=20250730T101751Z&amp;X-Goog-Expires=3600&amp;X-Goog-SignedHeaders=host&amp;X-Goog-Signature=00ac4aa4288a5bc7a4fc53fe764e398f3635e866205d7b23ae3a15ab5cd4eb647add4e6e3c8e969a56b028b6e8f49b0e8d5591e6f793d98b5d43e57925aa8fe5ea57751a27c940265ac228a74a4725c023ca728f3167aecfaaa694044e4a584a23fe53de94de83033677dae765bd67256b0260921a0b2657af47ad05ee908766cd6fb490bba6c2753536284185d964d2fa627bf980191389f077bb7892509793680818d4d2fe8d9de52f215e0aa22fb1331a5e5edd2c30ad607ece6d579c8e43f1e425ffa78d808534a16b32f24080e78a623da68a43b0c72cd1f3c9be02f8d7b7690b8a563cd2593ad1305c053ea201d16c46ef45bd4103782d21911f82e460" /></p>
+<h1 id="uu-iem-noi-bat-cua-arbitrum">Ưu điểm nổi bật của Arbitrum</h1>
+<h2 id="1-bao-mat-phi-tap-trung-trustless-security">1. Bảo mật phi tập trung (Trustless Security)</h2>
+<p>Hệ thống bảo mật của Arbitrum được kế thừa trực tiếp từ Ethereum. Nhờ đó, người dùng có thể tự xác minh kết quả thực thi trên Layer 2 mà không cần tin cậy vào bất kỳ bên trung gian nào. Đây là yếu tố quan trọng đảm bảo tính phi tập trung và minh bạch của mạng lưới.</p>
+<h2 id="2-tuong-thich-hoan-toan-voi-ethereum-ethereum-compatibility">2. Tương thích hoàn toàn với Ethereum (Ethereum Compatibility)</h2>
+<p>Arbitrum hỗ trợ toàn bộ các tiêu chuẩn của EVM (Ethereum Virtual Machine), bao gồm cả smart contract và các giao dịch thông thường. Điều này có nghĩa là:</p>
+<ul>
+<li>Các contract viết bằng Solidity có thể triển khai lại trên Arbitrum mà không cần chỉnh sửa.</li>
+<li>Các công cụ phát triển như Hardhat, Foundry hay Remix đều có thể sử dụng với Arbitrum.</li>
+</ul>
+<p>Tính tương thích này giúp giảm thời gian học tập và chuyển đổi của nhà phát triển, đồng thời tận dụng lại toàn bộ hệ sinh thái công cụ sẵn có từ Ethereum.</p>
+<h2 id="3-kha-nang-mo-rong-scalability">3. Khả năng mở rộng (Scalability)</h2>
+<p>Arbitrum sử dụng cơ chế Optimistic Rollup để di chuyển phần lớn hoạt động tính toán và lưu trữ ra khỏi chuỗi chính (off-chain), chỉ ghi lại dữ liệu tổng hợp lên Ethereum. Nhờ đó:</p>
+<ul>
+<li>Tăng đáng kể thông lượng xử lý giao dịch (throughput)
+    •   Giảm tắc nghẽn mạng
+    •   Tối ưu trải nghiệm người dùng, đặc biệt trong các dApp có lưu lượng truy cập lớn</li>
+</ul>
+<h2 id="4-chi-phi-thap-low-cost">4. Chi phí thấp (Low Cost)</h2>
+<p>Arbitrum được thiết kế để giảm thiểu lượng phí gas cần trả trên Ethereum Layer 1, từ đó hạ thấp chi phí trên mỗi giao dịch. Đây là một trong những lý do khiến Arbitrum trở thành lựa chọn hàng đầu trong các ứng dụng DeFi, gaming và mạng xã hội phi tập trung.</p>
+<h1 id="arbitrum-mainnet-and-testnets">Arbitrum Mainnet and Testnets</h1>
+<p>?E3</p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../../Blockchain_101_course/intro/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../../Blockchain_101_course/intro/" class="btn btn-xs btn-link">
+        Intro this course from VBI Academy
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../Build%20with%20Stylus/resources/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../Build%20with%20Stylus/resources/" class="btn btn-xs btn-link">
+        RESOURCES TO GET YOU STARTED WITH ARBITRUM STYLUS
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<div class="giscus-wrapper">
+  <div class="giscus"></div>
+  <script src="https://giscus.app/client.js"
+          data-repo="hien-p/hari-docs"
+          data-repo-id="R_kgDOPQrn9w"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOPQrn984CtVCd"
+          data-mapping="title"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="1"
+          data-input-position="top"
+          data-theme="light"
+          data-lang="en"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
+
+<!-- <footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer> -->
+
+</body>
+</html>

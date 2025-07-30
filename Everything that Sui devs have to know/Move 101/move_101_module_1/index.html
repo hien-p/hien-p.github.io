@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://hien-p.github.io/hari-docs/Everything%20that%20Sui%20devs%20have%20to%20know/Move%20101/move_101_module_1/">
+    <link rel="shortcut icon" href="../../../assets/cover.png">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Move 101 module 1 - Harry's Blog</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <!-- mkdocs_windmill/partials/scripts.html -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S5RMPC6VZL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S5RMPC6VZL');
+</script>
+    
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Move 101 \u2013 Bu\u1ed5i 1: Gi\u1edbi thi\u1ec7u Sui Blockchain v\u00e0 Move", url: "#_top", children: [
+              {title: "\u0110\u00e2y ch\u00ednh l\u00e0 core idea c\u1ee7a Sui: Parallel Execution via Object-centric State Management.", url: "#ay-chinh-la-core-idea-cua-sui-parallel-execution-via-object-centric-state-management" },
+          ]},
+          {title: "V\u1eady Sui l\u00e0m \u0111\u01b0\u1ee3c \u0111i\u1ec1u \u0111\u00f3 nh\u01b0 th\u1ebf n\u00e0o?", url: "#vay-sui-lam-uoc-ieu-o-nhu-the-nao", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../search/main.js"></script>
+    <meta property="og:title" content="Harry's Blog - Developer Documentation Technical Writer 🚀">
+    <meta property="og:description" content="Học Blockchain dễ hiểu, dành cho dev Web3">
+    <meta property="og:image" content="https://harriweb3.dev/assets/facebook_cover.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://harriweb3.dev/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Harry's Blog - Developer Documentation Technical Writer 🚀 ">
+    <meta name="twitter:description" content="Học Blockchain dễ hiểu, dành cho dev Web3 mới vào nghề!">
+    <meta name="twitter:image" content="https://harriweb3.dev/assets/facebook_cover.png">
+
+
+  <link rel="stylesheet" href="../../../css/extra.css">
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../move_101_module_2/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../move_101_module_2/" class="btn btn-xs btn-link">
+        Move 101 module 2
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../Individial%20articles%20/Suiup%20tool%3A%20solve%20version%20management%20and%20user%20experience%20issues/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../Individial%20articles%20/Suiup%20tool%3A%20solve%20version%20management%20and%20user%20experience%20issues/" class="btn btn-xs btn-link">
+        What is SuiUp?
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <hr />
+<p>title: Move 101 – Buổi 1: Giới thiệu Sui Blockchain và Move
+summary: Move 101 – Buổi 1: Giới thiệu Sui Blockchain và Move
+  - Harry Phan 
+date: 2025-07-12
+some_url: </p>
+<hr />
+<p><img alt="" src="https://scontent-hkg1-1.xx.fbcdn.net/v/t39.30808-6/521766420_760522626660610_2328849087728819226_n.jpg?_nc_cat=109&amp;ccb=1-7&amp;_nc_sid=aa7b47&amp;_nc_eui2=AeFdS37NQq0m_wxCn3VlwblzcmXwRwja2S9yZfBHCNrZLz1nabjY_wZ5p-jHOcWXaXNzy0brcfh8PI2ZNOMgLGdP&amp;_nc_ohc=YX5uilUwubkQ7kNvwGoHQ3L&amp;_nc_oc=AdllMsDyMmBxTRILNuV8_5R-_tj6INSYPQfn3fDOONv18mT6PNm1StUAk-ghq0H7k-g&amp;_nc_zt=23&amp;_nc_ht=scontent-hkg1-1.xx&amp;_nc_gid=FSKYOH0r3D0vYQ04Nix9qw&amp;oh=00_AfT7Nb3p1pbvV5tQG-ImgXQALA17WuQkluXyR6B0KNqL1g&amp;oe=68867B7A" /></p>
+<h1 id="move-101-buoi-1-gioi-thieu-sui-blockchain-va-move">Move 101 – Buổi 1: Giới thiệu Sui Blockchain và Move</h1>
+<p>Link Luma: https://lu.ma/1ybrbfcf </p>
+<blockquote>
+<p>Bài viết này để recap lại event hôm <code>Saturday, July 12</code>. </p>
+</blockquote>
+<p>Nếu Blockchain là một căn nhà ?</p>
+<p>Hình dung blockchain như một căn nhà. Trong nhà đó có nhiều phòng: A, B, C, D… nhưng vấn đề là mỗi lần chỉ được 1 người bước vô nhà. Người đó vô rồi thì người khác phải xếp hàng chờ để xử lý tuần tự từng người một. Đó là kiểu sequential processing của blockchain truyền thống.</p>
+<p>Mọi người thấy rõ vấn đề rồi đúng không? Vậy giả sử tại sao không chia căn nhà ra thành những phòng độc lập, để người khác có thể vào các phòng song song (parallel) mà không đụng nhau?</p>
+<p>Thay vì coi căn nhà là một khối thống nhất, mình chia ra thành từng phòng độc lập thì mỗi phòng là một object riêng biệt.</p>
+<blockquote>
+<p>Bạn cần vào phòng A, mình cần vào phòng D → tụi mình cùng vào xử lý song song</p>
+</blockquote>
+<h2 id="ay-chinh-la-core-idea-cua-sui-parallel-execution-via-object-centric-state-management">Đây chính là core idea của Sui: <strong>Parallel Execution via Object-centric State Management.</strong></h2>
+<h1 id="vay-sui-lam-uoc-ieu-o-nhu-the-nao">Vậy Sui làm được điều đó như thế nào?</h1>
+<p>Sui scale theo chiều ngang (horizontal) để đáp ứng nhu cầu cao của mạng. Khi cần, validators có thể thêm compute power để xử lý nhiều giao dịch hơn.
+Ngoài ra thì Gas fee trên Sui vẫn thấp và ổn định dù traffic tăng cao, nhờ vào tokenomics thiết kế hợp lý. Do Validators được incentivized bằng việc xử lý nhiều tx hơn chứ không phải tăng gas fee.</p>
+<p>Bên cạnh đó Khả năng scale của Sui không chỉ dừng ở transaction processing. Phần storage cũng rẻ và có thể scale theo chiều ngang(horizontally scalable) . Nên devs có thể tạo ra các tài sản (object) phức tạp, nhiều thuộc tính trên on chain.</p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../move_101_module_2/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../move_101_module_2/" class="btn btn-xs btn-link">
+        Move 101 module 2
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../Individial%20articles%20/Suiup%20tool%3A%20solve%20version%20management%20and%20user%20experience%20issues/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../Individial%20articles%20/Suiup%20tool%3A%20solve%20version%20management%20and%20user%20experience%20issues/" class="btn btn-xs btn-link">
+        What is SuiUp?
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<div class="giscus-wrapper">
+  <div class="giscus"></div>
+  <script src="https://giscus.app/client.js"
+          data-repo="hien-p/hari-docs"
+          data-repo-id="R_kgDOPQrn9w"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOPQrn984CtVCd"
+          data-mapping="title"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="1"
+          data-input-position="top"
+          data-theme="light"
+          data-lang="en"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
+
+<!-- <footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer> -->
+
+</body>
+</html>

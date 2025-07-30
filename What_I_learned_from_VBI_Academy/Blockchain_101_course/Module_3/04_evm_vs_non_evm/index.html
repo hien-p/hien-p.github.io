@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://hien-p.github.io/hari-docs/What_I_learned_from_VBI_Academy/Blockchain_101_course/Module_3/04_evm_vs_non_evm/">
+    <link rel="shortcut icon" href="../../../../assets/cover.png">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>EVM vs Non-EVM - Chọn Nền Tảng Nào? - Harry's Blog</title>
+    <link href="../../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <!-- mkdocs_windmill/partials/scripts.html -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S5RMPC6VZL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S5RMPC6VZL');
+</script>
+    
+    <script src="../../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "EVM vs Non-EVM - Ch\u1ecdn N\u1ec1n T\u1ea3ng N\u00e0o?", url: "#_top", children: [
+              {title: "Objective", url: "#objective" },
+          ]},
+          {title: "S\u1ef1 kh\u00e1c bi\u1ec7t gi\u1eefa EVM v\u00e0 non EVM", url: "#su-khac-biet-giua-evm-va-non-evm", children: [
+          ]},
+          {title: "Code Comparison Example: Counter Contract", url: "#code-comparison-example-counter-contract", children: [
+          ]},
+          {title: "Security v\u00e0 Auditing", url: "#security-va-auditing", children: [
+          ]},
+          {title: "So s\u00e1nh hi\u1ec7u n\u0103ng v\u00e0 cost c\u1ee7a EVM vs non-EVM", url: "#so-sanh-hieu-nang-va-cost-cua-evm-vs-non-evm", children: [
+          ]},
+          {title: "\u0110\u00e2u l\u00e0 l\u1ef1a ch\u1ecdn t\u1ed1t nh\u1ea5t ?", url: "#au-la-lua-chon-tot-nhat", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../../js/base.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <meta property="og:title" content="Harry's Blog - Developer Documentation Technical Writer 🚀">
+    <meta property="og:description" content="Học Blockchain dễ hiểu, dành cho dev Web3">
+    <meta property="og:image" content="https://harriweb3.dev/assets/facebook_cover.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://harriweb3.dev/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Harry's Blog - Developer Documentation Technical Writer 🚀 ">
+    <meta name="twitter:description" content="Học Blockchain dễ hiểu, dành cho dev Web3 mới vào nghề!">
+    <meta name="twitter:image" content="https://harriweb3.dev/assets/facebook_cover.png">
+
+
+  <link rel="stylesheet" href="../../../../css/extra.css">
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../../Hyperliquid/Hyperliquid%20builder%20code/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../../Hyperliquid/Hyperliquid%20builder%20code/" class="btn btn-xs btn-link">
+        Hyperliquid builder code
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../03_non_evm_protocols/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../03_non_evm_protocols/" class="btn btn-xs btn-link">
+        What is NON-EVM ?
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="evm-vs-non-evm-chon-nen-tang-nao">EVM vs Non-EVM - Chọn Nền Tảng Nào?</h1>
+<h2 id="objective">Objective</h2>
+<ul>
+<li><em>EVM-compatible chains: Ethereum, Polygon, Arbitrum, Base</em></li>
+<li><em>Non-EVM alternatives: Solana, Near, Sui, Aptos</em></li>
+<li><em>So sánh performance, cost, developer experience</em></li>
+</ul>
+<p>Ethereum vừa là một blockchain, vừa là một loại tài sản kỹ thuật số. Nhưng điểm khác biệt là Ethereum được thiết kế chuyên biệt để chạy các smart contract  những đoạn mã tự thực thi, không cần bên trung gian.</p>
+<p>Chính nhờ smart contract mà dev có thể build ra vô số ứng dụng phi tập trung (dApps), từ tài chính (DeFi), đến game, NFT, social… Và đứng sau tất cả những điều kỳ diệu này là Ethereum Virtual Machine (EVM)</p>
+<h1 id="su-khac-biet-giua-evm-va-non-evm">Sự khác biệt giữa EVM và non EVM</h1>
+<p>Một blockchain tương thích với Ethereum không nhất thiết là phải chạy EVM và ngược lại, một blockchain không phải EVM thì sẽ không tương thích với hệ sinh thái Ethereum.</p>
+<p>Hãy tưởng tượng <code>EVM và non-EVM</code> giống như hai hệ điều hành smartphone khác nhau. Ví dụ, Android chính là đại diện cho EVM. Các điện thoại chạy Android <em>(Samsung, Xiaomi, Oppo…)</em> thì dù khác nhau về thương hiệu, nhưng vẫn có thể cài chung app từ Play Store, vì tất cả đều hỗ trợ Android.</p>
+<p>Ngược lại, iOS (Apple) là một hệ điều hành riêng, không tương thích với Android. App viết cho iOS thì không thể chạy trên Android được – tương tự như các blockchain non-EVM không thể chạy smart contract viết bằng Solidity. </p>
+<h1 id="code-comparison-example-counter-contract">Code Comparison Example: Counter Contract</h1>
+<p>Với Solidity:</p>
+<pre><code class="language-solidity">pragma solidity ~0.8.0;
+
+contract Counter {
+    uint256 public count;
+
+    function (increment) external {
+    count += 1;
+    }
+}
+</code></pre>
+<p>Với rust:</p>
+<pre><code class="language-rust">
+#[program]
+
+pub mod counter {
+    pub fn increment(ctx: Context&lt;Increment&gt;) -&gt; Result&lt;()&gt; {
+        let counter = &amp;mut ctx.accounts.counter;
+        counter.count = counter.count.checked_add(1).unwrap();
+        Ok(())
+    }
+}
+</code></pre>
+<p>Sự khác biệt này cho cả đoạn mã Solidity lẫn Rust đều chỉ đơn giản là <em>tăng giá trị của một biến đếm</em>, nhưng cách chúng thực hiện điều đó lại rất khác nhau từ cách mô hình hoá dữ liệu on-chain, cơ chế đảm bảo an toàn, đến cách tổ chức luồng phát triển cho dev. </p>
+<p>Những khác biệt này không chỉ đến từ ngôn ngữ lập trình (Solidity vs Rust), mà còn phản ánh thiết kế và cấu trúc của từng máy ảo (EVM với Solidity và Solana VM với Anchor/Rust). Điều này ảnh hưởng trực tiếp đến trải nghiệm của developer và cách họ tư duy khi xây dựng smart contract trên mỗi nền tảng.</p>
+<p>Ví dụ như sự khác nhau về <em>Type Safety &amp; Error Handling</em>: </p>
+<ul>
+<li>
+<p>Trên Solidity, ta thường dùng các kiểu dữ liệu cơ bản như uint256, address. Các lỗi logic (như chia cho 0, overflow, truy cập sai state…) chỉ được phát hiện khi giao dịch thực sự chạy trên blockchain, tức là khi đã tốn phí gas. Điều này khiến smart contract dễ bị bug nếu không test kỹ từ trước.</p>
+</li>
+<li>
+<p>Còn rust thì cho phép kiểm tra lỗi ngay từ thời điểm biên dịch vì Rust nổi tiến với khả năng <em>memory safety</em>  nên. <em>Framework Anchor</em> trên Solana tận dụng điều này bằng cách yêu cầu developer phải xử lý rõ ràng từng khả năng lỗi (thông qua <code>Result&lt;T, E&gt;</code>), nhờ đó tăng độ tin cậy và an toàn của smart contract trước khi deploy.</p>
+</li>
+</ul>
+<p>Hoặc nói về DevX:
+*  Solidity/EVM: Hệ sinh thái đã hoàn thiện với nhiều tool như Hardhat, Remix, Truffle. Việc setup và test cực kỳ nhanh chóng, phù hợp cho cả dev mới lẫn team production.</p>
+<ul>
+<li>Rust/Anchor: Dù đang phát triển nhanh với <em>Anchor CLI</em>, Solana localnet, nhưng vẫn đòi hỏi kiến thức nền tốt và thời gian compile/test dài hơn đáng kể.</li>
+</ul>
+<h1 id="security-va-auditing">Security và Auditing</h1>
+<p>Dù nền tảng là EVM hay non-EVM, <strong>bảo mật</strong> luôn là yếu tố tối quan trọng trong phát triển smart contract. Tuy nhiên, cách tiếp cận của hai hệ sinh thái lại khác nhau đáng kể.</p>
+<p>EVM/Solidity: Phát hiện lỗi ở runtime thường dùng tool &amp; library</p>
+<p>Trong môi trường EVM, developer thường phải chủ động secure contract khỏi các lỗi phổ biến như:
+* Reentrancy (gọi lại contract gây lỗi logic)
+* Integer overflow/underflow
+* External call không được kiểm tra đúng cách...</p>
+<p>Để xử lý, họ thường dùng các thử viện đã audit ví dụ như OpenZeppelin.. hoặc các toool để quét lỗ hổng. Hoặc các pattern như<code>modifier</code>, <code>interface</code>.. giúp enforce logic truy cập(<code>access controls</code>).</p>
+<p>Trong khi đó, các ngôn ngữ như Rust dùng  Cơ chế ownership và borrow checker loại bỏ hầu hết các lỗi liên quan đến quản lý bộ nhớ, use-after-free, hay race condition.</p>
+<p>Hoặc là Move ta  Resource-type system hay Sui thì Object centric model giúp đảm bảo tài sản chỉ hỉ có thể được sở hữu bởi một entity duy nhất tại một thời điểm, giúp đảm bảo logic tài sản không thể bị nhân bản hoặc destroy.</p>
+<h1 id="so-sanh-hieu-nang-va-cost-cua-evm-vs-non-evm">So sánh hiệu năng và cost của  EVM vs non-EVM</h1>
+<p>Performance và cost là  là một trong những điểm nghẽn dễ thấy nhất của các blockchain tương thích EVM, đặc biệt là Ethereum. </p>
+<p>Trên <strong>Ethereum Layer 1</strong>, hiệu suất xử lý giới hạn ở khoảng 15 giao dịch mỗi giây (TPS). Trong giai đoạn cao điểm (như NFT mint), mạng có thể tắc nghẽn nghiêm trọng, khiến phí gas tăng vọt có thể lên tới hàng chục hoặc hàng trăm đô cho một giao dịch.</p>
+<p>Để cải thiện, các giải pháp Layer-2 như <code>PolyGon</code> hay   <code>Arbitrum</code>,<code>Optimism</code> (rollups) đã được phát triển nhằm xử lý giao dịch off-chain, sau đó “gộp” (batch) lại và đưa lên Ethereum để xác nhận.</p>
+<p>Các giải pháp này đi kèm với trade-off riêng:
+* Độ trễ(finality delay)
+* Rủi ro bảo mật liên quan đến cầu nối (bridge) và fraud proof</p>
+<p>Ngược lại, các nền tảng non-EVM như Solana hoặc các chain dùng Move (Aptos, Sui) được thiết kế để giải quyết vấn đề hiệu năng như tận dụng parallel execution  cho phép nhiều giao dịch chạy đồng thời</p>
+<p>Solana sử dụng mô hình tính phí dựa trên đơn vị tính toán (compute units), với mức phí cố định cho mỗi đơn vị. <a href="https://www.cfbenchmarks.com/blog/solana-the-high-speed-low-cost-blockchain-rival-2">Cách tiếp cận này cho phép mạng lưới xử lý hàng nghìn giao dịch mỗi giây với chi phí cực kỳ thấp</a>.</p>
+<h1 id="au-la-lua-chon-tot-nhat">Đâu là lựa chọn tốt nhất ?</h1>
+<p>Thực tế thi lựa chọn giữa EVM và non-EVM chains, developer cần đánh giá dựa trên nhiều yếu tố kỹ thuật và hệ sinh thái.</p>
+<p>Với EVM chains, Cung cấp một môi trường phát triển với hệ sinh thái lớn. Thư viện lớn với nhiều code examples có sẵn và các tiêu chuẩn phổ biến như  <code>ERC-20</code>, <code>ERC-721</code>,... giúp dApp dễ tích hợp và tương thích.</p>
+<p>Tuy nhiên cũng có những mặc giới hạn như khả năng mở rộng thấp (đặc biệt trên Ethereum L1). Phí gas biến động cao và cần phụ thuộc vào Layer-2 để đạt hiệu suất cao hơn.</p>
+<p>Còn với Non-EVM chains sẽ có những mô hình mới dùng để thiết kế tối ưu cho hiệu suất cao, khả năng xử lý hàng nghìn TPS. Sử dụng cơ chế đồng thuận chuyên biệt hoặc tích hợp khả năng interoperability ngay từ đầu (IBC, native bridge, cross-chain API…). Nhưng non-EVM chains cũng đi kèm với một số thách thức như về mặt DevX tooling sẽ chưa đồng bộ và đôi khi phát triển trên EVM bạn sẽ thấy tiện hơn nhiều. Khó tiếp cận trực tiếp nguồn thanh khoản lớn từ Ethereum. </p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../../Hyperliquid/Hyperliquid%20builder%20code/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../../Hyperliquid/Hyperliquid%20builder%20code/" class="btn btn-xs btn-link">
+        Hyperliquid builder code
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../03_non_evm_protocols/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../03_non_evm_protocols/" class="btn btn-xs btn-link">
+        What is NON-EVM ?
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<div class="giscus-wrapper">
+  <div class="giscus"></div>
+  <script src="https://giscus.app/client.js"
+          data-repo="hien-p/hari-docs"
+          data-repo-id="R_kgDOPQrn9w"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOPQrn984CtVCd"
+          data-mapping="title"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="1"
+          data-input-position="top"
+          data-theme="light"
+          data-lang="en"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
+
+<!-- <footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer> -->
+
+</body>
+</html>

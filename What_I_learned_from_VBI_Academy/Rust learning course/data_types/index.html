@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="canonical" href="https://hien-p.github.io/hari-docs/What_I_learned_from_VBI_Academy/Rust%20learning%20course/data_types/">
+    <link rel="shortcut icon" href="../../../assets/cover.png">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Data Types in Rust - Harry's Blog</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <!-- mkdocs_windmill/partials/scripts.html -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S5RMPC6VZL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S5RMPC6VZL');
+</script>
+    
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Data Types in Rust", url: "#_top", children: [
+          ]},
+          {title: "\ud83e\udd77 Static Typing trong Rust l\u00e0 sao?", url: "#static-typing-trong-rust-la-sao", children: [
+          ]},
+          {title: "\u2699\ufe0f Scalar Types \u2013 Ki\u1ec3u d\u1eef li\u1ec7u c\u00f3 m\u1ed9t gi\u00e1 tr\u1ecb trong Rust", url: "#scalar-types-kieu-du-lieu-co-mot-gia-tri-trong-rust", children: [
+              {title: "1\ufe0f\u20e3 Integers \u2013 S\u1ed1 nguy\u00ean", url: "#1-integers-so-nguyen" },
+              {title: "Floating-Point Numbers \u2013 S\u1ed1 th\u1ef1c d\u1ea5u ph\u1ea9y \u0111\u1ed9ng", url: "#floating-point-numbers-so-thuc-dau-phay-ong" },
+              {title: "Boolean \u2013 Ki\u1ec3u logic \u0111\u00fang/sai", url: "#boolean-kieu-logic-ungsai" },
+          ]},
+          {title: "Reference", url: "#reference", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../search/main.js"></script>
+    <meta property="og:title" content="Harry's Blog - Developer Documentation Technical Writer 🚀">
+    <meta property="og:description" content="Học Blockchain dễ hiểu, dành cho dev Web3">
+    <meta property="og:image" content="https://harriweb3.dev/assets/facebook_cover.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://harriweb3.dev/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Harry's Blog - Developer Documentation Technical Writer 🚀 ">
+    <meta name="twitter:description" content="Học Blockchain dễ hiểu, dành cho dev Web3 mới vào nghề!">
+    <meta name="twitter:image" content="https://harriweb3.dev/assets/facebook_cover.png">
+
+
+  <link rel="stylesheet" href="../../../css/extra.css">
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../Saga%20chainlet/Launch%20game%20tr%C3%AAn%20Chainlet/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../Saga%20chainlet/Launch%20game%20tr%C3%AAn%20Chainlet/" class="btn btn-xs btn-link">
+        Launch game trên Chainlet
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../The%20stages%20of%20learning%20rust/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../The%20stages%20of%20learning%20rust/" class="btn btn-xs btn-link">
+        The stages of learning rust
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="data-types-in-rust">Data Types in Rust</h1>
+<blockquote>
+<p>Rust is a systems programming language designed with performance, safety, and reliability in mind. One of the foundational concepts that supports these goals is <code>data typing</code>. Every value in Rust has a specific <code>data type</code>, which helps the compiler understand how that value should behave. </p>
+</blockquote>
+<p>We will learn about the following data types in rust and understand how they work under the hood:
+* Scalar
+* Floating point types
+* Numeric Operation
+* Boolean
+* character types
+* compound types</p>
+<h1 id="static-typing-trong-rust-la-sao">🥷 Static Typing trong Rust là sao?</h1>
+<p>Rust là một ngôn ngữ có kiểu tĩnh (<code>statically typed language</code>). Điều này có nghĩa là kiểu dữ liệu (<code>data type</code>) của mỗi biến phải được xác định ngay tại thời điểm biên dịch (<code>compile time</code>).</p>
+<p>Nhờ đó, trình biên dịch có thể bắt lỗi sớm (<code>early bug detection</code>), và quản lý bộ nhớ hiệu quả hơn vì nó biết chính xác mỗi biến cần bao nhiêu byte.</p>
+<p>Tuy nhiên, bạn không cần lúc nào cũng khai báo rõ kiểu biến. Rust có khả năng suy luận kiểu dữ liệu (<code>type inference</code>) khá thông minh, dựa trên ngữ cảnh. Ví dụ:</p>
+<pre><code class="language-rust">let x = 5; // Rust hiểu đây là i32
+let name = &quot;Harry&quot;; // hiểu là &amp;str
+</code></pre>
+<blockquote>
+<p>Tức là bạn không cần viết <code>let x: i32 = 5</code>; nếu Rust tự đoán được rồi.</p>
+</blockquote>
+<p>Nhưng nếu Rust gặp tình huống không thể tự đoán kiểu được ví dụ như khi parsing từ chuỗi "42" thì bạn phải cung cấp rõ kiểu dữ liệu:</p>
+<pre><code>let guess: u32 = &quot;42&quot;.parse().expect(&quot;Not a number!&quot;);
+</code></pre>
+<blockquote>
+<p>💡 Ở đây, "42".parse() có thể trả về nhiều kiểu số (i32, u32, f64, etc.), nên Rust cần bạn nói rõ là bạn muốn guess là kiểu gì (u32 trong trường hợp này).</p>
+</blockquote>
+<p>Nếu bạn không sử dụng biến đó sau khi khai báo, Rust sẽ cảnh báo như trong hình:</p>
+<p><img alt="screen data types" src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*owBewwsWJbQSVpUaK2-y7A.png" /></p>
+<p>Ở đây, <code>"42".parse()</code> có thể trả về nhiều kiểu số (i32, u32, f64, etc.), nên Rust cần bạn nói rõ là bạn muốn guess là kiểu gì (u32 trong trường hợp này).</p>
+<pre><code class="language-bash">warning: unused variable: `guess`
+help: if this is intentional, prefix it with an underscore: `_guess`
+</code></pre>
+<blockquote>
+<p>✨ Cái hay của Rust là nó cực kỳ quan tâm đến độ an toàn (safety). Ngay cả những biến không dùng cũng được nhắc nhở rõ ràng, để tránh bug tiềm ẩn.</p>
+</blockquote>
+<h1 id="scalar-types-kieu-du-lieu-co-mot-gia-tri-trong-rust">⚙️ Scalar Types – Kiểu dữ liệu có một giá trị trong Rust</h1>
+<p><code>Scalar types</code> đại diện cho một giá trị duy nhất. Trong Rust, có 4 kiểu scalar chính:</p>
+<h2 id="1-integers-so-nguyen">1️⃣ Integers – Số nguyên</h2>
+<p>Số nguyên là những con số <strong>không có phần thập phân (no floating-point)</strong>. Rust chia thành hai loại:</p>
+<ul>
+<li><code>Signed integers</code> (i): chứa được cả số âm và số dương. Ví dụ: -42, 0, 123</li>
+<li><code>Unsigned integers</code> (u): chỉ chứa được số dương. Ví dụ: 0, 200, 999</li>
+</ul>
+<p>Cả hai loại đều có các “size” khác nhau như: <em>i8, i16, i32, i64, i128</em> — tương ứng với số bit lưu trữ. Tương tự với u8, u16, v.v.</p>
+<p><img alt="scalar types" src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*QNJNfJJVyLMJpmHx2gS0XQ.png" /></p>
+<blockquote>
+<p>💡 Nhớ nha: càng nhiều bit thì càng chứa được số to hơn, nhưng cũng tốn nhiều bộ nhớ hơn!</p>
+</blockquote>
+<h3 id="integer-overflow-tran-so-trong-rust">Integer Overflow – Tràn số trong Rust</h3>
+<p>Trong Rust, khi bạn gán một giá trị <strong>vượt quá giới hạn của kiểu số nguyên</strong>, thì sẽ xảy ra hiện tượng <strong>overflow (tràn số).</strong></p>
+<p>Ví dụ: bạn thử gán 256 cho u8 (kiểu này chỉ chứa từ 0 đến 255) thì chuyện gì xảy ra? 👀</p>
+<p>Trong <code>Debug mode</code>:
+=&gt; Rust sẽ panic ngay lập tức và báo lỗi. Điều này giúp bạn phát hiện bug sớm, tránh <code>silent errors</code></p>
+<p>Còn khi <code>Release mode</code> thì Rust sẽ wrap around giá trị (giống kiểu quay vòng vòng):
+Ví dụ: 256 thành 0, 257 thành 1, v.v.</p>
+<p>Vậy nên để xử lý <code>overflow</code> một cách chủ động. Rust cung cấp một số hàm “chuyên trị” overflow để bạn kiểm soát kết quả rõ ràng hơn:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Mô tả ngắn gọn</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>wrapping_add</td>
+<td>Cho ra kết quả kiểu wrap (giống release mode)</td>
+</tr>
+<tr>
+<td>checked_add</td>
+<td>Trả về None nếu bị tràn</td>
+</tr>
+<tr>
+<td>overflowing_add</td>
+<td>Trả về tuple (value, is_overflow)</td>
+</tr>
+<tr>
+<td>saturating_add</td>
+<td>Trả về max/min nếu vượt giới hạn</td>
+</tr>
+</tbody>
+</table>
+<h2 id="floating-point-numbers-so-thuc-dau-phay-ong">Floating-Point Numbers – Số thực dấu phẩy động</h2>
+<p>Rust hỗ trợ 2 kiểu số thực chính:
+* f32: số thực 32-bit (nhẹ, nhanh hơn, nhưng độ chính xác thấp hơn)
+* f64: số thực 64-bit (default, chính xác hơn, dùng phổ biến)</p>
+<p>Ví dụ:</p>
+<pre><code>let x = 2.0;       // kiểu f64 – được suy luận tự động
+let y: f32 = 3.0;  // kiểu f32 – được chỉ định rõ
+</code></pre>
+<h2 id="boolean-kieu-logic-ungsai">Boolean – Kiểu logic đúng/sai</h2>
+<p>Rust có kiểu bool, đại diện cho hai giá trị: <code>true</code> hoặc <code>false</code>. Cực kỳ quan trọng trong điều kiện, vòng lặp, v.v.</p>
+<pre><code>let t = true;
+let f: bool = false;
+</code></pre>
+<p>Thường dùng trong các biểu thức điều kiện như:</p>
+<pre><code class="language-rust">if t {
+    println!(&quot;It’s true!&quot;);
+}
+</code></pre>
+<h1 id="reference">Reference</h1>
+<p>[1]. https://medium.com/@estheraladioche569/data-types-in-rust-eef697a3408e</p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../Saga%20chainlet/Launch%20game%20tr%C3%AAn%20Chainlet/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../Saga%20chainlet/Launch%20game%20tr%C3%AAn%20Chainlet/" class="btn btn-xs btn-link">
+        Launch game trên Chainlet
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../The%20stages%20of%20learning%20rust/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../The%20stages%20of%20learning%20rust/" class="btn btn-xs btn-link">
+        The stages of learning rust
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<div class="giscus-wrapper">
+  <div class="giscus"></div>
+  <script src="https://giscus.app/client.js"
+          data-repo="hien-p/hari-docs"
+          data-repo-id="R_kgDOPQrn9w"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOPQrn984CtVCd"
+          data-mapping="title"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="1"
+          data-input-position="top"
+          data-theme="light"
+          data-lang="en"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
+
+<!-- <footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer> -->
+
+</body>
+</html>
