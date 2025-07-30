@@ -51,3 +51,5 @@ Mục tiêu của khoá học này là để **truyền tải Rust một cách �
 
 1. https://course.rs/about-book.html
 2. https://rustcc.gitbooks.io/rustprimer/content/install/rustup.html
+
+

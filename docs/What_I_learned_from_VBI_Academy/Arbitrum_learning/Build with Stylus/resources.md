@@ -6,3 +6,8 @@
 4. Speechrun Stylus 
 5. Stylus Saturdays Newsletter
 6. Build with Stylus Series
+
+---
+# Blogs 
+
+1. https://thelearningpill.substack.com/
