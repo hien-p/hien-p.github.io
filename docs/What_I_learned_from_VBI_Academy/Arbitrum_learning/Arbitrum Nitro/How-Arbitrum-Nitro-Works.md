@@ -1,5 +1,8 @@
 # How Arbitrum Nitro works ?
 
+Link: https://chainstack.com/arbitrum-nitro-an-overview/
+
+
 Arbitrum Nitro là phiên bản nâng cấp toàn diện của Arbitrum, được thiết kế lại để cải thiện hiệu suất, tính tương thích và trải nghiệm nhà phát triển. Không giống như kiến trúc **AVM (Arbitrum Virtual Machine)** tùy chỉnh trong phiên bản **Arbitrum Classic**, Nitro biên dịch toàn bộ hệ thống sang WebAssembly (WASM). 
 
 Điều này cho phép thay thế ngôn ngữ và trình biên dịch đặc thù trước đây bằng các công cụ tiêu chuẩn phổ biến, giúp việc phát triển và bảo trì trở nên dễ dàng hơn.

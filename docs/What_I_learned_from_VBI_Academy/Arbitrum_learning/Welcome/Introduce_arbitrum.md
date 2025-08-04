@@ -61,9 +61,18 @@ Arbitrum sử dụng cơ chế Optimistic Rollup để di chuyển phần lớn 
 Arbitrum được thiết kế để giảm thiểu lượng phí gas cần trả trên Ethereum Layer 1, từ đó hạ thấp chi phí trên mỗi giao dịch. Đây là một trong những lý do khiến Arbitrum trở thành lựa chọn hàng đầu trong các ứng dụng DeFi, gaming và mạng xã hội phi tập trung.
 
 
-# Arbitrum Mainnet and Testnets
+# Insights trên Arbiscan
+
+**Arbiscan** là block explorer chính thức đầu tiên, dùng để kiểm tra các **giao dịch (transactions) và smart contracts** đã được triển khai (deployed) hoặc thực thi trên mạng lưới. Nếu bạn đang làm việc với testnet Nitro (cụ thể là Goerli), thì công cụ bạn cần là Goerli Arbiscan  phiên bản dành riêng cho test.
 
 
+![](https://images.surferseo.art/b3e21719-eaf0-4146-acf4-8780aba2ed37.png)
 
+Dưới đây là một vài dữ liệu minh họa cho tốc độ phát triển nhanh chóng và quy mô ấn tượng của Arbitrum:
 
-?E3
+* Trung bình mỗi ngày có tới 576,012 giao dịch được chấp nhận (accepted transactions) con số này cho thấy mạng lưới đang hoạt động rất sôi động.
+* Tổng cộng gần **3 triệu địa chỉ ví duy nhất (unique addresses) đã tương tác trên Arbitrum** chứng minh lượng người dùng đang tăng trưởng đều đặn.
+* Mỗi ngày có từ 100 đến 300 smart contracts mới được triển khai.
+
+![](https://images.surferseo.art/2a8e106f-af82-4220-840e-87334569c042.png)
+
