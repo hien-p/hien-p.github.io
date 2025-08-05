@@ -6,6 +6,7 @@ Mục tiêu của này để research và tất nhiên các bạn cũng sẽ ph�
 
 
 Trong Camp-mamo, sẽ có 2 parts: 
+
 * Part 1: Ở part này bạn sẽ deep dive về Mammoth Blocks, Private DA và Lazy Bridging. 
 * Part 2: Sẽ về Full Stack control. 
 
