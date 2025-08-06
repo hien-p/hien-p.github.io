@@ -108,17 +108,16 @@ Celestia làm được điều đó nhờ công nghệ **Data Availability Sampl
 ---
 > How does Data Availability Sampling (DAS) benefit light nodes on Celestia?
 
+Trước đó bạn sẽ cần hiểu chút **về cơ chế đồng thuận của Ethereum**, **phân biệt được Full node và Light node**, **Rõ được khái niệm Data Availability hay còn gọi là Data Publicatio** trong context là Rollup.
+
 > Data Availability Sampling is a technique that empowers light nodes to have guarantees similar to those of full nodes when it comes to data availability.
 ---
 
-**Data availability sampling (DAS)** là một cơ chế giúp **light nodes** xác minh tính sẵn có của dữ liệu mà không cần phải tải toàn bộ dữ liệu của một block.
-
-Light node sẽ thực hiện nhiều vòng sampling ngẫu nhiên. Mỗi vòng sampling chỉ kiểm tra một phần nhỏ dữ liệu trong block. Càng sampling nhiều, node càng tự tin rằng dữ liệu của block đang thực sự tồn tại.
+Data Availability Sampling không dựa vào “niềm tin” vào validator nữa. **Data availability sampling (DAS)** là một cơ chế giúp **light nodes** xác minh tính sẵn có của dữ liệu mà không cần phải tải toàn bộ dữ liệu của một block. Light node sẽ thực hiện nhiều vòng sampling ngẫu nhiên. Mỗi vòng sampling chỉ kiểm tra một phần nhỏ dữ liệu trong block. Càng sampling nhiều, node càng tự tin rằng dữ liệu của block đang thực sự tồn tại.
 
 Trong thiết kế blockchain như **Celestia**, cơ chế DAS giúp light nodes không chỉ đọc dữ liệu hiệu quả mà còn góp phần bảo mật và mở rộng mạng lưới, với chi phí phần cứng rẻ hơn nhiều so với full nodes.
 
 ![](https://celestia.org/images/app/what-is-celestia/celestia-data-availability-sampling.png)
-
 
 
 Cách hoạt động của DAS rất thông minh:
@@ -129,7 +128,6 @@ Cách hoạt động của DAS rất thông minh:
 ![](https://images.mirror-media.xyz/publication-images/QzwNY9aYVslhvYUhWIZij.png)
 
 DAS có thể detect được **data withholding**. Giả sử kẻ xấu (publisher gian lận) định giấu dữ liệu. Để thực hiện được kiểu tấn công này, họ **phải giấu hơn một nửa lượng data**. Vì nếu chỉ có dưới 50% bị mất, thì các validator vẫn có thể **khôi phục toàn bộ dữ liệu gốc từ phần còn lại** nhờ erasure coding.
-
 
 
 Giờ hãy tưởng tượng validator chạy DAS:
@@ -155,8 +153,43 @@ Tức là **xác suất phát hiện được gian lận (data withholding)** l�
 > Nói cách khác: chỉ cần một light node chạy 20 lần sampling là gần như **bắt bài ngay** nếu có ai đó định giấu data.
 
 
+Lợi ích của DAS là **Giảm phụ thuộc vào validator** và **dễ mở rộng quy mô**.
 
 Bạn có thể xem giải thích nhanh về  Availability Sampling (DAS) explainer trong 5 phút: [https://www.youtube.com/watch?v=9Y5rc8OC6yE](https://www.youtube.com/watch?v=9Y5rc8OC6yE)
+
+
+Mình có ví dụ. Bạn có hai đồng xu.
+
+* Một đồng luôn luôn ra mặt ngửa (heads)
+* Một đồng ra ngửa hoặc sấp (heads/tails) với xác suất 50/50
+
+Giờ mình đưa bạn một trong hai đồng đó, nhưng không nói là đồng nào. Làm sao để bạn biết mình đang cầm đồng nào? 
+
+> Đơn giản: cứ tung nhiều lần là biết.
+
+Nên càng tung mà thấy toàn ra ngửa, bạn càng có cơ sở tin rằng mình đang cầm đồng đặc biệt đó. Tung khoảng 20 lần, nếu vẫn ra ngửa hoài, thì bạn đã gần như chắc chắn 99.9999% là đang cầm đồng xu gì. Và đây chính là cách Data Availability Sampling (DAS) hoạt động.
+
+Trong blockchain, có hai loại block:
+
+* Block đầy đủ dữ liệu (tương đương với đồng “ra ngửa-only”)
+* Block thiếu dữ liệu (giống như đồng 50/50 – có thể lừa bạn bất cứ lúc nào)
+
+Khi một block producer (người tạo block) gửi block cho bạn, bạn cần xác định liệu block này có thật sự đầy đủ dữ liệu hay không. Làm sao biết được?
+Bạn sampling block đó nhiều lần cũng giống như bạn tung xu.
+
+![](https://pbs.twimg.com/media/FaYc4nQXwAUCDpD?format=jpg&name=medium)
+
+
+# [Data availability committee](https://celestia.org/glossary/data-availability-committee) là gì ? 
+
+Data Availability Committees (DACs) là những bên được ủy thác (trusted parties) để đảm nhiệm vai trò **cung cấp hoặc xác nhận tính sẵn có của dữ liệu (data availability)**. Trong một số hệ thống, DAC có thể được dùng thay thế cho, hoặc kết hợp cùng với **Data Availability Sampling (DAS).**
+
+
+Mức độ bảo mật của DAC phụ thuộc vào cách bạn thiết kế nó. Ví dụ, Ethereum hiện đang sử dụng các nhóm validator được chọn ngẫu nhiên (randomly sampled) để xác nhận data availability cho các light node  đây cũng là một dạng biến thể của DAC.
+
+Trong một số mô hình **Validium**, DAC đóng vai trò là nhóm node đáng tin cậy có nhiệm vụ **lưu trữ bản sao dữ liệu ở chế độ offchain**. Khi có tranh chấp xảy ra, DAC phải công khai dữ liệu để giải quyết vấn đề. Các thành viên DAC thường phải đăng tải cam kết (attestation) on-chain để chứng minh rằng dữ liệu đã sẵn sàng.
+
+
 
 
 # What is the difference between data availability in celestia and data availability committee? 
@@ -165,13 +198,18 @@ It is basicallly is who the participants of nodes attesting to the data availabe
 
 >  what is the fundamental difference in trust assumptions between a Data Availability Committee (DAC) and a Data Availability Layer like Celestia?
 
+Trong quá trình phát triển blockchain scalable, một câu hỏi lớn thường được đặt ra: “Liệu chúng ta có thể chỉ chọn một cơ chế đảm bảo tính sẵn sàng dữ liệu hoặc Committee, hoặc Data Availability Sampling (DAS) thay vì phải kết hợp cả hai?”
 
-# Rollups are applications on Celestia 
+Câu trả lời hợp lý nhất lại chính là cả hai đều cần thiết. Cùng bóc tách lý do tại sao không nên chỉ dựa vào committee, và cũng không thể hoàn toàn chỉ dùng DAS.
+
+**Khi chỉ dùng Committee**: bạn chọn ra một nhóm node có trách nhiệm “bảo chứng” rằng dữ liệu trong một block là đã được công bố và ai cũng có thể truy cập. Tuy nhiên, việc đặt niềm tin vào một nhóm người dù là validator, trusted party hay stake-based cũng đồng nghĩa với việc chấp nhận rủi ro. Nếu phần lớn committee đồng ý với một block sai hoặc bị tấn công để làm vậy thì **hệ thống không còn cách nào để kiểm tra độc lập** xem dữ liệu đó là thật hay giả.
+
+Một vấn đề khác là ngưỡng đồng thuận (threshold): bạn phải đặt ra tỷ lệ bao nhiêu phần trăm committee cần chấp thuận dữ liệu để chain chấp nhận nó. Nếu đặt ngưỡng cao, thì khi số validator online giảm (do lỗi mạng, tấn công, downtime), hệ thống sẽ bị tê liệt. Nếu ngưỡng thấp, thì attacker chỉ cần làm sập một số node là có thể dễ dàng điều khiển phần còn lại để đưa dữ liệu giả vào.
 
 
+Còn **khi chỉ dùng DAS**: DAS cho phép bất kỳ ai trong mạng (dù là light node) cũng có thể sampling một phần nhỏ dữ liệu trong block để tự xác minh rằng toàn bộ block đó là hợp lệ. Nhưng DAS, ít nhất là ở thời điểm hiện tại, vẫn là công nghệ rất mới và còn đang phát triển. Nhiều thành phần của nó mới chỉ được đề xuất và thử nghiệm trong vài năm gần đây. 
 
-
-
+Một bất lợi khác là **độ trễ (latency)**: DAS cần nhiều bước sampling và kiểm tra phân tán hơn so với việc chỉ chờ một số node đáng tin xác minh. Với các hệ thống yêu cầu thời gian xác nhận cực nhanh, committee vẫn có lợi thế về tốc độ.
 
 # [Blobs](https://l2beat.com/glossary#blobs)
 
