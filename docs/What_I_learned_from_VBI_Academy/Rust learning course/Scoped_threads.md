@@ -14,3 +14,6 @@ Scoped Threads (thread theo phạm vi) là các thread được khởi tạo bê
 * Mỗi thread được spawn bên trong scope phải hoàn tất trước khi scope kết thúc.
 * Không cần quản lý thủ công JoinHandle.
 * Có thể mượn dữ liệu từ thread cha một cách an toàn mà không cần move hay 'static.
+
+
+

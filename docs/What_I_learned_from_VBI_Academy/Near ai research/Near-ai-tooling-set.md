@@ -6,7 +6,4 @@ NEAR AI Developer Hub có mục tiêu để fork, deploy AI agents. Giống như
 
 
 *  AITP - Agent Interaction & Transaction Protocol:AI agents có thể collab & transact với nhau.
-
-
-
 *  Agent Registry: Một cái hub để tìm, remix, và share mấy con agent  -->

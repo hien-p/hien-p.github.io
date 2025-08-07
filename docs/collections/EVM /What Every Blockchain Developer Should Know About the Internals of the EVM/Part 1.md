@@ -7,7 +7,5 @@ Mình chỉ là người dành thời gian đọc lại, noted nhưng góc nhìn
 
 Mục tiêu của series này để giúp mọi người không chỉ học framework, hay solidity syntax mà còn là đào sâu về bên trong Ethereum Virtual Machine (EVM). Phần core để handle cả smart contract.
 
-
-
 ---
 

@@ -8,8 +8,6 @@ X: https://x.com/Swagtimus
 
 # The Modular L2 Stack 
 
-
-
 # How do L2s win as Ethereum matures? 
 
 
@@ -18,6 +16,14 @@ X: https://x.com/Swagtimus
 # what is exciting with Arbitrum? 
 
 ![](images/SCR-20250805-opog.png)
+
+
+# Why Stylus 
+
+In EVM operates with 256 bit chunks. But with stylus you can take advantages of that wichi means huge efficienct..
+
+
+
 
 
 

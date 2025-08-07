@@ -151,3 +151,5 @@ Celestia cho phép  triển khai các **execution layer mang tính thử nghiệ
 
 Tính chất permissionless của modularity cho phép bất kỳ dev nào cũng có thể khởi chạy execution layer mới mà không cần xin phép, không bị rào cản kỹ thuật, và hoàn toàn tuỳ chọn stack phù hợp.
 
+
+
