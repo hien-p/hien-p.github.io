@@ -132,3 +132,71 @@ Celestia đang định nghĩa lại cách blockchain mở rộng bằng:
 * Trustless light clients
 
 Với mamo-1 testnet, dev có thể hình dung chính xác những gì Celestia **có thể làm được** trong thực tế. Đây không còn là lời hứa – nó đang xảy ra.
+
+
+
+--- 
+Advanced: Who has the fastest block propagation? 
+
+![](https://pbs.twimg.com/media/GoBlS6RasAA8A6M?format=jpg&name=medium)
+
+Cả Solana, Monad và Celestia đều chia block thành các mảnh nhỏ được mã hóa (erasure coded) rồi phân phối cho validators không phải leader.
+
+Solana và Monad dùng cơ chế push — leader chủ động gửi block tới validators, ưu tiên tốc độ finality bằng cách để những validator có stake cao nhận data sớm và bắt đầu xác minh ngay.
+
+
+Ngược lại, Celestia với giao thức Vacuum! chọn cách pull — các validator tự yêu cầu phần dữ liệu còn thiếu, giúp giảm tải cho proposer (chỉ cần upload ~1x dung lượng block), tối ưu cho throughput thay vì tốc độ finality.
+
+
+Cấu trúc chung của data pipeline:
+
+Mỗi mạng blockchain thường có 2 pha xử lý dữ liệu:
+(1) Preparation – giai đoạn chuẩn bị trước khi block được tạo
+(2) Dissemination – giai đoạn phân phối dữ liệu sau khi block được tạo
+
+Ở pha chuẩn bị, Solana dùng hệ thống Gulfstream kết hợp với swQOS. Điểm đặc biệt là Solana không có global mempool như các chain khác — thay vào đó, mỗi leader duy trì một local mempool riêng. Điều này giúp tránh được overhead từ việc gossip nhiều hop trong mempool lớn, từ đó giữ cho mạng luôn ở tốc độ cao mà không overload node.
+
+Ứng dụng sẽ gửi transaction đến RPC node, sau đó node này sẽ gửi trực tiếp (chỉ 1 hop) tới một vài leader kế tiếp qua Gulfstream. Do lịch trình leader được biết trước, nên validator nào cũng có thể chủ động route tx tới leader sắp tới. Để chống spam, leader sẽ ưu tiên xử lý tx đến từ validators có stake cao hơn đó chính là logic của swQOS (stake-weighted Quality of Service).
+
+Khi bước vào pha phân phối, Solana dùng Turbine — một engine truyền block theo mô hình cây (tree-based fanout). Trong khi leader đang build block, dữ liệu block được chia thành các mảnh nhỏ gọi là shreds (~1280 bytes mỗi shred), sau đó gửi đi. Điều này cho phép các bước verify và voting được pipeline luôn khi block chưa build xong.
+
+Cụ thể: Leader gửi shreds đến root node thì root chia validators thành các tầng dựa theo stake → những validator có stake cao nhận shred trước, sau đó forward xuống tầng dưới. Với fanout mặc định là 200, phần lớn validator sẽ nhận được dữ liệu chỉ sau 2–3 hops (leader → root → L1 → L2).
+
+---
+
+Celestia lại chọn hướng tiếp cận khác là tối ưu cho throughput thay vì latency. Không giống như Turbine (Solana) hay RaptorCast (Monad)  đều là cơ chế **push**. Celestia dùng **Vacuum!**, một mô hình pull-based, cho phép thiết lập liên lạc kiểu just-in-time giữa các node.
+
+Ở pha chuẩn bị, thay vì gửi full txs, validators trên Celestia sẽ sync mempool thông qua một loại chứng chỉ tên là VAC (Validator Availability Certificate). Đây là lời hứa của validator rằng họ đang giữ một tx nào đó và sẽ đảm bảo tx đó có sẵn đến một độ cao block nhất định.
+
+
+VAC hoạt động như một dạng pre-announcement: thay vì đẩy tx ra mạng, validator chỉ cần phát tán VACs để thông báo **“tao đang giữ tx này, đứa nào cần thì hỏi”**. Việc này giúp mạng biết nhanh các tx quan trọng mà không bị ngập vì payload lớn.
+
+
+![](https://pbs.twimg.com/media/GoBlbKqbwAA4KXY?format=png&name=small)
+
+
+Ở thời điểm  Data Retrieval, khi node cần dữ liệu, nó chủ động đi xin. Khi một node thấy VAC từ validator khác mà nó chưa có dữ liệu, nó sẽ quyết định có nên đi fetch hay không.
+
+Chính sách của Vacuum! là **luôn lấy ít nhất VAC đầu tiên (tx quan trọng nhất)** từ mỗi validator mới thấy lần đầu. Còn các VAC tiếp theo thì chỉ fetch nếu node còn đủ băng thông, hoặc nếu tx đó quan trọng hơn những tx nó đang định drop.
+
+
+Để lấy dữ liệu, node gửi một yêu cầu có tên **‘WantBlob’** đến peer đang giữ blob. Peer sẽ gửi lại blob đó, chia thành từng chunk nhỏ. Điều thú vị là ngay khi node bắt đầu tải blob về, nó sẽ gossip VAC đó ra cho những node khác, tạo ra một chuỗi fetch pipeline theo nhu cầu.
+
+Mô hình lazy gossiping kiểu này tránh được việc truyền dữ liệu trùng lặp, giúp mỗi tx chỉ chảy qua mạng đúng một lần, theo tuyến đường tối ưu  vừa tiết kiệm, vừa tăng throughput.
+
+![](https://pbs.twimg.com/media/GoBlcIPbwAAbSrp?format=png&name=900x900)
+
+Vì mempool đã được sync kỹ nhờ VACs từ trước, nên khi leader chuẩn bị tạo block, phần lớn dữ liệu đã nằm sẵn ở các validator.
+
+Leader lúc này chỉ cần broadcast một compact block cực nhẹ, gần như không tốn băng thông.
+
+Compact block gồm 3 phần chính:
+
+* Cam kết (commitment) với danh sách txs trong block
+* Bitmap thể hiện những tx nào leader có thể cung cấp nếu cần
+* Metadata để mapping chunk so với dữ liệu thực
+
+Sau khi nhận compact block, các validator sẽ check xem mình có đủ data chưa. Nếu thiếu, họ yêu cầu phần parity data còn thiếu để reconstruct lại block. Vì mỗi node đã có đủ dữ liệu từ trước. Lúc này, leader không cần truyền gì thêm ngoài compact block.
+
+**Đây là actual black magic của Vacuum!**
+
