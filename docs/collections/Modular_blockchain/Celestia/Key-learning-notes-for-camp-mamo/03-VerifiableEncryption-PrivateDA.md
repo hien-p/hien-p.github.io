@@ -1,6 +1,4 @@
-# VERIFIABLE ENCRYPTION & PRIVATE Data trên Celesti
-
-
+# VERIFIABLE ENCRYPTION & PRIVATE Data trên Celestia
 
 > “Privacy matters. But so does verifiability.” — Celestia Labs
 
@@ -31,8 +29,6 @@ Blockchains truyền thống vốn minh bạch theo mặc định — mọi giao
 
 Như vậy Private Data Availability (PDA) cho phép devs đăng dữ liệu **đã mã hoá lên Celestia**, nhưng vẫn có thể chứng minh rằng dữ liệu đó **thật sự tồn tại và ai cũng có thể truy xuất được** (mặc dù chưa thể đọc nội dung).
 
-
-
 [Nói tóm lại thì muốn tạo ra một nơi credibly neutral trung lập theo cách mà ai cũng tin được để phục vụ cho việc Data Availability (DA) một cách công khai, minh bạch, nhưng đồng thời vẫn có khả năng chọn lọc ai được đọc nội dung bên trong.](https://docs.google.com/document/d/1XZyuOxdMm5INcHwQZOZ8ALRk_YkvicNwQHSfOVs8hoM/edit?tab=t.0#heading=h.dtwabt1t9yhe)
 
 
@@ -43,6 +39,19 @@ Với một mạng DA phi tập trung như Celestia, bất kỳ giao thức nào
 Thêm nữa, nhờ vào cơ chế Data Availability Sampling (DAS), bất kỳ ai cũng có thể xác minh một cách ngắn gọn rằng dữ liệu đã thực sự được công bố mà không cần phải download toàn bộ dữ liệu gốc.
 
 # Cốt lõi của PDA: Verifiable Encryption (VE)
+
+Trong mã hoá truyền thống, ciphertext (dữ liệu đã mã hoá) không tiết lộ gì về plaintext (dữ liệu gốc). Điều này đảm bảo quyền riêng tư tuyệt đối( privacy)nhưng lại tạo ra một cái “trust bottleneck” là bạn phải hoàn toàn tin tưởng người giữ key giải mã sẽ không chơi xấu.
+
+Nhưng nếu mình không muốn đặt niềm tin mù quáng vào người cầm key thì sao? **Có cách nào để chuyển một phần niềm tin đó sang cơ chế có thể verify công khai?**
+
+VE tạo ra khả năng này bằng cách áp dụng các ràng buộc (constraints) lên:
+
+* chính plaintext
+* thuật toán encryption algorithm
+* và encryption key
+
+Nhờ đó, ai cũng có thể xác minh rằng dữ liệu được mã hoá tuân thủ một số điều kiện cụ thể mà không cần biết dữ liệu đó là gì.
+
 
 Khi kết hợp với Verifiable Encryption (VE) tức là kỹ thuật mã hoá cho phép chứng minh những điều đúng/sai liên quan tới dữ liệu mã hoá mà không cần giải mã. Chúng ta sẽ vẫn giữa được bí mật mà vẫn chứng minh tính hợp lệ.
 
@@ -78,7 +87,7 @@ Thay vì chỉ mã hoá đơn thuần, VE cho phép bạn “cam kết” rằng
 
 * Ví dụ đầu tiên là Data Marketplace
 
-Một người bán muốn bán một bức ảnh có độ phân giải cao. Trước khi người mua thanh toán, họ cần biết chắc chắn rằng file được mã hoá là đúng ảnh đó, nhưng không muốn tiết lộ ảnh.
+Một người bán muốn bán một bức ảnh có độ phân giải cao. Trước khi người mua thanh toán, họ cần biết chắc chắn rằng file được mã hoá là đúng ảnh đó, nhưng không muốn tiết lộ ảnh. 
 
 Vậy thì chúng ta có `VE` sẽ giúp cam kết rằng ciphertext chứa đúng file với hash H(x) mà không giải mã.
 
@@ -102,6 +111,28 @@ Bất kỳ ai đang xây dựng ứng dụng có tính chất nhạy cảm về 
 * Gửi location tạm thời trong decentralized ride-sharing mà vẫn giữ bí mật
 
 
+* Một ví dụ điển hình là dự án Stock0 từ hackathon họ đã tạo ra một media marketplace nơi dữ liệu media được mã hoá, người mua chỉ nhận được quyền giải mã khi hoàn tất deal tất cả đều trustless.
+
+
+
+```
+flowchart LR
+    Data["Data to be Sold"] --> zkVM_Algo["zkVM(transform media)"]
+    zkVM_Algo -- "proven data transform w/ VE anchor" --> Contract["Marketplace on <dApp chain>"]
+    Data -- "VE data" --> Celestia["Celestia"]
+    Celestia -- "header" --> Blobstream["Blobstream on <dApp chain>"]
+    Blobstream <-- "verify VE anchor and DA" --> Contract
+```
+
+
+#  Example Architecture: How VE + PDA Work Together
+
+Ở kiến trúc mẫu này, the anchor đóng vai trò trung tâm một cầu nối (bridge) giữa bất kỳ protocol nào và một chứng minh (proof) rằng dữ liệu riêng tư nào đó đã được công khai một cách có thể kiểm chứng được.
+
+![](https://github.com/celestiaorg/pda-proxy/raw/main/doc/assets/verifiable-encryption.drawio.svg)
+
+
+
 # Example dApps
 
 * Private rollups/apps with (partial) obfuscation. Wrap your fav kit: Rollkit, OP, Nitro, …
@@ -109,9 +140,7 @@ Bất kỳ ai đang xây dựng ứng dụng có tính chất nhạy cảm về 
 * Verifiable Backups recover from "disaster": 
 
 
-
 # Reference 
 1. Github: https://github.com/celestiaorg/pda-proxy
 2. Private Data Availability on Celestia docs: 
 3. Slide Verifiable Encryption event: https://hackmd.io/@Nuke/SyHBUsdWlg#/
-4. 
