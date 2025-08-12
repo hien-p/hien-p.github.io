@@ -8,5 +8,5 @@ You’ll always need to fix and manually add things. If you can’t code or debu
 
 ![](https://cdn.builder.io/api/v1/image/assets%2FYJIGb4i01jvw0SRdL5Bt%2F28470e344ff5455693d9e6c07c4d2b62?format=webp&width=2000)
 
+Best thing bạn có thể làm: học càng nhiều dev skills càng tốt, để AI hỗ trợ bạn, nhưng quan trọng là bạn phải thực sự biết cách làm việc với code đó.
 
- The best thing anyone can do is learn as many development skills as they can, and let the AI help you, but you need to actually know how to work with this code.

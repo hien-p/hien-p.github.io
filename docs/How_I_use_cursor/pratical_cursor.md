@@ -20,6 +20,39 @@ A rules file in Cursor is like a guidebook for your AI coding assistant. it expl
 
 ![](https://a.storyblok.com/f/316774/1200x687/ea72667a4d/cursorrules-file.jpeg)
 
+
+Add your "main" entry rule file: Hit `CMD + SHIFT + P` to open the command palette. Now search for `File: New Cursor Rule` and call it `instructions` and hit `Enter`
+
+In the `description` field give it a useful name. For Globs, you can leave it blank or `add a *`, which acts as a wildcard and will be added to each chat.
+
+
+![](https://a.storyblok.com/f/316774/2150x870/2d35d95f2f/cursorrules_mdc-1.png)
+
+
+
+For example, you might use rules to tell the AI things like `“use TypeScript”, “follow ESLint standards”`, `“prefer functional components over class components in React”`, or even `project-specific rules` like “`we’re using Tailwind CSS for styling`” or `“don’t use any deprecated API”`. Essentially, it’s context that applies globally to your project.
+
+
+Keep Rules Separated: If we made kitchen rules too, we wouldn’t put them with the office rules. We’d write them on a separate paper and put it on the kitchen door. Each place has its own rules.
+
+![](https://a.storyblok.com/f/316774/1690x986/9a4f029248/office-rules-v2.jpeg)
+
+
+
+
+Cascade Cursor Rules: Trong bản update mới nhất của Cursor, bạn có thể set khi nào nó sẽ **Call a Cursor Rule**. Bạn có thể combine nhiều rules cùng lúc. Như trong screenshot, mình có một rule “global” và một rule riêng cho extensions.
+
+![](https://a.storyblok.com/f/316774/1200x675/b29206e231/stack-cursor-rules.jpeg)
+
+
+
+
+**:ignore files**: Dùng **.cursorignore** cho những file mà bạn không bao giờ muốn Cursor index. .**cursorindexignore** cũng sẽ không bị index, nhưng khác ở chỗ bạn vẫn có thể reference chúng trong chat bằng @.
+
+Ví dụ: bạn có một folder docs chứa rất nhiều file markdown documentation. Bạn muốn reference mấy file này khi cần, nhưng không muốn Cursor index hết.  Trường hợp này dùng .cursorindexignore là hợp lý.
+
+
+
 # Reference 
 
 1. [14 Practical Cursor Tips From Daily Use](https://www.instructa.ai/blog/cursor-ai/cursor-pro-tips-2025)  
