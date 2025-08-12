@@ -1,7 +1,6 @@
 # Tổng quan về wallet và các biện pháp bảo mật
 
-Nếu bạn đã từng dùng blockchain thì chắc cũng nhận ra rồi:
-Lý do vì sao ví blockchain được chia thành nhiều loại khác nhau — thực ra chỉ xoay quanh cách quản lý private key mà thôi.
+Nếu bạn đã từng dùng blockchain thì chắc cũng nhận ra rồi là lý do vì sao ví blockchain được chia thành nhiều loại khác nhau thực ra chỉ xoay quanh cách quản lý private key mà thôi.
 
 Có loại ví thì user tự giữ private key (như ví self-custody kiểu MetaMask, Phantom, hay Trust Wallet).
 
