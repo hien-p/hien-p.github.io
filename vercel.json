@@ -3,11 +3,6 @@
   "outputDirectory": "site",
   "installCommand": "pip install mkdocs mkdocs-minify-plugin mkdocs-git-revision-date-localized-plugin pymdown-extensions",
   "framework": null,
-  "functions": {
-    "site/**/*.html": {
-      "runtime": "nodejs18.x"
-    }
-  },
   "headers": [
     {
       "source": "/(.*)",
@@ -68,12 +63,6 @@
       "source": "/index.html",
       "destination": "/",
       "permanent": true
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/$1.html"
     }
   ]
 }
