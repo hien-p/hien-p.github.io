@@ -1,6 +1,5 @@
 site_name: Harry's Blog 
-site_url: https://hien-p.github.io/hari-docs/
-site_favicon: assets/cover.png 
+site_url: https://hien-p.github.io/hari-docs/ 
 
 # Performance optimizations
 strict: false
