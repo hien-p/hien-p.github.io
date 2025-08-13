@@ -2,26 +2,83 @@ site_name: Harry's Blog
 site_url: https://hien-p.github.io/hari-docs/
 site_favicon: assets/cover.png 
 
+# Performance optimizations
+strict: false
+use_directory_urls: true
+docs_dir: docs
+site_dir: site
 
+# Theme configuration
 theme:  
   name: null
   custom_dir: mkdocs-windmill/mkdocs_windmill/
-  #custom_dir: overrides
 
+# CSS and JS optimizations
 extra_css:
   - css/custom.css
 
+# Performance-focused plugins
+plugins:
+  - search:
+      lang: en
+      separator: '[\s\-,:!=\[\]()"/`|]+'
+      prebuild_index: true
+      indexing: 'full'
+  - minify:
+      minify_html: true
+      minify_css: true
+      minify_js: true
+  - git-revision-date-localized:
+      enable_creation_date: false
 
+# Build optimizations
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+      title: On this page
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
 
-
-
+# Extra configuration
 extra:
   social:
     - icon: simple/youtube
       link: https://www.youtube.com/@Harry_Blockchain
-
-
-# plugins: 
-#  - search
-#  - blog:
-#     blog_dir: .
