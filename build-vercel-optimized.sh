@@ -17,7 +17,7 @@ python3 -m pip install --no-cache-dir -r requirements.txt
 
 # Build with optimizations
 echo "🔨 Building MkDocs site (Vercel config)..."
-mkdocs build --config-file mkdocs-vercel.yml --clean --no-strict
+python3 -m mkdocs build --config-file mkdocs-vercel.yml --clean --no-strict
 
 # Optimize images (if ImageMagick is available)
 if command -v convert &> /dev/null; then
