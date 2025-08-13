@@ -13,11 +13,11 @@ rm -rf site/ .cache/ .mkdocs_cache/
 
 # Install dependencies with caching
 echo "📦 Installing dependencies..."
-pip install --no-cache-dir mkdocs mkdocs-minify-plugin mkdocs-git-revision-date-localized-plugin pymdown-extensions
+python3 -m pip install --no-cache-dir -r requirements.txt
 
 # Build with optimizations
-echo "🔨 Building MkDocs site..."
-mkdocs build --clean --no-strict
+echo "🔨 Building MkDocs site (Vercel config)..."
+mkdocs build --config-file mkdocs-vercel.yml --clean --no-strict
 
 # Optimize images (if ImageMagick is available)
 if command -v convert &> /dev/null; then
