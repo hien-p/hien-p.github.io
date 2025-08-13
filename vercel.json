@@ -1,5 +1,5 @@
 {
-  "buildCommand": "mkdocs build",
+  "buildCommand": "chmod +x build-vercel-optimized.sh && ./build-vercel-optimized.sh",
   "outputDirectory": "site",
   "installCommand": "pip install mkdocs mkdocs-minify-plugin mkdocs-git-revision-date-localized-plugin pymdown-extensions",
   "framework": null,
@@ -63,6 +63,17 @@
       "source": "/index.html",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/hari-docs",
+      "destination": "/",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/$1"
     }
   ]
 }

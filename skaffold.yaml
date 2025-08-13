@@ -1,0 +1,50 @@
+apiVersion: skaffold/v2beta29
+kind: Config
+metadata:
+  name: mkdocs-dev
+
+build:
+  artifacts:
+    - image: mkdocs-dev
+      docker:
+        dockerfile: Dockerfile.dev
+        buildArgs:
+          BUILDKIT_INLINE_CACHE: 1
+  local:
+    useDockerCLI: true
+    useBuildkit: true
+
+deploy:
+  kubectl:
+    manifests:
+      - k8s/dev-deployment.yaml
+      - k8s/dev-service.yaml
+
+portForward:
+  - resourceType: service
+    resourceName: mkdocs-dev-service
+    port: 8000
+    localPort: 8000
+
+sync:
+  manual:
+    - src: 'docs/**/*.md'
+      dest: /app/docs
+    - src: 'docs/**/*.png'
+      dest: /app/docs
+    - src: 'docs/**/*.jpg'
+      dest: /app/docs
+    - src: 'docs/**/*.jpeg'
+      dest: /app/docs
+    - src: 'docs/**/*.gif'
+      dest: /app/docs
+    - src: 'docs/**/*.svg'
+      dest: /app/docs
+    - src: 'docs/css/**/*.css'
+      dest: /app/docs/css
+    - src: 'docs/js/**/*.js'
+      dest: /app/docs/js
+    - src: 'mkdocs.yml'
+      dest: /app/mkdocs.yml
+
+
