@@ -1,0 +1,376 @@
+/* Enhanced Windmill Theme - Material-like Features */
+
+/* ===== IMPROVED TYPOGRAPHY & LAYOUT ===== */
+
+/* CSS Variables for better typography and spacing */
+:root {
+  /* Colors */
+  --primary-color: #2563eb;
+  --primary-hover: #1d4ed8;
+  --surface-color: #ffffff;
+  --surface-hover: #f8fafc;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --border-color: #e2e8f0;
+  --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-heavy: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --transition: all 0.2s ease;
+  --border-radius: 8px;
+  
+  /* EVEN LARGER Typography - Further increased font sizes */
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+  --font-size-base: 22px;           /* Increased from 20px to 22px */
+  --font-size-lg: 24px;             /* Increased from 22px to 24px */
+  --font-size-xl: 28px;             /* Increased from 26px to 28px */
+  --font-size-2xl: 36px;            /* Increased from 32px to 36px */
+  --font-size-3xl: 44px;            /* Increased from 40px to 44px */
+  --line-height-base: 1.7;
+  --line-height-relaxed: 1.8;
+  --line-height-tight: 1.5;
+  
+  /* Improved Spacing */
+  --content-max-width: 800px;       /* Reduced from 900px for better readability */
+  --content-padding: 2.5rem;
+  --paragraph-spacing: 2rem;
+  --section-spacing: 3rem;
+  --heading-spacing: 2.5rem;
+}
+
+/* ===== GLOBAL TYPOGRAPHY IMPROVEMENTS ===== */
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--text-primary);
+  background-color: var(--surface-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ===== CONTENT LAYOUT IMPROVEMENTS ===== */
+
+.wm-page-content {
+  max-width: var(--content-max-width) !important;
+  margin: 0 auto !important;
+  padding: var(--content-padding) !important;
+  font-size: var(--font-size-base) !important;
+  line-height: var(--line-height-base) !important;
+}
+
+/* ===== HEADING IMPROVEMENTS ===== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family);
+  font-weight: 600;
+  line-height: var(--line-height-tight);
+  color: var(--text-primary);
+  margin-top: var(--heading-spacing);
+  margin-bottom: var(--spacing-md);
+  letter-spacing: -0.025em;
+}
+
+h1 {
+  font-size: var(--font-size-3xl);
+  margin-top: 0;
+  margin-bottom: var(--spacing-lg);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: var(--font-size-2xl);
+  margin-top: var(--section-spacing);
+  margin-bottom: var(--spacing-md);
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+h3 {
+  font-size: var(--font-size-xl);
+  margin-top: var(--heading-spacing);
+  margin-bottom: var(--spacing-sm);
+}
+
+h4 {
+  font-size: var(--font-size-lg);
+  margin-top: var(--heading-spacing);
+  margin-bottom: var(--spacing-sm);
+}
+
+h5, h6 {
+  font-size: var(--font-size-base);
+  margin-top: var(--heading-spacing);
+  margin-bottom: var(--spacing-sm);
+}
+
+/* ===== PARAGRAPH & TEXT IMPROVEMENTS ===== */
+
+p {
+  margin-bottom: var(--paragraph-spacing);
+  line-height: var(--line-height-relaxed);
+  text-align: justify;
+  hyphens: auto;
+  word-wrap: break-word;
+  font-size: var(--font-size-base); /* Ensure consistent font size */
+}
+
+/* Improve readability for long paragraphs */
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* ===== LIST IMPROVEMENTS ===== */
+
+ul, ol {
+  margin-bottom: var(--paragraph-spacing);
+  padding-left: 2rem;
+  line-height: var(--line-height-relaxed);
+  font-size: var(--font-size-base); /* Ensure consistent font size */
+}
+
+li {
+  margin-bottom: 0.5rem;
+  line-height: var(--line-height-relaxed);
+}
+
+/* ===== CODE BLOCK IMPROVEMENTS ===== */
+
+pre {
+  font-size: 18px; /* Increased from 16px to 18px */
+  line-height: 1.6;
+  padding: 1.5rem;
+  margin: var(--paragraph-spacing) 0;
+  border-radius: var(--border-radius);
+  overflow-x: auto;
+  background-color: #f8f9fa;
+  border: 1px solid var(--border-color);
+}
+
+code {
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+  font-size: 0.95em; /* Increased from 0.9em */
+  padding: 0.2em 0.4em;
+  background-color: #f1f3f4;
+  border-radius: 4px;
+  color: #d73a49;
+}
+
+/* ===== IMAGE IMPROVEMENTS - REDUCED SIZE ===== */
+
+img {
+  max-width: 70%; /* Reduced from 100% to 70% */
+  height: auto;
+  border-radius: var(--border-radius);
+  margin: var(--paragraph-spacing) auto; /* Center images */
+  box-shadow: var(--shadow-light);
+  display: block;
+}
+
+/* Make images even smaller on larger screens */
+@media (min-width: 1200px) {
+  img {
+    max-width: 60%; /* Even smaller on large screens */
+  }
+}
+
+/* ===== TABLE IMPROVEMENTS ===== */
+
+table {
+  width: 100%;
+  margin: var(--paragraph-spacing) 0;
+  border-collapse: collapse;
+  font-size: 0.95em;
+  line-height: var(--line-height-base);
+}
+
+th, td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* ===== BLOCKQUOTE IMPROVEMENTS ===== */
+
+blockquote {
+  margin: var(--paragraph-spacing) 0;
+  padding: 1.5rem;
+  border-left: 4px solid var(--primary-color);
+  background-color: #f8f9fa;
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  font-style: italic;
+  line-height: var(--line-height-relaxed);
+  font-size: var(--font-size-base); /* Ensure consistent font size */
+}
+
+/* ===== NAVIGATION IMPROVEMENTS ===== */
+
+.wm-nav-pane {
+  font-size: 0.95em;
+  line-height: var(--line-height-base);
+}
+
+.wm-nav-item {
+  margin-bottom: 0.5rem;
+}
+
+.wm-nav-item a {
+  padding: 0.75rem 1rem;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  line-height: var(--line-height-base);
+}
+
+.wm-nav-item a:hover {
+  background-color: var(--surface-hover);
+  color: var(--primary-color);
+}
+
+/* ===== RESPONSIVE IMPROVEMENTS ===== */
+
+@media (max-width: 1200px) {
+  :root {
+    --content-max-width: 750px;
+    --content-padding: 2rem;
+    --font-size-base: 21px; /* Slightly smaller but still large */
+  }
+  
+  .wm-page-content {
+    font-size: 21px !important;
+  }
+  
+  h1 { font-size: 40px; }
+  h2 { font-size: 34px; }
+  h3 { font-size: 26px; }
+  
+  img {
+    max-width: 75%; /* Slightly larger on medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --content-max-width: 100%;
+    --content-padding: 1.5rem;
+    --paragraph-spacing: 1.5rem;
+    --section-spacing: 2rem;
+    --heading-spacing: 2rem;
+    --font-size-base: 20px; /* Still larger than original */
+  }
+  
+  .wm-page-content {
+    font-size: 20px !important;
+    padding: 1rem !important;
+  }
+  
+  h1 { font-size: 36px; }
+  h2 { font-size: 32px; }
+  h3 { font-size: 24px; }
+  
+  p {
+    text-align: left; /* Better for mobile */
+  }
+  
+  ul, ol {
+    padding-left: 1.5rem;
+  }
+  
+  img {
+    max-width: 85%; /* Larger on mobile for better visibility */
+  }
+  
+  pre {
+    font-size: 16px; /* Slightly smaller on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --content-padding: 1rem;
+    --paragraph-spacing: 1.25rem;
+    --font-size-base: 19px; /* Still larger than original */
+  }
+  
+  .wm-page-content {
+    font-size: 19px !important;
+    padding: 0.75rem !important;
+  }
+  
+  h1 { font-size: 32px; }
+  h2 { font-size: 28px; }
+  h3 { font-size: 22px; }
+  
+  pre {
+    font-size: 15px;
+    padding: 1rem;
+  }
+  
+  img {
+    max-width: 90%; /* Almost full width on small mobile */
+  }
+}
+
+/* ===== DARK MODE SUPPORT ===== */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface-color: #1a1a1a;
+    --surface-hover: #2a2a2a;
+    --text-primary: #e5e5e5;
+    --text-secondary: #a0a0a0;
+    --border-color: #404040;
+  }
+  
+  pre {
+    background-color: #2a2a2a;
+  }
+  
+  code {
+    background-color: #2a2a2a;
+    color: #ff6b6b;
+  }
+  
+  blockquote {
+    background-color: #2a2a2a;
+  }
+  
+  th {
+    background-color: #2a2a2a;
+  }
+}
+
+/* ===== ACCESSIBILITY IMPROVEMENTS ===== */
+
+/* Focus indicators */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --text-primary: #000000;
+    --text-secondary: #333333;
+    --border-color: #000000;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
