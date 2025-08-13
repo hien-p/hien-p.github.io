@@ -1,0 +1,458 @@
+/* Custom CSS for Windmill Theme - Clean and Simple Design */
+
+/* ========================================
+   Main Content Styling
+   ======================================== */
+
+/* Increase font sizes for better readability */
+body {
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+}
+
+/* Main content area styling */
+.wm-page-content {
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+    max-width: 800px !important;
+}
+
+/* Article content styling */
+.wm-article {
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+}
+
+/* ========================================
+   Heading Hierarchy Styling - Simplified
+   ======================================== */
+
+/* Main content headings - clean and simple */
+.wm-article h1,
+.wm-page-content h1 {
+    font-size: 2.2em !important;
+    font-weight: 700 !important;
+    color: #2c3e50 !important;
+    border-bottom: 3px solid #3498db !important;
+    padding: 12px 0 !important;
+    margin: 24px 0 16px 0 !important;
+}
+
+.wm-article h2,
+.wm-page-content h2 {
+    font-size: 1.8em !important;
+    font-weight: 600 !important;
+    color: #34495e !important;
+    border-bottom: 2px solid #ecf0f1 !important;
+    padding: 10px 0 !important;
+    margin: 20px 0 14px 0 !important;
+}
+
+.wm-article h3,
+.wm-page-content h3 {
+    font-size: 1.5em !important;
+    font-weight: 500 !important;
+    color: #5d6d7e !important;
+    border-bottom: 1px solid #ecf0f1 !important;
+    padding: 8px 0 !important;
+    margin: 16px 0 12px 0 !important;
+}
+
+.wm-article h4,
+.wm-page-content h4 {
+    font-size: 1.3em !important;
+    font-weight: 500 !important;
+    color: #7b7d7d !important;
+    padding: 6px 0 !important;
+    margin: 14px 0 10px 0 !important;
+}
+
+.wm-article h5,
+.wm-page-content h5 {
+    font-size: 1.1em !important;
+    font-weight: 400 !important;
+    color: #85929e !important;
+    padding: 4px 0 !important;
+    margin: 12px 0 8px 0 !important;
+}
+
+.wm-article h6,
+.wm-page-content h6 {
+    font-size: 1em !important;
+    font-weight: 400 !important;
+    color: #95a5a6 !important;
+    padding: 3px 0 !important;
+    margin: 10px 0 6px 0 !important;
+}
+
+/* ========================================
+   Table of Contents (TOC) Styling - Clean
+   ======================================== */
+
+/* TOC pane styling */
+.wm-toc-pane {
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+    background-color: #ffffff !important;
+    border-right: 1px solid #e0e0e0 !important;
+    min-width: 280px !important;
+    max-width: 380px !important;
+}
+
+/* TOC items styling - simplified */
+.wm-toc-li {
+    margin: 1px 0 !important;
+    padding: 2px 4px !important;
+    border-radius: 3px !important;
+    transition: all 0.2s ease !important;
+}
+
+.wm-toc-li a {
+    text-decoration: none !important;
+    color: #34495e !important;
+    display: block !important;
+    padding: 4px 8px !important;
+    border-radius: 3px !important;
+    transition: all 0.2s ease !important;
+    font-size: 14px !important;
+}
+
+/* TOC hierarchy levels - clean indentation only */
+.wm-toc-li.wm-toc-lev1 {
+    margin-left: 0 !important;
+    padding-left: 8px !important;
+}
+
+.wm-toc-li.wm-toc-lev1 a {
+    font-weight: 600 !important;
+    font-size: 15px !important;
+    color: #2c3e50 !important;
+}
+
+.wm-toc-li.wm-toc-lev2 {
+    margin-left: 16px !important;
+    padding-left: 16px !important;
+}
+
+.wm-toc-li.wm-toc-lev2 a {
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    color: #34495e !important;
+}
+
+.wm-toc-li.wm-toc-lev3 {
+    margin-left: 32px !important;
+    padding-left: 24px !important;
+}
+
+.wm-toc-li.wm-toc-lev3 a {
+    font-weight: 400 !important;
+    font-size: 13px !important;
+    color: #5d6d7e !important;
+}
+
+.wm-toc-li.wm-toc-lev4 {
+    margin-left: 48px !important;
+    padding-left: 32px !important;
+}
+
+.wm-toc-li.wm-toc-lev4 a {
+    font-weight: 400 !important;
+    font-size: 12px !important;
+    color: #7b7d7d !important;
+}
+
+/* TOC hover effects - subtle */
+.wm-toc-li:hover a {
+    background-color: #f8f9fa !important;
+    color: #3498db !important;
+}
+
+/* Current/active TOC item - clean highlight */
+.wm-toc-li.wm-current {
+    background-color: #f8f9fa !important;
+}
+
+.wm-toc-li.wm-current a {
+    color: #3498db !important;
+    font-weight: 600 !important;
+    background-color: #e8f4fd !important;
+}
+
+/* ========================================
+   Page TOC (Spotlight) Styling - Clean
+   ======================================== */
+
+/* Page TOC container */
+.wm-page-toc {
+    background-color: #f8f9fa !important;
+    border: 1px solid #e0e0e0 !important;
+    border-radius: 6px !important;
+    padding: 16px !important;
+    margin: 16px 0 !important;
+}
+
+/* Page TOC title */
+.wm-page-toc h3 {
+    font-size: 1.1em !important;
+    font-weight: 600 !important;
+    color: #2c3e50 !important;
+    margin: 0 0 12px 0 !important;
+    padding: 0 !important;
+    border: none !important;
+}
+
+/* Page TOC items */
+.wm-page-toc .wm-toc-li {
+    margin: 2px 0 !important;
+    padding: 0 !important;
+}
+
+.wm-page-toc .wm-toc-li a {
+    padding: 4px 8px !important;
+    border-radius: 3px !important;
+    color: #34495e !important;
+    font-size: 14px !important;
+    text-decoration: none !important;
+    display: block !important;
+    transition: background-color 0.2s ease !important;
+}
+
+/* Page TOC hierarchy - simple indentation */
+.wm-page-toc .wm-toc-li.wm-toc-lev1 {
+    margin-left: 0 !important;
+}
+
+.wm-page-toc .wm-toc-li.wm-toc-lev1 a {
+    font-weight: 600 !important;
+    color: #2c3e50 !important;
+}
+
+.wm-page-toc .wm-toc-li.wm-toc-lev2 {
+    margin-left: 16px !important;
+}
+
+.wm-page-toc .wm-toc-li.wm-toc-lev2 a {
+    font-weight: 500 !important;
+    color: #34495e !important;
+}
+
+.wm-page-toc .wm-toc-li.wm-toc-lev3 {
+    margin-left: 32px !important;
+}
+
+.wm-page-toc .wm-toc-li.wm-toc-lev3 a {
+    font-weight: 400 !important;
+    color: #5d6d7e !important;
+}
+
+/* Page TOC hover and active states */
+.wm-page-toc .wm-toc-li:hover a {
+    background-color: #e8f4fd !important;
+    color: #3498db !important;
+}
+
+.wm-page-toc .wm-toc-li.wm-current a {
+    background-color: #3498db !important;
+    color: white !important;
+    font-weight: 600 !important;
+}
+
+/* ========================================
+   Content Elements Styling
+   ======================================== */
+
+/* Paragraph spacing */
+.wm-article p {
+    margin: 12px 0 !important;
+    line-height: 1.6 !important;
+}
+
+/* List styling */
+.wm-article ul, .wm-article ol {
+    margin: 12px 0 !important;
+    padding-left: 20px !important;
+}
+
+.wm-article ul ul, .wm-article ol ol {
+    margin: 8px 0 !important;
+    padding-left: 30px !important;
+}
+
+.wm-article ul ul ul, .wm-article ol ol ol {
+    margin: 6px 0 !important;
+    padding-left: 40px !important;
+}
+
+/* Blockquote styling - clean */
+.wm-article blockquote {
+    border-left: 4px solid #3498db !important;
+    background-color: #f8f9fa !important;
+    padding: 12px 16px !important;
+    margin: 16px 0 !important;
+    border-radius: 0 4px 4px 0 !important;
+    font-style: italic !important;
+}
+
+/* Code blocks */
+.wm-article pre {
+    background-color: #2c3e50 !important;
+    color: #ecf0f1 !important;
+    padding: 16px !important;
+    border-radius: 6px !important;
+    margin: 16px 0 !important;
+    overflow-x: auto !important;
+}
+
+/* Inline code */
+.wm-article code {
+    background-color: #f8f9fa !important;
+    color: #e74c3c !important;
+    padding: 2px 6px !important;
+    border-radius: 3px !important;
+    font-family: 'Courier New', monospace !important;
+}
+
+/* ========================================
+   Navigation and Layout
+   ======================================== */
+
+/* Adjust content pane padding */
+.wm-content-pane {
+    padding-left: 280px !important;
+}
+
+/* TOC hidden state */
+.wm-toc-hidden > .wm-toc-pane {
+    margin-left: -280px !important;
+}
+
+.wm-toc-hidden > .wm-content-pane {
+    padding-left: 0px !important;
+}
+
+/* ========================================
+   Top Bar Styling
+   ======================================== */
+
+/* Top bar improvements */
+.navbar {
+    background-color: #546e7a !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+}
+
+/* Search box styling */
+.wm-top-search input[type="text"] {
+    font-size: 14px !important;
+    padding: 8px 12px !important;
+    border-radius: 4px !important;
+}
+
+/* ========================================
+   Mobile Responsiveness
+   ======================================== */
+
+@media (max-width: 768px) {
+    .wm-toc-pane {
+        min-width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    .wm-content-pane {
+        padding-left: 0 !important;
+    }
+    
+    .wm-page-content {
+        max-width: 100% !important;
+        padding: 0 15px !important;
+    }
+    
+    /* Adjust heading sizes for mobile */
+    .wm-article h1, .wm-page-content h1 {
+        font-size: 1.8em !important;
+        padding: 10px 0 !important;
+    }
+    
+    .wm-article h2, .wm-page-content h2 {
+        font-size: 1.5em !important;
+        padding: 8px 0 !important;
+    }
+    
+    .wm-article h3, .wm-page-content h3 {
+        font-size: 1.3em !important;
+        padding: 6px 0 !important;
+    }
+}
+
+/* ========================================
+   Image Styling
+   ======================================== */
+
+/* Responsive images */
+.wm-article img,
+.wm-page-content img {
+    max-width: 100% !important;
+    height: auto !important;
+    border-radius: 6px !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+    margin: 16px 0 !important;
+}
+
+/* ========================================
+   Link Styling
+   ======================================== */
+
+/* Link colors and hover effects */
+.wm-article a,
+.wm-page-content a {
+    color: #3498db !important;
+    text-decoration: none !important;
+    transition: color 0.2s ease !important;
+}
+
+.wm-article a:hover,
+.wm-page-content a:hover {
+    color: #2980b9 !important;
+    text-decoration: underline !important;
+}
+
+/* ========================================
+   Table Styling
+   ======================================== */
+
+/* Table improvements */
+.wm-article table,
+.wm-page-content table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+    margin: 16px 0 !important;
+    border-radius: 6px !important;
+    overflow: hidden !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+}
+
+.wm-article table th,
+.wm-page-content table th {
+    background-color: #3498db !important;
+    color: white !important;
+    padding: 12px 8px !important;
+    font-weight: 600 !important;
+    text-align: left !important;
+}
+
+.wm-article table td,
+.wm-page-content table td {
+    padding: 8px !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+    background-color: #ffffff !important;
+}
+
+.wm-article table tr:nth-child(even) td,
+.wm-page-content table tr:nth-child(even) td {
+    background-color: #f8f9fa !important;
+}
+
+.wm-article table tr:hover td,
+.wm-page-content table tr:hover td {
+    background-color: #e8f4fd !important;
+}
