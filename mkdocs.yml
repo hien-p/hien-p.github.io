@@ -8,6 +8,9 @@ theme:
   custom_dir: mkdocs-windmill/mkdocs_windmill/
   #custom_dir: overrides
 
+extra_css:
+  - css/custom.css
+
 
 
 
