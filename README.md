@@ -105,3 +105,35 @@ Main config: `mkdocs.yml`
 - [Windmill Theme](https://github.com/gristlabs/mkdocs-windmill)
 
 ---
+
+## 🔎 SEO & Sitemap (cập nhật: 14/08/2025)
+
+### Sitemap
+- MkDocs sẽ tự động tạo `sitemap.xml` khi `site_url` được cấu hình trong `mkdocs.yml` (đã bật: `https://hien-p.github.io/hari-docs/`).
+
+- Xem trước local:
+
+```bash
+  mkdocs build && open site/sitemap.xml
+```
+- Production sitemap: `https://hien-p.github.io/hari-docs/sitemap.xml`
+
+### Robots.txt
+
+- Để bot dễ thu thập dữ liệu, file `docs/robots.txt` được xuất cùng site.
+- Nội dung mẫu:
+
+```txt
+User-agent: *
+Allow: /
+Sitemap: https://hien-p.github.io/hari-docs/sitemap.xml
+```
+
+### Đệ trình Sitemap
+- Google Search Console (URL-prefix): thêm thuộc tính với URL `https://hien-p.github.io/hari-docs/`, rồi submit sitemap: `https://hien-p.github.io/hari-docs/sitemap.xml`.
+- Bing Webmaster Tools: thêm site và submit cùng sitemap URL.
+
+### Lưu ý quan trọng
+- Giữ `site_url` chính xác trong `mkdocs.yml` để canonical và sitemap đúng URL.
+- `use_directory_urls: true` đã bật để URL gọn và nhất quán.
+- Mỗi lần deploy, sitemap tự được cập nhật; không cần thao tác thủ công ngoài Search Console.

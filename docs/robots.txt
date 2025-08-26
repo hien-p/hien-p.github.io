@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Sitemap: https://hien-p.github.io/hari-docs/sitemap.xml
+
+
