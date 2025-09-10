@@ -72,10 +72,12 @@ So rather than chasing “what’s the most profitable,” it’s far more impor
 
 Once you truly understand these fundamentals, opportunities will naturally reveal themselves.
 
-Web3 is unlike other industries. In this space, `“learning by doing”` is the shortcut. I
+Web3 is unlike other industries. In this space, `“learning by doing”` is the shortcut. 
 
-f you only read without practicing—collecting countless tutorials, following tons of bloggers but never actually getting started—that’s like practicing “deviant cultivation.
+If you only read without practicing—collecting countless tutorials, following tons of bloggers but never actually getting started—that’s like practicing “deviant cultivation.
 
 > ” No matter how much you read, you’ll get lost sooner or later.
 
-> As the saying goes: Reading thousands of books is not as good as practicing N times. By practicing N times, you’ll eventually find your own rhythm.
+As the saying goes: 
+
+> Reading thousands of books is not as good as practicing N times. By practicing N times, you’ll eventually find your own rhythm.
