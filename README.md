@@ -106,28 +106,14 @@ Main config: `mkdocs.yml`
 
 ---
 
-## 🔎 SEO & Sitemap (cập nhật: 14/08/2025)
 
-### Sitemap
-- MkDocs sẽ tự động tạo `sitemap.xml` khi `site_url` được cấu hình trong `mkdocs.yml` (đã bật: `https://hien-p.github.io/hari-docs/`).
 
-- Xem trước local:
 
-```bash
-  mkdocs build && open site/sitemap.xml
-```
-- Production sitemap: `https://hien-p.github.io/hari-docs/sitemap.xml`
 
-### Robots.txt
 
-- Để bot dễ thu thập dữ liệu, file `docs/robots.txt` được xuất cùng site.
-- Nội dung mẫu:
 
-```txt
-User-agent: *
-Allow: /
-Sitemap: https://hien-p.github.io/hari-docs/sitemap.xml
-```
+
+
 
 ### Đệ trình Sitemap
 - Google Search Console (URL-prefix): thêm thuộc tính với URL `https://hien-p.github.io/hari-docs/`, rồi submit sitemap: `https://hien-p.github.io/hari-docs/sitemap.xml`.
